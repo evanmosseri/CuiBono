@@ -6,16 +6,13 @@ import requests
 from pprint import pprint
 from lxml import etree, html
 from scripts.utils import *
-
-
-
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def get_simple_search_cookie():
 	return requests.get("https://www.ethics.state.tx.us/jasperserver-pro/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri/public/publicData&reportUnit=/public/publicData/datasource/By_Filer_Name&decorate=no&SuperName=straus&FilerType=ANY&FirstName=joe&CorrFlag=N&tec-pp=u=PUBLIC2|expireTime=Sat%20Jul%2002%2020126%2022:30:16%20GMT-0500%20(CDT)",verify=False).cookies.get_dict()["JSESSIONID"]
 
-def get_filer_info(first_name,last_name,preview = False, allowed_types = ["COH"],cookie=get_simple_search_cookie(),debug=False):
+def get_filer_info(first_name,last_name,debug=False,preview = False, allowed_types = ["COH"],cookie=get_simple_search_cookie()):
 	jq = pq(
 		"https://www.ethics.state.tx.us/jasperserver-pro/flow.html?_flowExecutionKey=e1s1&_flowId=viewReportFlow&_eventId=refreshReport&pageIndex=0&decorate=no&confirm=true&decorator=empty&ajax=false",
 		data={
@@ -36,6 +33,9 @@ def get_filer_info(first_name,last_name,preview = False, allowed_types = ["COH"]
 		handle = open("./data/out.html","w+")
 		handle.write(etree.tostring(html.fromstring(str(jq)), encoding='unicode', pretty_print=True))
 		handle.close()
+	handle = open("./data/out.html","w+")
+	handle.write(etree.tostring(html.fromstring(str(jq)), encoding='unicode', pretty_print=True))
+	handle.close()
 	if preview:
 		webbrowser.open("File://"+os.path.abspath("./data/out.html"))
 	dat = [pq(c) for c in list(filter(lambda x: pq(x).text().strip(), jq(".jrPage tr")))[3:-1]][::3]

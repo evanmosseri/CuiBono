@@ -10,7 +10,9 @@ import glob
 data_dir = "../../data/texas_ethics_commision"
 dat_file = pd.read_csv("{}/cont_ss.csv".format(data_dir),low_memory=False)
 
-# org_names =dat_file["filerName"].tolist()
+dat_file = pd.read_csv("../../data/cont_ss.csv",low_memory=False)
+
+org_names =dat_file["filerName"].tolist()
 
 def extract_filer_name(org_name):
     reversed = False
@@ -93,4 +95,5 @@ def merge_data():
 if __name__ == "__main__":
 #     print(dat_file)
     merge_data()
+
 

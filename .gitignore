@@ -4,3 +4,4 @@ mac_env
 .idea
 cs373-idb
 data/combined.csv
+*.pyc
