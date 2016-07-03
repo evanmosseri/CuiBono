@@ -2,6 +2,7 @@ import concurrent.futures
 import itertools
 import multiprocessing
 import linecache
+import sys
 
 def concr(func,data,max_workers=50,thread=None):
 	thread = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) if not(thread) else thread

@@ -5,11 +5,12 @@ from scripts.utils import *
 import sys
 import numpy as np
 import re
-
+import glob
 # data_file = csv.DictReader(open("../../data/cont_ss.csv"))
-dat_file = pd.read_csv("../../data/cont_ss.csv",low_memory=False)
+data_dir = "../../data/texas_ethics_commision"
+dat_file = pd.read_csv("{}/cont_ss.csv".format(data_dir),low_memory=False)
 
-org_names =dat_file["filerName"].tolist()
+# org_names =dat_file["filerName"].tolist()
 
 def extract_filer_name(org_name):
     reversed = False
@@ -83,11 +84,13 @@ def extract_filer_name(org_name):
         org_name = " ".join([temp[0],temp[1]])
     return org_name
 
-d = list(map(extract_filer_name,org_names))
-dat_file["filerName2"] = d
+def merge_data():
+    files = glob.glob("{}/contrib*.csv".format(data_dir))
+    df = pd.concat((pd.read_csv(x,dtype=str) for x in files),ignore_index=True)
+    df.to_csv("../../data/combined.csv")
+    print(files)
 
-dat_file = dat_file.reindex_axis(sorted(dat_file.columns),axis=1)
-dat_file = dat_file[["filerName","filerName2"]]
-pprint(np.unique(dat_file["filerName2"]).tolist())
-dat_file.to_csv(open("../../data/cleaned_data.csv","w+"),index=False)
+if __name__ == "__main__":
+#     print(dat_file)
+    merge_data()
 

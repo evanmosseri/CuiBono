@@ -3,3 +3,4 @@ mac_env
 .DS_Store
 .idea
 cs373-idb
+data/combined.csv
