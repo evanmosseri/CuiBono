@@ -75,7 +75,7 @@
 
             <div class ="container">
                 <div class = "table-hover">
-                    <table class = "table"> 
+                    <table class = "table table-hover"> 
                         <thead>
                             <tr>
                                 <th># </th>     
@@ -84,19 +84,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class = "clickable-row" data-href = "bills/bill1.html">
                                 <td> 1 </td>
                                 <td><a href="bills/bill1.html"> Bill 1</a></td>
                                 <td>Stuff</td>
                             </tr>
-                            <tr>
+                            <tr class = "clickable-row" data-href = "bills/bill2.html">
                                 <td> 2 </td>
                                 <td><a href="bills/bill2.html"> Bill 2</a></td>
                                 <td>Stuff</td>
                             </tr>
-                            <tr>
+                            <tr class = "clickable-row" data-href = "bills/bill3.html">
                                 <td> 3 </td>
-                                <td><a href="bills/bill2.html"> Bill 3  </a></td>
+                                <td><a href="bills/bill3.html"> Bill 3  </a></td>
                                 <td>Stuff</td>
                             </tr>
                         </tbody>
@@ -135,6 +135,15 @@
 
     <!-- Theme JavaScript -->
     <script src="js/grayscale.min.js"></script>
+
+<script>
+    jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+
+</script>
 
 </body>
 
