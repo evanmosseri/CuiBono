@@ -30,6 +30,7 @@ body{
 			margin-bottom: 100px;
 			overflow: hidden;
 			box-shadow: 3px 3px 1px rgba(blue,.2);
+			border-radius: .5em;
 		}
 		li.about:nth-child(even){
 			margin-left: 10%;
@@ -130,58 +131,58 @@ body{
 	}
 
 }
-@media (max-width: 1000px) {
-  .page-about li.about{
-  		p{
-			font-size: 8pt !important;
-  		}
-  		li{
-			font-size: 8pt !important;
-  		}
-  		h2{
+// @media (max-width: 1000px) {
+//   .page-about li.about{
+//   		p{
+// 			font-size: 8pt !important;
+//   		}
+//   		li{
+// 			font-size: 8pt !important;
+//   		}
+//   		h2{
 
-  		}
-  }
-}
-@media (max-width: 900px) {
-	.page-about{
-		.about{
-			padding:0 !important;
-		}
-		.left{
-			position: static !important; 
-			height: 220px !important;
-			overflow: hidden;
-			box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-mox-box-shadow: none !important;
-			margin:0 auto !important;
-			width: 100% !important;
-			> ul{
-				width: 100% important;
-				overflow: hidden;
-			}
-			li{
-				display: block !important;
-				margin-right: 20px !important;
-			}
-			li{
-				h2,h3{
-					display: inline !important;
-				}
-				h3:before{
-					content: ": " !important;
-					color: black;
-					font-size: 11pt;
-				}
-			}
-		}
-	}
-}
-@media (max-width: 650px){
-	.page-about{
-		.about{
-			height: 600px !important;
-		}
-	}
-}
+//   		}
+//   }
+// }
+// @media (max-width: 900px) {
+// 	.page-about{
+// 		.about{
+// 			padding:0 !important;
+// 		}
+// 		.left{
+// 			position: static !important; 
+// 			height: 220px !important;
+// 			overflow: hidden;
+// 			box-shadow: none !important;
+// 			-webkit-box-shadow: none !important;
+// 			-mox-box-shadow: none !important;
+// 			margin:0 auto !important;
+// 			width: 100% !important;
+// 			> ul{
+// 				width: 100% important;
+// 				overflow: hidden;
+// 			}
+// 			li{
+// 				display: block !important;
+// 				margin-right: 20px !important;
+// 			}
+// 			li{
+// 				h2,h3{
+// 					display: inline !important;
+// 				}
+// 				h3:before{
+// 					content: ": " !important;
+// 					color: black;
+// 					font-size: 11pt;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// @media (max-width: 650px){
+// 	.page-about{
+// 		.about{
+// 			height: 600px !important;
+// 		}
+// 	}
+// }
