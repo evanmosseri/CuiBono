@@ -6,6 +6,8 @@ body {
   margin-top: 50px; }
 
 .page-about ul.abouts {
+  display: block;
+  overflow: hidden;
   list-style: none; }
   .page-about ul.abouts .left, .page-about ul.abouts .right {
     display: block; }
@@ -22,10 +24,23 @@ body {
     position: relative;
     padding-left: 150px;
     margin-bottom: 100px;
-    overflow: hidden; }
+    overflow: hidden;
+    box-shadow: 3px 3px 1px rgba(0, 0, 255, 0.2); }
   .page-about ul.abouts li.about:nth-child(even) {
-    margin-left: 10%; }
+    margin-left: 10%;
+    box-shadow: 3px 3px 1px rgba(255, 0, 0, 0.2); }
+    .page-about ul.abouts li.about:nth-child(even) .left {
+      -webkit-box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1);
+      -moz-box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1);
+      box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1); }
+  .page-about ul.abouts li.about:nth-child(odd) {
+    box-shadow: 3px 3px 1px rgba(0, 0, 255, 0.2); }
+    .page-about ul.abouts li.about:nth-child(odd) .left {
+      -webkit-box-shadow: 10px -1px 5px -8px rgba(0, 0, 102, 0.1);
+      -moz-box-shadow: 10px -1px 5px -8px rgba(0, 0, 102, 0.1);
+      box-shadow: 10px -1px 5px -8px rgba(0, 0, 102, 0.1); }
   .page-about ul.abouts .left {
+    height: 100%;
     width: 150px;
     position: absolute;
     left: 0; }
@@ -52,20 +67,27 @@ body {
       margin-bottom: 15px;
       color: gray; }
   .page-about ul.abouts .right {
-    padding: 25px; }
-    .page-about ul.abouts .right p, .page-about ul.abouts .right h2, .page-about ul.abouts .right li {
+    padding: 10px; }
+    .page-about ul.abouts .right > div {
+      overflow: hidden; }
+    .page-about ul.abouts .right .reponsibilities li {
+      font-size: 9pt; }
+    .page-about ul.abouts .right p, .page-about ul.abouts .right h3, .page-about ul.abouts .right li, .page-about ul.abouts .right h2 {
       text-align: left; }
-    .page-about ul.abouts .right h2 {
+    .page-about ul.abouts .right h3, .page-about ul.abouts .right h2 {
       color: #2B2A21;
-      font-size: 13pt;
       margin-top: 15px;
       margin-bottom: 9px;
       padding-bottom: 0; }
+    .page-about ul.abouts .right h3 {
+      font-size: 13pt; }
+    .page-about ul.abouts .right h2 {
+      font-size: 15pt;
+      text-align: center; }
     .page-about ul.abouts .right p {
       color: black;
-      font-size: 10pt; }
-    .page-about ul.abouts .right h2 + ul {
-      color: red; }
+      font-size: 9pt;
+      margin-bottom: 0px; }
     .page-about ul.abouts .right ul {
       padding: 0; }
       .page-about ul.abouts .right ul li {

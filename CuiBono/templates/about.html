@@ -1,221 +1,228 @@
-{% extends "index.html" %}
-
-{%block morecss%}
+{% extends "index.html" %} {%block morecss%}
 <style>
-.table.table-responsive tr th{
-  text-align: center;
+.table.table-responsive tr th {
+    text-align: center;
 }
 </style>
-{%endblock%}
-{%block pagename%}about{%endblock%}
-{% block Content %}
-
+{%endblock%} {%block pagename%}about{%endblock%} {% block Content %}
 <div class="container">
-  <h2>About Us</h2>
-  <!-- ul.abouts>(li.about>div.left>(img[src="/static/img/bios/luke_pic.png"]+ul.stats>li.stat>(h2{Stat Name}+h3{Stat Value})*4)+div.right>p)*6 -->
-
-  <ul class="abouts">
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <h2>Bio:</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates numquam perspiciatis at, veniam distinctio, dolorum consequuntur iste repellendus quos qui ea nesciunt fugit ab soluta. Ipsam earum ex, consequuntur est tenetur ut optio perspiciatis possimus, a provident veniam minus, at!</p>
-        <h2>Responsibilities</h2>
-        <ul class="reponsibilities">
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-        </ul>
-      </div>
-    </li>
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <div class="bio">
-          <h2>Bio:</h2>
-          <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
-        </div>
-        <div class="respons">
-        <h2>Responsibilities</h2>
-          <ul class="reponsibilities">
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <h2>Bio:</h2>
-        <p>Molestiae eligendi numquam id debitis adipisci excepturi tenetur, quidem ad iure temporibus in assumenda dolores quasi aut nobis deserunt facere nulla, aliquid voluptatibus optio illo aliquam soluta corrupti. Repellendus neque eaque eos molestias obcaecati possimus impedit harum tempora, dolor voluptatem.</p>
-        <h2>Responsibilities</h2>
-        <ul class="reponsibilities">
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-          <li>Responsibility</li>
-        </ul>
-      </div>
-    </li>
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <div class="bio">
-          <h2>Bio:</h2>
-          <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
-        </div>
-        <div class="respons">
-        <h2>Responsibilities</h2>
-          <ul class="reponsibilities">
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-          </ul>
-        </div>
-    </li>
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <div class="bio">
-          <h2>Bio:</h2>
-          <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
-        </div>
-        <div class="respons">
-        <h2>Responsibilities</h2>
-          <ul class="reponsibilities">
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="about">
-      <div class="left">
-        <img src="/static/img/bios/luke_pic.png" alt="">
-        <ul class="stats">
-          <li class="stat">
-            <h2># Commits</h2>
-            <h3>42</h3>
-          </li>
-          <li class="stat">
-            <h2># Issues</h2>
-            <h3>17</h3>
-          </li>
-          <li class="stat">
-            <h2># Unit Tests</h2>
-            <h3>5</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <div class="bio">
-          <h2>Bio:</h2>
-          <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
-        </div>
-        <div class="respons">
-        <h2>Responsibilities</h2>
-          <ul class="reponsibilities">
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-            <li>Responsibility</li>
-          </ul>
-        </div>
-    </li>
-  </ul>
-</div>
-
-{% endblock %}
+    <h2>About Us</h2>
+    <!-- ul.abouts>(li.about>div.left>(img[src="/static/img/bios/luke_pic.png"]+ul.stats>li.stat>(h2{Stat Name}+h3{Stat Value})*4)+div.right>p)*6 -->
+    <ul class="abouts">
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+        </li>
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="about">
+            <div class="left">
+                <img src="/static/img/bios/luke_pic.png" alt="">
+                <ul class="stats">
+                    <li class="stat">
+                        <h2># Commits</h2>
+                        <h3>42</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Issues</h2>
+                        <h3>17</h3>
+                    </li>
+                    <li class="stat">
+                        <h2># Unit Tests</h2>
+                        <h3>5</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="bio">
+                    <h2>Evan Mosseri</h2>
+                    <h3>Bio:</h3>
+                    <p>Fugit sit facilis obcaecati dolorem cum mollitia ut. Consequatur unde quas a, illo laudantium quo tempore mollitia tenetur harum. Assumenda atque ab laudantium suscipit recusandae quibusdam quam illo fuga voluptatum earum vitae cum nihil ut sapiente, obcaecati distinctio, consequatur repellendus!</p>
+                </div>
+                <div class="respons">
+                    <h3>Responsibilities</h3>
+                    <ul class="reponsibilities">
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                        <li>Responsibility</li>
+                    </ul>
+                </div>
+        </li>
+    </ul>
+    </div>
+    {% endblock %}

@@ -5,34 +5,9 @@ body{
 	margin-top: 50px;
 }
 .page-about{
-	// ul.abouts{
-	// 	padding: 0;
-	// }
-	// ul.abouts .about:nth-child(even){
-	// 	margin-left: 10%;
-	// }
-	// ul.abouts .about {
-	// 	float: left;
-	// 	background: white;
-	// 	width: 45%;
-	// 	height: 400px;
-	// 	display: block;
-	// 	margin: 0 0 100px 0;
-	// 	padding: 0;
-	// 	img{
-	// 		border-radius: 50%;
-	// 		width: 150px;
-	// 		height: 150px;
-	// 		// display: inline-block;
-	// 		float: left;
-	// 	}
-	// 	p{
-	// 		color: black;
-	// 		float: right;
-	// 		font-size: 13pt;
-	// 	}
-	// }
 	ul.abouts{
+		display: block;
+		overflow: hidden;
 		$leftwidth: 150px;
 		.left,.right{
 			display: block;
@@ -54,11 +29,27 @@ body{
 			padding-left: $leftwidth;
 			margin-bottom: 100px;
 			overflow: hidden;
+			box-shadow: 3px 3px 1px rgba(blue,.2);
 		}
 		li.about:nth-child(even){
 			margin-left: 10%;
+			box-shadow: 3px 3px 1px rgba(red,.2);
+			.left{
+				-webkit-box-shadow: 10px -1px 5px -8px rgba(darken(red,30%),0.1);
+				-moz-box-shadow: 10px -1px 5px -8px rgba(darken(red,30%),0.1);
+				box-shadow: 10px -1px 5px -8px rgba(darken(red,30%),0.1);
+			}
+		}
+		li.about:nth-child(odd){
+			box-shadow: 3px 3px 1px rgba(blue,.2);
+			.left{
+				-webkit-box-shadow: 10px -1px 5px -8px rgba(darken(blue,30%),0.1);
+				-moz-box-shadow: 10px -1px 5px -8px rgba(darken(blue,30%),0.1);
+				box-shadow: 10px -1px 5px -8px rgba(darken(blue,30%),0.1);
+			}
 		}
 		.left{
+			height: 100%;
 			width: $leftwidth;
 			position:absolute;
 			left: 0;
@@ -93,23 +84,36 @@ body{
 			}
 		}
 		.right{
-			padding: 25px;
-			p, h2, li{
+			> div{
+				// height: 50%;
+				overflow: hidden;
+			}
+			.reponsibilities{
+				li{
+					font-size: 9pt;
+				}
+			}
+			padding: 10px;
+			p, h3, li,h2{
 				text-align: left;
 			}
-			h2{
+			h3,h2{
 				color: #2B2A21;
-				font-size: 13pt;
 				margin-top: 15px;
 				margin-bottom: 9px;
 				padding-bottom: 0;
 			}
+			h3{
+				font-size: 13pt;
+			}
+			h2{
+				font-size: 15pt;
+				text-align: center;
+			}
 			p{
 				color: black;
-				font-size: 10pt;
-			}
-			h2+ul{
-				color: red;
+				font-size: 9pt;
+				margin-bottom: 0px;
 			}
 			ul{
 				padding: 0;
