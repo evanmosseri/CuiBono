@@ -20,6 +20,10 @@ def bills(id=None):
 def contributors(id=None):
 	return render_template("contributors.html") 
 
+@app.route("/contributions")
+def contributions():
+	return render_template("contributions.html") 	
+
 @app.route("/about")
 def about():
 	return render_template("about.html") 
