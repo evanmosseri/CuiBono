@@ -24,25 +24,22 @@ from myapp import create_app, db
     class FlaskTest(MyTest):
 
         def test_bill1(self):
-           bill1 = query.filter_by(number=1)
+           bill1 = query.filter_by(number=1, prefix = "House")
            assert bill1.Authors is "John Otto"
-           assert bill1.Prefix is "House"
            assert bill1.sessionID is "84R"
            assert bill1.sessionYear is "2015"
            assert bill1.Sponsors is "Senator Jane Nelson"
 
         def test_bill2(self):
-           bill2 = query.filter_by(number=15)
+           bill2 = query.filter_by(number=15,  prefix = "House")
            assert bill2.Authors is "John Otto, Armando Walle"
-           assert bill2.Prefix is "House"
            assert bill2.sessionID is "84R"
            assert bill2.sessionYear is "2015"
            assert bill2.Sponsors is "Senator Kevin Eltife"
 
         def test_bill3(self):
-           bill3 = query.filter_by(number=24)
+           bill3 = query.filter_by(number=24,  prefix = "House")
            assert bill3.Authors is "Sarah Davis"
-           assert bill3.Prefix is "House"
            assert bill3.sessionID is "84R"
            assert bill3.sessionYear is "2015"
            assert bill3.Sponsors is "Representative Sarah Davis"
