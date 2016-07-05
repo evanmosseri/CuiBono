@@ -33,6 +33,10 @@ body{
 	// 	}
 	// }
 	ul.abouts{
+		$leftwidth: 150px;
+		.left,.right{
+			display: block;
+		}
 		list-style:none;
 		ul{
 			list-style:none;
@@ -41,17 +45,21 @@ body{
 			list-style:none;
 		}
 		li.about{
-			width: 100%;
+			float: left;
+			width: 45%;
 			background: white;
 			display: block;
 			height: 400px;
 			position: relative;
-			padding-left: 100px;
+			padding-left: $leftwidth;
 			margin-bottom: 100px;
 			overflow: hidden;
 		}
+		li.about:nth-child(even){
+			margin-left: 10%;
+		}
 		.left{
-			width: 200px;
+			width: $leftwidth;
 			position:absolute;
 			left: 0;
 			img{
@@ -62,13 +70,15 @@ body{
 				margin: 30px auto;
 			}
 			.stats{
-
+				padding: 0;
 			}
 			.stat{
 				h2,h3{
 					font-size:15px;
 					color:black;
 					text-align: left;
+					text-align: center;
+					width: 100%;
 				}
 				h2{
 					margin: 0;
@@ -76,13 +86,40 @@ body{
 				h3{
 					font-weight: lighter;
 					font-size: 12px;
-					margin-top: 20px;
+					margin-top: 10px;
+					margin-bottom: 15px;
+					color: lighten(black,50%);
 				}
 			}
 		}
 		.right{
+			padding: 25px;
+			p, h2, li{
+				text-align: left;
+			}
+			h2{
+				color: #2B2A21;
+				font-size: 13pt;
+				margin-top: 15px;
+				margin-bottom: 9px;
+				padding-bottom: 0;
+			}
 			p{
 				color: black;
+				font-size: 10pt;
+			}
+			h2+ul{
+				color: red;
+			}
+			ul{
+				padding: 0;
+				li{
+					color: black;
+				}
+				li:before{
+					content: "•  ";
+					color: lighten(black,40%);
+				}
 			}
 		}
 	}
