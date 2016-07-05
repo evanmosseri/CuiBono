@@ -24,16 +24,29 @@ def contributors(id=None):
 def about():
 	return render_template("about.html") 
 
-@app.route("/hb1")
+@app.route("/bills/hb1")
 def hb1():
 	return render_template("hb1.html") 
 
-@app.route("/hb15")
+@app.route("/bills/hb15")
 def hb15():
 	return render_template("hb15.html") 
 
+@app.route("/bills/hb24")
+def hb24():
+	return render_template("hb24.html") 
 
+@app.route("/legislators/54588")
+def otto():
+	return render_template("otto.html") 
 
+@app.route("/legislators/58277")
+def walle():
+	return render_template("walle.html") 
+
+@app.route("/legislators/66272")
+def davis():
+	return render_template("davis.html") 
 
 if __name__ == "__main__":
 	app.run("0.0.0.0",debug=True)
