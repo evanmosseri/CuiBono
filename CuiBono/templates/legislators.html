@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block Content %}
+{%block pagename%}legislators{%endblock%}
+<div class="container">
+  <h2>Legislators</h2>
+  <table class="table table-responsive" style="">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>District</th>
+        <th>Party</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/legislators/54588">John Otto</a></td>
+        <td>441</td>
+        <td>Republican</td>
+        <td>Representative</td>
+      </tr>
+      <tr>
+        <td><a href="/legislators/58277">Gilbert Pena</a></td>
+        <td>219</td>
+        <td>Republican</td>
+        <td>Representative</td>
+      </tr>
+      <tr>
+        <td><a href="/legislators/66272">Sarah Davis</a></td>
+        <td>1536</td>
+        <td>Republican</td>
+        <td>Representative</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

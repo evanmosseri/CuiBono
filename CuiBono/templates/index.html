@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cui Bono</title>
+    <title>{%block pagetitle%}Home{%endblock%}</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -20,13 +20,13 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-grayscale/1.1.0/css/grayscale.min.css" rel="stylesheet">
-    {%more css%}
-    {%endblock%}
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-grayscale/1.1.0/css/grayscale.min.css" rel="stylesheet"> -->
+    <link href="/static/css/grayscale.min.css" rel="stylesheet">
+    {%block morecss%}{%endblock%}
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="page-{%block pagename%}home{%endblock%}">
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -35,7 +35,7 @@
                     Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                     <span class="light">Cui</span> Bono
+                     <a href="/"><span class="light">Cui</span> Bono</a>
                 </a>
             </div>
 
@@ -47,19 +47,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="./bills">Bills</a>
+                        <a href="/bills">Bills</a>
                     </li>
                     <li>
-                        <a href="./legislators">Legislators</a>
+                        <a href="/legislators">Legislators</a>
                     </li>
                     <li>
-                        <a href="./contributors">Contributors</a>
+                        <a href="/contributors">Contributors</a>
                     </li>
                     <li>
-                        <a href="./contributions">Contributions</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a href="/about">About</a>
                     </li>
                 </ul>
             </div>
@@ -67,16 +64,19 @@
         </div>
         <!-- /.container -->
     </nav>
+
     <!-- Intro Header -->
     <header class="intro">
         <div class="intro-body">
+            {% block Content%}
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Cui Bono</h1>
-                        <p class="intro-text">Who stands to profit?</p>
+                        <p class="intro-text">Follow The Money?</p>
                     </div>
                 </div>
+                {% endblock %}
             </div>
         </div>
     </header>

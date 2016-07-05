@@ -1,4 +1,43 @@
-li{
-	color: red;
-	font-size: 30;
-}
+body {
+  padding-top: 100px; }
+
+.container > h2 {
+  margin-top: 50px; }
+
+.page-about ul.abouts {
+  list-style: none; }
+  .page-about ul.abouts ul {
+    list-style: none; }
+  .page-about ul.abouts li {
+    list-style: none; }
+  .page-about ul.abouts li.about {
+    width: 100%;
+    background: white;
+    display: block;
+    height: 400px;
+    position: relative;
+    padding-left: 100px;
+    margin-bottom: 100px;
+    overflow: hidden; }
+  .page-about ul.abouts .left {
+    width: 200px;
+    position: absolute;
+    left: 0; }
+    .page-about ul.abouts .left img {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      display: block;
+      margin: 30px auto; }
+    .page-about ul.abouts .left .stat h2, .page-about ul.abouts .left .stat h3 {
+      font-size: 15px;
+      color: black;
+      text-align: left; }
+    .page-about ul.abouts .left .stat h2 {
+      margin: 0; }
+    .page-about ul.abouts .left .stat h3 {
+      font-weight: lighter;
+      font-size: 12px;
+      margin-top: 20px; }
+
+/*# sourceMappingURL=style.css.map */

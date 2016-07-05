@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block Content %}
+
+<div class="container">
+  <h2>Bills</h2>
+  <table class="table table-responsive" style="">
+    <tbody>
+      <tr>
+        <th>Prefix</th>
+        <th>Number</th>
+        <th>Party</th>
+      </tr>
+      <tr>
+        <td>House</td>
+        <td><a href="/bills/hb-1">1</a></td>
+        <td>Republican</td>
+      </tr>
+      <tr>
+        <td>House</td>
+        <td><a href="/bills/hb-15">15</a></td>
+        <td>Republican</td>
+      </tr>
+      <tr>
+        <td>House</td>
+        <td><a href="/bills/hb-24">24</a></td>
+        <td>Republican</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
