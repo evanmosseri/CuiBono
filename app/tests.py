@@ -76,18 +76,24 @@ from myapp import create_app, db
             assert contributor1.type is "Entity"
             assert contributor1.website is "borderhealthpac.com"
             assert contributor1.contributors is "Walle: $5,000"
+            assert contributor3.city is "McAllen, TX"
+            assert contributor3.zipCode is "78504"
 
         def test_contributors2(self):
             contributor2 = query.filter.by(name = "Plumbers Local Union No. 68 PAC Fund")
             assert contributor2.type is "Entity"
             assert contributor2.website is "Plumber's PAC"
             assert contributor2.contributors is "Walle: $2,000"
+            assert contributor3.city is "Houston, TX"
+            assert contributor3.zipCode is "77249"
 
         def test_contributors3(self):
             contributor3 = query.filter.by(name = "A&M PAC")
             assert contributor3.type is "Entity"
             assert contributor3.website is "tamuspac.org"
             assert contributor3.contributors is "Davis: $2,500"
+            assert contributor3.city is "Austin, TX"
+            assert contributor3.zipCode is "78768"
 
         def test_contributions1(self):
             contribution1 = query.filter.by(contributor = "Border Health PAC", legislator = "Armando Walle", date = "8-17-2015")
