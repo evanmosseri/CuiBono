@@ -39,5 +39,7 @@ body {
       font-weight: lighter;
       font-size: 12px;
       margin-top: 20px; }
+  .page-about ul.abouts .right p {
+    color: black; }
 
 /*# sourceMappingURL=style.css.map */
