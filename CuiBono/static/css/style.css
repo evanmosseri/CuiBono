@@ -20,7 +20,7 @@ body {
     width: 45%;
     background: white;
     display: block;
-    height: 400px;
+    height: 550px;
     position: relative;
     padding-left: 150px;
     margin-bottom: 100px;
@@ -28,13 +28,13 @@ body {
     box-shadow: 3px 3px 1px rgba(0, 0, 255, 0.2); }
   .page-about ul.abouts li.about:nth-child(even) {
     margin-left: 10%;
-    box-shadow: 3px 3px 1px rgba(255, 0, 0, 0.2); }
+    box-shadow: 3px 3px 1px rgba(255, 128, 128, 0.4); }
     .page-about ul.abouts li.about:nth-child(even) .left {
       -webkit-box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1);
       -moz-box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1);
       box-shadow: 10px -1px 5px -8px rgba(102, 0, 0, 0.1); }
   .page-about ul.abouts li.about:nth-child(odd) {
-    box-shadow: 3px 3px 1px rgba(0, 0, 255, 0.2); }
+    box-shadow: 3px 3px 1px rgba(128, 128, 255, 0.4); }
     .page-about ul.abouts li.about:nth-child(odd) .left {
       -webkit-box-shadow: 10px -1px 5px -8px rgba(0, 0, 102, 0.1);
       -moz-box-shadow: 10px -1px 5px -8px rgba(0, 0, 102, 0.1);
@@ -71,7 +71,8 @@ body {
     .page-about ul.abouts .right > div {
       overflow: hidden; }
     .page-about ul.abouts .right .reponsibilities li {
-      font-size: 9pt; }
+      font-size: 9pt;
+      margin-left: 7%; }
     .page-about ul.abouts .right p, .page-about ul.abouts .right h3, .page-about ul.abouts .right li, .page-about ul.abouts .right h2 {
       text-align: left; }
     .page-about ul.abouts .right h3, .page-about ul.abouts .right h2 {
@@ -95,5 +96,38 @@ body {
       .page-about ul.abouts .right ul li:before {
         content: "•  ";
         color: #666666; }
+
+@media (max-width: 1000px) {
+  .page-about li.about p {
+    font-size: 8pt !important; }
+  .page-about li.about li {
+    font-size: 8pt !important; } }
+@media (max-width: 900px) {
+  .page-about .about {
+    padding: 0 !important; }
+  .page-about .left {
+    position: static !important;
+    height: 220px !important;
+    overflow: hidden;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -mox-box-shadow: none !important;
+    margin: 0 auto !important;
+    width: 100% !important; }
+    .page-about .left > ul {
+      width: 100% important;
+      overflow: hidden; }
+    .page-about .left li {
+      display: block !important;
+      margin-right: 20px !important; }
+    .page-about .left li h2, .page-about .left li h3 {
+      display: inline !important; }
+    .page-about .left li h3:before {
+      content: ": " !important;
+      color: black;
+      font-size: 11pt; } }
+@media (max-width: 650px) {
+  .page-about .about {
+    height: 600px !important; } }
 
 /*# sourceMappingURL=style.css.map */

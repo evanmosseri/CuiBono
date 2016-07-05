@@ -24,7 +24,7 @@ body{
 			width: 45%;
 			background: white;
 			display: block;
-			height: 400px;
+			height: 550px;
 			position: relative;
 			padding-left: $leftwidth;
 			margin-bottom: 100px;
@@ -33,7 +33,7 @@ body{
 		}
 		li.about:nth-child(even){
 			margin-left: 10%;
-			box-shadow: 3px 3px 1px rgba(red,.2);
+			box-shadow: 3px 3px 1px rgba(lighten(red,25%),.4);
 			.left{
 				-webkit-box-shadow: 10px -1px 5px -8px rgba(darken(red,30%),0.1);
 				-moz-box-shadow: 10px -1px 5px -8px rgba(darken(red,30%),0.1);
@@ -41,7 +41,7 @@ body{
 			}
 		}
 		li.about:nth-child(odd){
-			box-shadow: 3px 3px 1px rgba(blue,.2);
+			box-shadow: 3px 3px 1px rgba(lighten(blue,25%),.4);
 			.left{
 				-webkit-box-shadow: 10px -1px 5px -8px rgba(darken(blue,30%),0.1);
 				-moz-box-shadow: 10px -1px 5px -8px rgba(darken(blue,30%),0.1);
@@ -91,6 +91,7 @@ body{
 			.reponsibilities{
 				li{
 					font-size: 9pt;
+					margin-left: 7%;
 				}
 			}
 			padding: 10px;
@@ -128,4 +129,59 @@ body{
 		}
 	}
 
+}
+@media (max-width: 1000px) {
+  .page-about li.about{
+  		p{
+			font-size: 8pt !important;
+  		}
+  		li{
+			font-size: 8pt !important;
+  		}
+  		h2{
+
+  		}
+  }
+}
+@media (max-width: 900px) {
+	.page-about{
+		.about{
+			padding:0 !important;
+		}
+		.left{
+			position: static !important; 
+			height: 220px !important;
+			overflow: hidden;
+			box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			-mox-box-shadow: none !important;
+			margin:0 auto !important;
+			width: 100% !important;
+			> ul{
+				width: 100% important;
+				overflow: hidden;
+			}
+			li{
+				display: block !important;
+				margin-right: 20px !important;
+			}
+			li{
+				h2,h3{
+					display: inline !important;
+				}
+				h3:before{
+					content: ": " !important;
+					color: black;
+					font-size: 11pt;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 650px){
+	.page-about{
+		.about{
+			height: 600px !important;
+		}
+	}
 }
