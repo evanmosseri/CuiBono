@@ -24,6 +24,14 @@ def contributors(id=None):
 def about():
 	return render_template("about.html") 
 
+@app.route("/hb1")
+def hb1():
+	return render_template("hb1.html") 
+
+@app.route("/hb15")
+def hb15():
+	return render_template("hb15.html") 
+
 if __name__ == "__main__":
 	app.run(debug=True)
 
