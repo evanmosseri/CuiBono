@@ -98,4 +98,47 @@ body {
         content: "•  ";
         color: #666666; }
 
+@media (max-width: 1000px) {
+  .page-about li.about p {
+    font-size: 8pt !important; }
+  .page-about li.about li {
+    font-size: 8pt !important; } }
+@media (max-width: 900px) {
+  .page-about .about {
+    padding: 0 !important; }
+  .page-about .left {
+    position: static !important;
+    height: 220px !important;
+    overflow: hidden;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -mox-box-shadow: none !important;
+    margin: 0 auto !important;
+    width: 100% !important; }
+    .page-about .left > ul {
+      width: 100% important;
+      overflow: hidden; }
+    .page-about .left li {
+      display: block !important;
+      margin-right: 20px !important; }
+    .page-about .left li h2, .page-about .left li h3 {
+      display: inline !important; }
+    .page-about .left li h3:before {
+      content: ": " !important;
+      color: black;
+      font-size: 11pt; } }
+@media (max-width: 750px) {
+  .abouts {
+    padding: 0;
+    display: block !important; }
+
+  .page-about .about {
+    height: 600px !important;
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    display: inline-block !important;
+    float: none !important; } }
+
 /*# sourceMappingURL=style.css.map */
