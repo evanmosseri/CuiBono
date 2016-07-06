@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+    <header class="intro">
+        <div class="intro-body">
+<div class="container">
+  <h2>Contributions</h2>
+  <table class="table table-responsive" style="">
+    <tbody>
+      <tr>
+        <th>Amount</th>
+        <th>Contributor</th>
+        <th>Legislator</th>
+        <th>Date</th>
+      </tr>
+      <tr>
+        <td>$5,000</td>
+        <td><a href="/contributors/borderhealthpac">Border Health PAC</a></td>
+        <td><a href="/legislators/58277">Armando Walle</a></td>
+        <td>8-17-2015</td>
+      </tr>
+      <tr>
+        <td>$2,500</td>
+        <td><a href="/contributors/ampac">A&M PAC</a></td>
+        <td><a href="/legislators/66272">Sarah Davis</a></td>
+        <td>2-26-2016</td>
+      </tr>
+      <tr>
+        <td>$2,000</td>
+        <td><a href="/contributors/plumberspac">Plumbers Local Union No. 68 PAC Fund</a></td>
+        <td><a href="/legislators/58277">Armando Walle</a></td>
+        <td>10-20-2015</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</header>
+
+{% endblock %}

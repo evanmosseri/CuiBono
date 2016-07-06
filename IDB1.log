@@ -1,0 +1,258 @@
+commit 71906c343779834d55d5f464ebf11dee7dfb8afb
+Merge: a0215ad 52ea584
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 14:14:21 2016 -0500
+
+    merged with luke's commit
+
+commit a0215ad62234fbbc9ed4ebaadbfe40e1ea90b723
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 14:11:31 2016 -0500
+
+    fixed legislator stray div
+
+commit 52ea584474c49130644f8d54d9d8dccb4ec070bf
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 14:10:54 2016 -0500
+
+    Created static bills and legislators
+
+commit 052f211eeeb56dec6cd678d921584219e0a0b2d6
+Merge: 436f896 c20e7a3
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 13:25:55 2016 -0500
+
+    Merge branch 'dev' of git://github.com/evanmosseri/cs373-idb into dev
+
+commit 436f8968947e6618ea7ca24f7bb5babb38f7da88
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 13:25:37 2016 -0500
+
+    creating bills
+
+commit c20e7a3944a8e1654f57c5f448428cd2aacb962f
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 13:24:45 2016 -0500
+
+    created about page, closes #24
+
+commit 74d70f670ba6cf3568b566323eb321fe595f20ae
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 12:26:32 2016 -0500
+
+    fixed logo
+
+commit c9d9336844b003d1d501c8f255bfb71ad9c7b58d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 12:09:58 2016 -0500
+
+    fixed css not loading bug, closes #25
+
+commit 923b69bbe555e767461b7024fe8a6f46c68c3a29
+Merge: 8da877d 9a51e4d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:49:33 2016 -0500
+
+    created base template - close #17, created basic routings - close #16 , created sub templates - close #18, started about page, installed and began to use scss - closes #24
+
+commit 8da877d6bfaeeea100063326074d982e1aa6a1b0
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:48:43 2016 -0500
+
+    created base template - close #17, created basic routings - close #16 , created sub templates - close #18, started about page, installed and began to use scss - closes #24
+
+commit 9a51e4def5d54f2de3ccad7d4380bd59a527292b
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:06:56 2016 -0500
+
+    commmit before i go to gdc
+
+commit 172a05ad2daba29ab74b2fc87d99f1ca1f3eb7b6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 07:18:54 2016 -0500
+
+    creating base templates
+
+commit 8605a821e9d73b75622b441fbc2a964bfce8e491
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 07:07:56 2016 -0500
+
+    started basic django app
+
+commit be233ceac64b8d71f4e6b984e84e7305382a8902
+Merge: 50801f2 8299f4c
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 4 21:34:44 2016 -0500
+
+    Merge remote-tracking branch 'origin/html' into dev
+
+commit 50801f2314ad1622c0b322c5ba2c973d81954ae9
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 4 20:48:49 2016 -0500
+
+    reworking data files
+
+commit 8299f4ce6ab436cfabe96cb262b5f48f008d2329
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sun Jul 3 09:07:21 2016 -0500
+
+    Updated index CSS to use Bootstrap GrayScale Theme
+
+commit a48c32eb1141a5c9e76a224f0f2467ffb6ec07de
+Merge: 4f73ae9 9ab3479
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 01:06:58 2016 -0500
+
+    debugging
+
+commit 4f73ae9f411bd241054a18787dd76d3a3434fd03
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 00:54:36 2016 -0500
+
+    refactoring
+
+commit 313957ee8c3b324d918d2ed1526ff3ffefce1d1d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 00:37:32 2016 -0500
+
+    gave up on scraping the data, revisiting using csvs
+
+commit ee1a1946cce11f3466786e961c647b90ceb126f1
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sat Jul 2 19:27:06 2016 -0500
+
+    Fixed navigation
+
+commit 130178892d7aa62c1d98472831ae8af73362a98b
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sat Jul 2 19:02:59 2016 -0500
+
+    Simple html skeleton for data
+
+commit 9ab3479d53295623641e842ea85e7e38269e6a5a
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sat Jul 2 18:21:56 2016 -0500
+
+    wrote function to lookup politicians and get their unique id for further search
+
+commit 2a2a0e03bce41f951c66097b53f0965d8daf3cb7
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sat Jul 2 18:21:56 2016 -0500
+
+    wrote function to lookup politicians and get their unique id for further search
+
+commit 2782477b1e2bc142e2b7f2774645f8b090e0e669
+Merge: 3951b3d a105c97
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:31:14 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' of ssh://github.com/evanmosseri/cs373-idb into Scraping-and-Storing
+
+commit 9fac6e6ca642db083041ffce54c689ce4ca36a9f
+Merge: b35366a 125ceb8
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:31:14 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' of ssh://github.com/evanmosseri/cs373-idb into Scraping-and-Storing
+
+commit 3951b3dc0c57d3cf8250a3f1ef7e4a2d30b4fa6e
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned filer name from contribution data 95%
+
+commit b35366a3a59c8ad4e55e51cf1fa3a8e129a7cba6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned filer name from contribution data 95%
+
+commit a105c97715b30ff2e92bff89f6cd67f5c84a2063
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned contribution reports 95%
+
+commit 125ceb8999f0a7d90d096725a4c11fde736d6d86
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned contribution reports 95%
+
+commit 7b11db1fffee6f31fda28dd2922be495c0bd36d4
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:42:40 2016 -0500
+
+    removed unnecessary folder
+
+commit d0f502b9b98e48a138c8929e66d9f3663cf38208
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:42:40 2016 -0500
+
+    removed unnecessary folder
+
+commit a222efd455120afedcee538cc1afa63c43341807
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:41:54 2016 -0500
+
+    removed unnecessary folder
+
+commit 988cfe2dce5b8ae9f5f0ce9cdc1e1eb049fcadcd
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:41:54 2016 -0500
+
+    removed unnecessary folder
+
+commit 662a73c8842d120a8d226b73e7f38d2510534652
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:40:19 2016 -0500
+
+    partially cleaned filerName column
+
+commit 212f5a05e3746b581b8c9868ac783869699aa4f6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:40:19 2016 -0500
+
+    partially cleaned filerName column
+
+commit 30d205b8d62d5f3e4b2537c2be3a1d6533a624bf
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:54:57 2016 -0500
+
+    changed folder hierarchy
+
+commit 03b95d8d1c673176938fdd4ccbcecea9865c59e7
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:54:57 2016 -0500
+
+    changed folder hierarchy
+
+commit 892f8d65cc51bb8770db4805ff287eeec80def80
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:40:56 2016 -0500
+
+    began scraping
+
+commit 82c70a160ea8cde23ba2689f0c85d1d4d187ae34
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:40:56 2016 -0500
+
+    began scraping
+
+commit 9d87a9c71edfd76cefb6f549862dcabb2fb9186a
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 13:05:00 2016 -0500
+
+    uploaded contributor datafiles
+
+commit ca81fceeebb31891d3502e5287bc5085295d0544
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 13:05:00 2016 -0500
+
+    uploaded contributor datafiles
+
+commit 21c076904704a64ad2047637a4f171206396c036
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Wed Jun 29 18:16:24 2016 -0500
+
+    Initial commit
