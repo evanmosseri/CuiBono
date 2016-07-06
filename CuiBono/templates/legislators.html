@@ -9,7 +9,9 @@
 {%endblock%}
 
 {%block pagename%}legislators{%endblock%}
-{% block Content %}
+{% block outerContent %}
+    <header class="intro">
+        <div class="intro-body">
 <div class="container">
   <h2>Legislators</h2>
   <table class="table table-responsive" style="">
@@ -43,5 +45,7 @@
     </tbody>
   </table>
 </div>
+</div>
+</header>
 
 {% endblock %}

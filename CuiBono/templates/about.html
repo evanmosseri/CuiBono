@@ -4,7 +4,9 @@
     text-align: center;
 }
 </style>
-{%endblock%} {%block pagename%}about{%endblock%} {% block Content %}
+{%endblock%} {%block pagename%}about{%endblock%} {% block outerContent %}
+    <header class="intro">
+        <div class="intro-body">
 <div class="container">
     <h2>About Us</h2>
     <!-- ul.abouts>(li.about>div.left>(img[src="/static/img/bios/luke_pic.png"]+ul.stats>li.stat>(h2{Stat Name}+h3{Stat Value})*4)+div.right>p)*6 -->
@@ -225,4 +227,6 @@
         </li>
     </ul>
     </div>
+            </div>
+    </header>
     {% endblock %}
