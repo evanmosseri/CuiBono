@@ -5,5 +5,8 @@ download_files:
 	rm -rf data/TEC_CF_CSV.zip
 	git log > IDB1.log
 
+Models.html: CuiBono/models/models.py 
+	pydoc3 -w CuiBono/models/models.py
+
 clean:
 	rm -rf data/texas_ethics_commission
