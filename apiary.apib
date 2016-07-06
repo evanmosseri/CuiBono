@@ -1,13 +1,47 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# cui Bono 
+# Cui Bono 
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Cui Bono is the API for our CS373 project which entails creating a web application. The web application is simply a database of the Texan 
+bills.
 
-## Questions Collection [/questions]
+Resources
 
-### List All Questions [GET]
+#GroupBill
+
+Data pertaining to Texan Bills
+
+## Bills Collection [/Bill]
+
+### List All Bills [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "prefix": "House",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+##Contributors Collection [/contributors]
+
+### List All Contributors [GET]
 
 + Response 200 (application/json)
 
@@ -32,49 +66,56 @@ Polls is a simple API allowing consumers to view polls and vote in them.
                 ]
             }
         ]
+        
+##legislator Collection [/legislators]
+### List All Legislators[GET]
 
-### Create a New Question [POST]
++ Response 200 (application/json)
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
+        [
             {
                 "question": "Favourite programming language?",
                 "published_at": "2015-08-05T08:40:51.620Z",
                 "choices": [
                     {
                         "choice": "Swift",
-                        "votes": 0
+                        "votes": 2048
                     }, {
                         "choice": "Python",
-                        "votes": 0
+                        "votes": 1024
                     }, {
                         "choice": "Objective-C",
-                        "votes": 0
+                        "votes": 512
                     }, {
                         "choice": "Ruby",
-                        "votes": 0
+                        "votes": 256
                     }
                 ]
             }
+        ]
+##Contributions Collection [/contributions]
+### List All Contributions[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
