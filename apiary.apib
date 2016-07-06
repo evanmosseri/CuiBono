@@ -95,72 +95,69 @@ Data pertaining to Texan Bills
             "contributors_list": "A list of all contributors ",
             "contributors": [
                 {
-                    "url": "https://cuibono.com/api/contributors",
-                    "prefix": "House",
-                    "Number": "1",
-                    "Author": "John otto",
-                    "Party": "Republican",
+                    "url": "https://cuibono.com/contributors",
+                    "Name": "Border Health PAC",
+                    "type": "entity",
+                    "city": "Mcalleen",
+                    "zipcode": "78504",
                   }  
                  
-                    "Bill Number": [
-                        "1",
-                        "15"
-                        "24"
+                    "Name": [
+                        "Plumbers Local Union No. 68 PAC Fund"
+                        "A&M PAC"
+                        "Border Health PAC"
                     ],
-                    " BILL 1" : [
-                    "Authors: John Otto"
+                    
+                    " Name " : [
+                    "Type: Entity"
 
-                    "Prefix: House"
+                  "Website: borderhealthpac.com"
 
-                    "Session ID: 84R"
+                  "Contributions: Walle: $5,000"
 
-                     "Session Year: 2015"
+                   "City: McAllen, TX"
 
-                    "Sponsors: Senator Jane Nelson"
+                   "Zip: 78504"
                     
                     ],
-                     " BILL 15" : [
+                     " name" : [
                     
-                   " Authors: John Otto, Armando Walle"
+                  
+                    "Type: Entity"
 
-                    "Prefix: House"
+                "Website: Plumber's PAC"
 
-                     "Session ID: 84R"
+                "Contributions: Walle: $2,000"
 
-                    "Session Year: 2015"
+                     "City: Houston, TX"
 
-                   " Sponsors: Senator Kevin Eltife"
+                     "Zip: 77249"
                    ],
                    
-                    " BILL 24" : [
+                    " name " : [
                     
-                   " Authors: John Otto, Armando Walle"
+                  
+            "Type: Entity"
 
-                    "Prefix: House"
+           "Website: tamuspac.org"
 
-                     "Session ID: 84R"
+           "Contributions: Davis: $2,500"
 
-                    "Session Year: 2015"
+           "City: Austin, TX"
 
-                   " Sponsors: Senator Kevin Eltife"
+            "Zip: 78768"
                    ],
                     "number": [
                         "https://cuibono.com/api/bills/hb1"
                     ],
                    
                     ],
-                    "povbill": [
-                        "https://cuibono/api/bills/1",
-                       "https://cuibono/api/bills/15",
-                        "https://cuibono/api/bills/24", 
-                        
+                    "names": [
+                       " http://cuibono.io/contributors/ampac"
+                     " http://cuibono.io/contributors/plumberspac"
+                     " http://cuibono.io/contributors/borderhealthpac"
                     ],
-                    "authors ": [
-                     "https://cuibono/api/bills/1",
-                     "https://cuibono/api/bills/15",
-                     "https://cuibono/api/bills/24",
-                    ]
-                 
+                    
 ##legislator Collection [/legislators]
 ### List All Legislators[GET]
 
@@ -171,70 +168,62 @@ Data pertaining to Texan Bills
             "legislators": [
                 {
                     "url": "https://cuibono.com/legislators",
-                    "name": "House",
-                    "party": "1",
-                    "bill": "John otto",
-                    "contributors": "Republican",
+                    "name": "john otto",
+                    "party": "Republican",
+                    "District": "18",
+                    "type": "House of Representative",
                   }  
                  
-                    "Bill Number": [
-                        "1",
-                        "15"
-                        "24"
+                    "Party": [
+                        "republican",
+                        "democrat"
+                        
                     ],
-                    " BILL 1" : [
-                    "Authors: John Otto"
+                    "district": [
+                        "18",
+                        "140"
+                        "134"
+                    ],
+                    " Representative John otto" : [
+                    "Party: Republican"
 
-                    "Prefix: House"
+                    "Hometown: Dayton, TX"
 
-                    "Session ID: 84R"
+                    "Bills: House Bill 1, House Bill 15"
 
-                     "Session Year: 2015"
-
-                    "Sponsors: Senator Jane Nelson"
+                    "Contributors: No contributors/contributions"
                     
                     ],
-                     " BILL 15" : [
-                    
-                   " Authors: John Otto, Armando Walle"
+                     " Representative Amando Wale " : [
+                     "Party: Democratic"
 
-                    "Prefix: House"
+                   "Hometown: Houston, TX"
 
-                     "Session ID: 84R"
+                   "Bills: House Bill 15"
 
-                    "Session Year: 2015"
-
-                   " Sponsors: Senator Kevin Eltife"
+                    "Contributors: Border Health PAC, Plumbers Local Union No. 68 PAC Fund"
+                   
                    ],
                    
-                    " BILL 24" : [
-                    
-                   " Authors: John Otto, Armando Walle"
+                    " Representative Sarah Davis" : [
+                   "Party: Republican"
 
-                    "Prefix: House"
+                    "Hometown: Charleston, WVA"
 
-                     "Session ID: 84R"
+                    "Bills: House Bill 24"
 
-                    "Session Year: 2015"
-
-                   " Sponsors: Senator Kevin Eltife"
+                    "Contributors: A&M PAC"
                    ],
                     "number": [
                         "https://cuibono.com/api/bills/hb1"
                     ],
                    
                     ],
-                    "povbill": [
-                        "https://cuibono/api/bills/1",
-                       "https://cuibono/api/bills/15",
-                        "https://cuibono/api/bills/24", 
-                        
+                    "Representatives": [
+                        "https://cuibono.io/legislators/54588"
+                        "http://cuibono.io/legislators/58277"
+                        "http://cuibono.io/legislators/66272"
                     ],
-                    "authors ": [
-                     "https://cuibono/api/bills/1",
-                     "https://cuibono/api/bills/15",
-                     "https://cuibono/api/bills/24",
-                    ]
         ]
 ##Contributions Collection [/contributions]
 ### List All Contributions[GET]
@@ -243,7 +232,7 @@ Data pertaining to Texan Bills
 
         [
               "contributions_list": "A list of all contributions ",
-            "bills": [
+            "contributions": [
                 {
                     "url": "https://cuibono.com/api/bill",
                     "prefix": "House",
