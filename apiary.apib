@@ -90,8 +90,8 @@ Data pertaining to Texan Bills
                     ],
                     "authors ": [
                      "https://cuibono/api/bills/1",
-                      "https://cuibono/api/bills/15",
-                    "https://cuibono/api/bills/24",
+                     "https://cuibono/api/bills/15",
+                     "https://cuibono/api/bills/24",
                     ]
 },
                  
@@ -101,7 +101,74 @@ Data pertaining to Texan Bills
 + Response 200 (application/json)
 
         [
-           
+          "bill_list": "A list of all bills ",
+            "bills": [
+                {
+                    "url": "https://cuibono.com/api/bill",
+                    "prefix": "House",
+                    "Number": "1",
+                    "Author": "John otto",
+                    "Party": "Republican",
+                  }  
+                 
+                    "Bill Number": [
+                        "1",
+                        "15"
+                        "24"
+                    ],
+                    " BILL 1" : [
+                    "Authors: John Otto"
+
+                    "Prefix: House"
+
+                    "Session ID: 84R"
+
+                     "Session Year: 2015"
+
+                    "Sponsors: Senator Jane Nelson"
+                    
+                    ],
+                     " BILL 15" : [
+                    
+                   " Authors: John Otto, Armando Walle"
+
+                    "Prefix: House"
+
+                     "Session ID: 84R"
+
+                    "Session Year: 2015"
+
+                   " Sponsors: Senator Kevin Eltife"
+                   ],
+                   
+                    " BILL 24" : [
+                    
+                   " Authors: John Otto, Armando Walle"
+
+                    "Prefix: House"
+
+                     "Session ID: 84R"
+
+                    "Session Year: 2015"
+
+                   " Sponsors: Senator Kevin Eltife"
+                   ],
+                    "number": [
+                        "https://cuibono.com/api/bills/hb1"
+                    ],
+                   
+                    ],
+                    "povbill": [
+                        "https://cuibono/api/bills/1",
+                       "https://cuibono/api/bills/15",
+                        "https://cuibono/api/bills/24", 
+                        
+                    ],
+                    "authors ": [
+                     "https://cuibono/api/bills/1",
+                     "https://cuibono/api/bills/15",
+                     "https://cuibono/api/bills/24",
+                    ]
         ]
 ##Contributions Collection [/contributions]
 ### List All Contributions[GET]
@@ -109,23 +176,72 @@ Data pertaining to Texan Bills
 + Response 200 (application/json)
 
         [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
+              "bill_list": "A list of all bills ",
+            "bills": [
+                {
+                    "url": "https://cuibono.com/api/bill",
+                    "prefix": "House",
+                    "Number": "1",
+                    "Author": "John otto",
+                    "Party": "Republican",
+                  }  
+                 
+                    "Bill Number": [
+                        "1",
+                        "15"
+                        "24"
+                    ],
+                    " BILL 1" : [
+                    "Authors: John Otto"
+
+                    "Prefix: House"
+
+                    "Session ID: 84R"
+
+                     "Session Year: 2015"
+
+                    "Sponsors: Senator Jane Nelson"
+                    
+                    ],
+                     " BILL 15" : [
+                    
+                   " Authors: John Otto, Armando Walle"
+
+                    "Prefix: House"
+
+                     "Session ID: 84R"
+
+                    "Session Year: 2015"
+
+                   " Sponsors: Senator Kevin Eltife"
+                   ],
+                   
+                    " BILL 24" : [
+                    
+                   " Authors: John Otto, Armando Walle"
+
+                    "Prefix: House"
+
+                     "Session ID: 84R"
+
+                    "Session Year: 2015"
+
+                   " Sponsors: Senator Kevin Eltife"
+                   ],
+                    "number": [
+                        "https://cuibono.com/api/bills/hb1"
+                    ],
+                   
+                    ],
+                    "povbill": [
+                        "https://cuibono/api/bills/1",
+                       "https://cuibono/api/bills/15",
+                        "https://cuibono/api/bills/24", 
+                        
+                    ],
+                    "authors ": [
+                     "https://cuibono/api/bills/1",
+                     "https://cuibono/api/bills/15",
+                     "https://cuibono/api/bills/24",
+                    ]
         ]
