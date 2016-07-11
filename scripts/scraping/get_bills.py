@@ -13,6 +13,8 @@ from furl import furl
 import pandas as pd
 import requests
 import unicodedata
+import glob
+import os
 
 def get_legislator_ids():
 	for session in range(71,84):
@@ -115,15 +117,15 @@ def get_closest_match(x, list_strings,attr="filerName"):
 		highest_jw = current_score
 		best_match = current_string
 
-	return best_match
+	return best_match if highest_jw > .65 else -1
 
 
 # print(filers["filerName"].tolist())
 d = filers[filers["filerPersentTypeCd"] == "INDIVIDUAL"]["filerName"].tolist()
 def get_id(name):
-	print("get_id: {}".format(name))
+	# print("get_id: {}".format(name))
 	dnew = filers[filers["filerName"]==get_closest_match(name,d)]
-	return dnew.iloc[0].to_dict() if len(dnew) else "Unknown"
+	return dnew.iloc[0].to_dict() if len(dnew) else -1
 def get_pq(url,n=0):
 	try:
 		return pq(url)
@@ -185,4 +187,12 @@ def download_bills(id,overwrite=False):
 # multiprocess(download_bills,leg_ids)
 # download_bills("A1005",True)
 def update_ids():
-	pass
+	for file in [x for x in glob.glob("../../data/bills_politicians/*") if os.stat(x).st_size > 100]:
+		df = pd.read_csv(file)
+		filer_name = df.iloc[0]["filer_name"].replace(". ","").replace("Lt. Gov. ","").strip()
+		name = ", ".join(reversed(filer_name.split(" ")))
+		ans = get_id(name)
+		df["filer_id"] = [ans["filerIdent"]]*len(df) if (type(ans) is dict) else ["None"]*len(df)
+		df.to_csv(file,index=False)
+		# print(filer_name)
+update_ids()
