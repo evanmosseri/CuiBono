@@ -33,6 +33,9 @@ class Legislator(db.Model):
 	district = db.Column(db.Integer)
 	# contributors = db.ForeignKey()
 	# bills = db.ForeignKey()
+	office_holder = db.Column(db.BOOLEAN)
+	office = db.Column(db.String(128))
+	image_url = db.Column(db.String(512))
 	contributions = db.relationship('Legislator', backref='legislator', lazy='dynamic')
 
 
