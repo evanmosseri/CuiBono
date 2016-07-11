@@ -8,6 +8,7 @@ import re
 import glob
 import argparse
 from utils import *
+import os
 
 # data_file = csv.DictReader(open("../../data/cont_ss.csv"))
 if __name__ == "__main__":
@@ -19,14 +20,31 @@ if __name__ == "__main__":
     parser.add_argument("-groupby", "--groupby",help="groups the merged dataframe by a column",action="store_true")
     parser.add_argument("-lookup", "--lookup",help="looks up filer by filer id",type=str,required=False)
     parser.add_argument("-filerinfo", "--filerinfo",help="looks up filer info by filer id",type=int,required=False, nargs="*")
-
+    parser.add_argument("-mergefolder", "--mergefolder",help="merges folder of csvs",type=str,required=False, nargs="*")
     args = parser.parse_args()
     
     # df = pd.read_csv("../../data/combined_all_preview.csv")
-    df = pd.read_csv("../../data/combined_all.csv")
-    df = df[df["contributorPersentTypeCd"] == "ENTITY"]
-    df["contributorNameOrganization"] = df["contributorNameOrganization"].apply(lambda x: x.strip())
-    pprint(df.drop_duplicates("contributorNameOrganization")["contributorNameOrganization"].values.tolist())
+    # df = pd.read_csv("../../data/combined_all.csv")
+    # df = df[df["contributorPersentTypeCd"] == "ENTITY"]
+    # df["contributorNameOrganization"] = df["contributorNameOrganization"].apply(lambda x: x.strip())
+    # pprint(df.drop_duplicates("contributorNameOrganization")["contributorNameOrganization"].values.tolist())
+    def merge_folder(folder,func=lambda x:x):
+        # print(folder[0])
+        # print(glob.glob("{}/*.csv".format(folder[0])))
+        # print("{}/*.csv".format(folder[0]))
+        folder = folder[0][:-1] if folder[0][-1] == "/" else folder[0]
+        dat = [func(pd.read_csv(filename)) for filename in glob.glob("{}/*.csv".format(folder)) if os.stat(filename).st_size > 100]
+
+        return pd.concat(dat).to_csv("../../data/{}.csv".format(os.path.basename(folder)),index=None)
+
+    filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
+    def lookup(df):
+        ident = df["filer_id"].iloc[0]
+        new_name = filers[filers["filerIdent"] == ident]["filerName"].iloc[0]
+        df["filer_name_closest"] = [new_name]*len(df)
+        return df
+    if args.mergefolder:
+        merge_folder(args.mergefolder,func=lookup)
 
     if args.merge:
         if args.merge.lower() == "individual":
