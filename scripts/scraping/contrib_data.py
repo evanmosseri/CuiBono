@@ -10,6 +10,7 @@ import argparse
 from utils import *
 import os
 
+
 # data_file = csv.DictReader(open("../../data/cont_ss.csv"))
 if __name__ == "__main__":
 #     print(dat_file)
@@ -28,21 +29,7 @@ if __name__ == "__main__":
     # df = df[df["contributorPersentTypeCd"] == "ENTITY"]
     # df["contributorNameOrganization"] = df["contributorNameOrganization"].apply(lambda x: x.strip())
     # pprint(df.drop_duplicates("contributorNameOrganization")["contributorNameOrganization"].values.tolist())
-    def merge_folder(folder,func=lambda x:x):
-        # print(folder[0])
-        # print(glob.glob("{}/*.csv".format(folder[0])))
-        # print("{}/*.csv".format(folder[0]))
-        folder = folder[0][:-1] if folder[0][-1] == "/" else folder[0]
-        dat = [func(pd.read_csv(filename)) for filename in glob.glob("{}/*.csv".format(folder)) if os.stat(filename).st_size > 100]
 
-        return pd.concat(dat).to_csv("../../data/{}.csv".format(os.path.basename(folder)),index=None)
-
-    filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
-    def lookup(df):
-        ident = df["filer_id"].iloc[0]
-        new_name = filers[filers["filerIdent"] == ident]["filerName"].iloc[0]
-        df["filer_name_closest"] = [new_name]*len(df)
-        return df
     if args.mergefolder:
         merge_folder(args.mergefolder,func=lookup)
 

@@ -1,4 +1,5 @@
-from utils import *
+# -*- coding: utf-8 -*-
+
 from pyquery import PyQuery as pq
 from lxml import etree, html
 import webbrowser
@@ -15,6 +16,11 @@ import requests
 import unicodedata
 import glob
 import os
+from utils import *
+from scrape_politician import get_filer_info
+import re
+import sys
+from get_bill_data import get_bill_data
 
 def get_legislator_ids():
 	for session in range(71,84):
@@ -100,30 +106,60 @@ leg_ids = ['A1005', 'A1010', 'A1015', 'A1020', 'A1025', 'A1030', 'A1035', 'A1040
 
 sessions = ["84R", "833", "832", "831", "83R", "821", "82R", "811", "81R", "80R", "793", "792", "791", "79R", "784", "783", "782", "781", "78R", "77R", "76R", "75R", "74R", "73R", "724", "723", "722", "721", "72R", "716", "715", "714", "713", "712", "711", "71R"]
 
-filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
-
 bills = {}
-def get_closest_match(x, list_strings,attr="filerName"):
-	filt = list(filter(lambda c: c.startswith(x),list_strings))
+def looks(f,l):
+	d = get_filer_info(f,l)
+	if(len(d)):
+		return d
+	else:
+		if f:
+			f = f[0] if len(f) > 1 else ""
+			return looks(f,l)
+		else:
+			return []
+def get_name_from_id():
+	pass
+def get_closest_match(x, list_strings,attr="filerName",baseline=1):
+	assert "," in x
+	def parse_filer_name(st):
+		# print(st)
+		x = re.sub(r" \(.{1,20}\)","",st)
+		x = re.sub(r" (Jr\.)|(Sr\.)","",x)
+		# x = x.replace("(The Honorable)","")
+		return x
+	filt = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
 	if len(filt):
 		return filt[0]
+	else:
+		filt2 = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
+		if len(filt2):
+			return filt2[0]
 	best_match = None
 	highest_jw = 0
 
 	for current_string in list_strings:
-		current_score = jellyfish.jaro_winkler(x, current_string)
+		current_string = parse_filer_name(current_string)
+		current_score = max(
+			jellyfish.jaro_winkler(x, current_string),
+			jellyfish.jaro_winkler(x, ", ".join(reversed(str(extract_filer_name(current_string)).split(" ")))))
 
 	if(current_score > highest_jw):
 		highest_jw = current_score
 		best_match = current_string
+	if highest_jw > baseline:
+		return best_match
+	else:
+		first,last = x.replace(",","").split(" ")[-1].lower(),x.replace(",","").split(" ")[0].lower()
+		info = looks(first,last)
+		if len(info):
+			best_match = filers[filers["filerIdent"] == int(info[0].get("id"))]["filerName"].values[0]
+		return best_match
 
-	return best_match if highest_jw > .65 else -1
 
 
 # print(filers["filerName"].tolist())
 d = filers[filers["filerPersentTypeCd"] == "INDIVIDUAL"]["filerName"].tolist()
 def get_id(name):
-	# print("get_id: {}".format(name))
 	dnew = filers[filers["filerName"]==get_closest_match(name,d)]
 	return dnew.iloc[0].to_dict() if len(dnew) else -1
 def get_pq(url,n=0):
@@ -136,7 +172,8 @@ def get_pq(url,n=0):
 def get_bills(author_ids,debug=False):
 	base_url = "http://www.capitol.state.tx.us/reports/report.aspx?LegSess={}&ID={}&Code={}"
 	def get_author_name(sess=iter(sessions)):
-		jq = get_pq(base_url.format(next(sess),"author",author_ids))
+		url = base_url.format(next(sess),"author",author_ids)
+		jq = get_pq(url)
 		author_name = extract_filer_name(unicodedata.normalize('NFKD',jq("span.TitleItem:eq(1)").text()).replace("́","").replace("Sen.","").replace("Rep.","").replace("Lt. Gov","").strip())
 		if author_name:
 			return [author_name,get_id(", ".join(reversed(author_name.split(" "))))["filerIdent"]]
@@ -174,8 +211,8 @@ def get_bills(author_ids,debug=False):
 # print()
 # print(leg_ids)
 def download_bills(id,overwrite=False):
-	if not(os.path.exists("../../data/bills_politicians/bill_actions_{}.csv".format(id))) or overwrite:
-		pd.DataFrame(list(get_bills(id))).to_csv("../../data/bills_politicians/bill_actions_{}.csv".format(id),index=False)
+	if not(os.path.exists("{}/bills_politicians/bill_actions_{}.csv".format(shared_dir,id))) or overwrite:
+		pd.DataFrame(list(get_bills(id))).to_csv("{}/bills_politicians/bill_actions_{}.csv".format(shared_dir,id),index=False)
 		print(id)
 	else:
 		print("{} Skipped".format(id))
@@ -187,12 +224,148 @@ def download_bills(id,overwrite=False):
 # multiprocess(download_bills,leg_ids)
 # download_bills("A1005",True)
 def update_ids():
-	for file in [x for x in glob.glob("../../data/bills_politicians/*") if os.stat(x).st_size > 100]:
+	def update_file(file):
+		leg_id = int(file.split("/")[-1].replace("bill_actions_A","").replace(".csv",""))
+		print(leg_id)
 		df = pd.read_csv(file)
-		filer_name = df.iloc[0]["filer_name"].replace(". ","").replace("Lt. Gov. ","").strip()
+		# filer_name = df.iloc[0]["filer_name"].replace(". ","").replace("Lt. Gov. ","").strip()
+		filer_name = df.iloc[0]["parsed_name"]
 		name = ", ".join(reversed(filer_name.split(" ")))
 		ans = get_id(name)
-		df["filer_id"] = [ans["filerIdent"]]*len(df) if (type(ans) is dict) else ["None"]*len(df)
+		df["leg_id"] = [leg_id]*len(df)
+		df["filer_id"] = [ans["filerIdent"]]*len(df) if (type(ans) is dict) else [-1]*len(df)
 		df.to_csv(file,index=False)
+	concr(update_file,[x for x in glob.glob("../../data-shared/bills_politicians/*") if os.stat(x).st_size > 100],max_workers=100)
+
 		# print(filer_name)
-update_ids()
+def leg_id_to_name(id):
+	base_url = "http://www.capitol.state.tx.us/reports/report.aspx?LegSess={}&ID={}&Code=A{}"
+	def get_author_name(sess=iter(sessions),get_filer_id=False):
+		url = base_url.format(next(sess),"author",id)
+		# print(url)
+		jq = get_pq(url)
+		author_name = unicodedata.normalize('NFKD',jq("span.TitleItem:eq(1)").text()).replace("́","").replace("  "," ")
+		if author_name:
+			if get_filer_id:
+				return [author_name,get_id(", ".join(reversed(author_name.split(" "))))["filerIdent"]]
+			else:
+				return author_name
+		else:
+			try:
+				return get_author_name(sess)
+			except StopIteration:
+				if get_filer_id:
+					return (None,None)
+				else:
+					return None
+	return get_author_name()
+
+def update_original_names():
+	def update_file(file):
+		leg_id = int(file.split("/")[-1].replace("bill_actions_A","").replace(".csv",""))
+		df = pd.read_csv(file)
+		def can_int(st):
+			try:
+				int(st)
+				return True
+			except:
+				return False
+			print(df.iloc[0]["original_name"])
+		if not "original_name" in df or can_int(df.iloc[0]["original_name"]):
+			full_name = leg_id_to_name(leg_id)
+			print(full_name)
+			df["original_name"] = [full_name]*len(df)
+			df.to_csv(file,index=False)
+			print("Added original names of {}".format(leg_id))
+		else:
+			print("Skipped {}".format(leg_id))
+	concr(update_file,[x for x in glob.glob("../../data-shared/bills_politicians/*") if os.stat(x).st_size > 100],max_workers=10)
+def update_new_names():
+	def update_new_name(file):
+		df = pd.read_csv(file)
+		original = df.iloc[0]["original_name"]
+		name = re.sub(r'(Sen\.)|(Rep\.)|(Lt\. Gov\.)',"",original)
+		name = re.sub(r"\".*\"","",name)
+		name = re.sub(r"(Jr\.)|(Sr\.)","",name)
+		name = name.strip().replace("  "," ")
+		name = re.sub(r' \b(?=[MDCLXVI]+\b)M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\b',"",name)
+		name = name.replace("̃","")
+		name = name.replace(",","")
+		if len(name.split(" ")) >= 3:
+			if not(re.match(r"[A-Za-z]\. [A-Za-z]\.",name)):
+				name = " ".join([name.split(" ")[0],name.split(" ")[-1]])
+			else:
+				name = " ".join([name.split(" ")[0] + "" + name.split(" ")[1],name.split(" ")[-1]])
+		# print(original, name,sep="-->\t")
+		df["parsed_name"] = [name]*len(df)
+
+		df.to_csv(file,index=False)
+	concr(update_new_name,[x for x in glob.glob("../../data-shared/bills_politicians/*") if os.stat(x).st_size > 100])
+def remove_index():
+	def remove_ind(file):
+		df = pd.read_csv(file)
+		for col in df.columns:
+			if "Unnamed" in col:
+				df = df.drop(col,axis=1)
+		df.to_csv(file,index=False)
+	concr(remove_ind,[x for x in glob.glob("../../data-shared/bills_politicians/*") if os.stat(x).st_size > 100])
+def generate_bills(file="{}/bills_politicians.csv".format(shared_dir),out="../../data-shared/bills.pkl",lim=0,max_workers=50):
+	template = {"authors":set(),"sponsors":set(),"cosponsors":set(),"coauthors":set(),"data":None}
+	bills = {sess: {} for sess in sessions}
+	df = pd.read_csv(file)
+	blen = len(df)
+	for i, row in df.iterrows():
+		# print(i,"/{}".format(blen))
+		print("%.3f%%" % ((i/float(blen))*100))
+		row = row.to_dict()
+		bills[row["session"]][row["bill_name"]] = template
+		bills[row["session"]][row["bill_name"]][row["function"]+"s"].add("{} {} ({})".format(row["filer_id"],row["leg_id"],row["original_name"]))
+		# bills[row[""]]
+		# pprint(bills[row["session"]][row["bill_name"]])
+	print("Done loading row")
+	def rewrite_bill(bill_name):
+		ind = [x for x in range(len(bill_name)) if not(bill_name[x].isdigit())][-1]
+		return "".join([bill_name[:ind],bill_name[ind:]])
+	def load_bill_data(args):
+		assert len(args[0]) > 2
+		sess, bill = args[0],args[1]
+		d = get_bill_data(sess,str(bill).replace(" ",""))
+		bills[sess][bill]["data"] = d
+		print("loading: ",args)
+	keys = list(itertools.chain.from_iterable([[[sess,bill] for bill in bills[sess]] for sess in sessions]))
+	if lim:
+		keys = keys[::lim]
+		print("Processing {} Bills".format(len(keys)))
+	concr(load_bill_data,keys,max_workers=max_workers)
+	pickle.dump(bills,open(out,"wb"))
+	return bills
+
+def get_bills(filename="bills.pkl"):
+	return pickle.load(open("{}/{}".format(shared_dir,filename),"rb"))
+
+if __name__ == "__main__":
+	# print(get_closest_match("Rodriguez, Jose",d))
+	# print(get_closest_match("Campbell, Donna",d))
+
+	# print(leg_id_to_name("1060"))
+
+	# update_original_names()
+
+	# update_new_names()
+
+	# remove_index()
+	# update_ids()
+	# merge_folder(["../../data-shared/bills_politicians/"],func=lookup)
+	# print(get_closest_match("Patronella, David",d))
+	# print(get_closest_match("Patronella, David",d))
+
+	# print(get_closest_match("Bivins, Teel",d))
+	# print(get_closest_match("Bivins, Teel",d))
+	# print(get_filer_info("","lozano"))
+
+	# print(get_bill_data("84R","HB567"))
+	generate_bills(file="{}/bills_politicians.csv".format(shared_dir),out="../../data-shared/bills_subset.pkl",lim=1000,max_workers=10)
+
+	dat = get_bills("bills_subset.pkl")
+	print(len(dat))
+	pprint(dat[sessions[0]]["HB 4"])

@@ -1,44 +1,44 @@
-bill_name,caption,filer_id,filer_name,function,session
-HB 348,Relating to the subdivision of land outside a municipality.,25463,Alec Rhodes,author,75R
-HB 577,Relating to classifying as delinquent conduct the conduct of certain children who engage in driving while intoxicated.,25463,Alec Rhodes,author,75R
-HB 985,Relating to the drawing of names of prospective jurors.,25463,Alec Rhodes,author,75R
-HB 1192,Relating to the duties of law enforcement agencies to enforce protective orders.,25463,Alec Rhodes,author,75R
-HB 1193,Relating to free trial transcripts for appeals in which an affidavit of inability to pay costs has been filed.,25463,Alec Rhodes,author,75R
-HB 2222,Relating to the bond and oath requirements applicable to a sheriff.,25463,Alec Rhodes,author,75R
-HB 3522,Relating to the administration and enforcement of the workers' compensation law; providing penalties.,25463,Alec Rhodes,author,75R
-HB 3523,Relating to the Barton Springs-Edwards Aquifer Conservation District.,25463,Alec Rhodes,author,75R
-HB 3566,Relating to the Gonzales County Hospital District.,25463,Alec Rhodes,author,75R
-HR 189,Commemorating the 150th anniversary of First United Methodist Church in San Marcos.,25463,Alec Rhodes,author,75R
-HR 190,Commending the Silver-Haired Legislature.,25463,Alec Rhodes,author,75R
-HR 1014,Recognizing the success of Dripping Springs High School students at the TACS Small Schools Academic Contest.,25463,Alec Rhodes,author,75R
-HR 1137,Honoring Billy and Virginia Cozart on the occasion of their 50th wedding anniversary.,25463,Alec Rhodes,author,75R
-HR 1319,"Suspending limitations on conference committee jurisdiction, S.B. 700.",25463,Alec Rhodes,author,75R
-HR 1342,Honoring Yvonne Lopez Delgado on the completion of her master's degree.,25463,Alec Rhodes,author,75R
-HR 1369,Recognizing Keep Wimberley Beautiful.,25463,Alec Rhodes,author,75R
-HR 1370,"In memory of San Marcos Police Chief James L. ""Larry"" Kendrick.",25463,Alec Rhodes,author,75R
-HB 384,"Relating to the disclosure in a contract for the transfer of vacant land of certain information, including information concerning the imposition of additional taxes on the land.",25463,Alec Rhodes,author,75R
-HB 1835,Relating to birth records of adopted children.,25463,Alec Rhodes,author,75R
-HB 1982,Relating to change of a customer's telecommunications provider; providing a civil penalty.,25463,Alec Rhodes,author,75R
-HB 3045,Relating to the computation of the number of students in weighted average daily attendance under the Foundation School Program.,25463,Alec Rhodes,author,75R
-HB 751,"Relating to the disannexation of certain areas annexed on or after December 1, 1996, by certain municipalities.",25463,Alec Rhodes,coauthor,75R
-HCR 148,Designating the Texas Sweet Onion as the official State Vegetable of Texas.,25463,Alec Rhodes,coauthor,75R
-HCR 149,Designating the City of Weslaco as the Citrus Capital of Texas.,25463,Alec Rhodes,coauthor,75R
-HCR 217,Memorializing Congress to restore the federal income tax deductibility of state sales taxes.,25463,Alec Rhodes,coauthor,75R
-HCR 238,Conferring the Texas Legislative Medal of Honor on Technical Sergeant James M. Logan.,25463,Alec Rhodes,coauthor,75R
-HR 47,"Recognizing January 28, 1997, as Texas Association of Mexican American Chambers of Commerce Day at the Capitol.",25463,Alec Rhodes,coauthor,75R
-SB 700,Relating to unclaimed property; providing penalties.,25463,Alec Rhodes,sponsor,75R
-SB 1083,Relating to the drawing of names of prospective jurors.,25463,Alec Rhodes,sponsor,75R
-SB 1938,Relating to the Hays County juvenile probation department.,25463,Alec Rhodes,sponsor,75R
-SB 253,Relating to the selection of telecommunications utilities by customers.,25463,Alec Rhodes,sponsor,75R
-HB 752,Relating to eligibility for certain law enforcement training programs and examinations.,25463,Alec Rhodes,author,74R
-HB 1885,Relating to solicitation transactions that take place outside a merchant's place of business.,25463,Alec Rhodes,author,74R
-HB 2160,Relating to the protection of the San Marcos River; providing civil and criminal penalties.,25463,Alec Rhodes,author,74R
-HCR 70,Granting Don Ray George permission to sue the State of Texas and The Texas A&M University System.,25463,Alec Rhodes,author,74R
-HR 962,Welcoming Native American Tribes to the Sacred Springs Pow-Wow and Western Swing Festival.,25463,Alec Rhodes,author,74R
-HB 2,Relating to restrictions on contributions to legislative caucuses during regular sessions of the legislature and to reporting requirements concerning caucus contributions and expenditures; providing penalties.,25463,Alec Rhodes,coauthor,74R
-HB 3171,Relating to the exemption of certain chemical dependency programs from licensure requirements.,25463,Alec Rhodes,coauthor,74R
-HCR 118,Commemorating the sesquicentennial of Texas statehood.,25463,Alec Rhodes,coauthor,74R
-HCR 230,Commending the members of the Texas Task Force for Tiltrotor Technology.,25463,Alec Rhodes,coauthor,74R
-HR 843,Commending the 1995 Chisholm Trail Round-Up.,25463,Alec Rhodes,coauthor,74R
-SB 1693,"Relating to authorizing the division of the Gonzales County Underground Water Conservation District into precincts, authorizing the board to make expenditures, and validating certain actions.",25463,Alec Rhodes,sponsor,74R
-SB 1718,Relating to the protection of the San Marcos River; providing civil and criminal penalties.,25463,Alec Rhodes,sponsor,74R
+bill_name,caption,filer_id,filer_name,function,session,leg_id,original_name,parsed_name
+HB 348,Relating to the subdivision of land outside a municipality.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 577,Relating to classifying as delinquent conduct the conduct of certain children who engage in driving while intoxicated.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 985,Relating to the drawing of names of prospective jurors.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 1192,Relating to the duties of law enforcement agencies to enforce protective orders.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 1193,Relating to free trial transcripts for appeals in which an affidavit of inability to pay costs has been filed.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 2222,Relating to the bond and oath requirements applicable to a sheriff.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 3522,Relating to the administration and enforcement of the workers' compensation law; providing penalties.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 3523,Relating to the Barton Springs-Edwards Aquifer Conservation District.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 3566,Relating to the Gonzales County Hospital District.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 189,Commemorating the 150th anniversary of First United Methodist Church in San Marcos.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 190,Commending the Silver-Haired Legislature.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1014,Recognizing the success of Dripping Springs High School students at the TACS Small Schools Academic Contest.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1137,Honoring Billy and Virginia Cozart on the occasion of their 50th wedding anniversary.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1319,"Suspending limitations on conference committee jurisdiction, S.B. 700.",25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1342,Honoring Yvonne Lopez Delgado on the completion of her master's degree.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1369,Recognizing Keep Wimberley Beautiful.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 1370,"In memory of San Marcos Police Chief James L. ""Larry"" Kendrick.",25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 384,"Relating to the disclosure in a contract for the transfer of vacant land of certain information, including information concerning the imposition of additional taxes on the land.",25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 1835,Relating to birth records of adopted children.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 1982,Relating to change of a customer's telecommunications provider; providing a civil penalty.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 3045,Relating to the computation of the number of students in weighted average daily attendance under the Foundation School Program.,25463,Alec Rhodes,author,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 751,"Relating to the disannexation of certain areas annexed on or after December 1, 1996, by certain municipalities.",25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 148,Designating the Texas Sweet Onion as the official State Vegetable of Texas.,25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 149,Designating the City of Weslaco as the Citrus Capital of Texas.,25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 217,Memorializing Congress to restore the federal income tax deductibility of state sales taxes.,25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 238,Conferring the Texas Legislative Medal of Honor on Technical Sergeant James M. Logan.,25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 47,"Recognizing January 28, 1997, as Texas Association of Mexican American Chambers of Commerce Day at the Capitol.",25463,Alec Rhodes,coauthor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 700,Relating to unclaimed property; providing penalties.,25463,Alec Rhodes,sponsor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 1083,Relating to the drawing of names of prospective jurors.,25463,Alec Rhodes,sponsor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 1938,Relating to the Hays County juvenile probation department.,25463,Alec Rhodes,sponsor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 253,Relating to the selection of telecommunications utilities by customers.,25463,Alec Rhodes,sponsor,75R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 752,Relating to eligibility for certain law enforcement training programs and examinations.,25463,Alec Rhodes,author,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 1885,Relating to solicitation transactions that take place outside a merchant's place of business.,25463,Alec Rhodes,author,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 2160,Relating to the protection of the San Marcos River; providing civil and criminal penalties.,25463,Alec Rhodes,author,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 70,Granting Don Ray George permission to sue the State of Texas and The Texas A&M University System.,25463,Alec Rhodes,author,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 962,Welcoming Native American Tribes to the Sacred Springs Pow-Wow and Western Swing Festival.,25463,Alec Rhodes,author,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 2,Relating to restrictions on contributions to legislative caucuses during regular sessions of the legislature and to reporting requirements concerning caucus contributions and expenditures; providing penalties.,25463,Alec Rhodes,coauthor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HB 3171,Relating to the exemption of certain chemical dependency programs from licensure requirements.,25463,Alec Rhodes,coauthor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 118,Commemorating the sesquicentennial of Texas statehood.,25463,Alec Rhodes,coauthor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HCR 230,Commending the members of the Texas Task Force for Tiltrotor Technology.,25463,Alec Rhodes,coauthor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+HR 843,Commending the 1995 Chisholm Trail Round-Up.,25463,Alec Rhodes,coauthor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 1693,"Relating to authorizing the division of the Gonzales County Underground Water Conservation District into precincts, authorizing the board to make expenditures, and validating certain actions.",25463,Alec Rhodes,sponsor,74R,4260,Rep. Alec Rhodes,Alec Rhodes
+SB 1718,Relating to the protection of the San Marcos River; providing civil and criminal penalties.,25463,Alec Rhodes,sponsor,74R,4260,Rep. Alec Rhodes,Alec Rhodes

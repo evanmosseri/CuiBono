@@ -1,50 +1,50 @@
-bill_name,caption,filer_id,filer_name,function,session
-HB 153,Relating to authorizing the issuance of revenue bonds or other obligations to fund capital projects at public institutions of higher education; making an appropriation.,None, Roy Blake,coauthor,793
-HB 46,Relating to participation of certain annuitants and their dependents in the state employees group benefits program.,None, Roy Blake,author,792
-HB 47,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,None, Roy Blake,author,792
-HB 59,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,None, Roy Blake,author,791
-HB 119,Relating to participation of certain annuitants and their dependents in the state employees group benefits program.,None, Roy Blake,author,791
-HJR 19,Proposing a constitutional amendment to restrict the state or a political subdivision from taking private property for the primary purpose of economic development or to benefit a particular class of identifiable individuals.,None, Roy Blake,coauthor,791
-HB 598,Relating to a recreational sports fee at Stephen F. Austin State University.,None, Roy Blake,author,79R
-HB 1419,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,None, Roy Blake,author,79R
-HB 1663,Relating to the creation and operation of a Texas Certified Retirement Community Program.,None, Roy Blake,author,79R
-HB 1981,Relating to the amount of the fee that the Pineywoods Groundwater Conservation District may impose on a well.,None, Roy Blake,author,79R
-HB 1982,Relating to the creation and operation of a Texas Certified Retirement Community Program.,None, Roy Blake,author,79R
-HB 3269,Relating to the duties of the Texas Historical Commission relating to El Camino Real de los Tejas National Historic Trail.,None, Roy Blake,author,79R
-HR 150,In memory of Robert W. Murphey of Nacogdoches.,None, Roy Blake,author,79R
-HR 205,"Welcoming the Student Government Association and the SFA Alumni Association of Stephen F. Austin State University to the Capitol on February 16 and 17, 2005.",None, Roy Blake,author,79R
-HR 243,"Recognizing Nacogdoches County Days at the Capitol on February 16 and 17, 2005.",None, Roy Blake,author,79R
-HR 512,"Recognizing March 3, 2005, as Shelby County Day at the State Capitol.",None, Roy Blake,author,79R
-HR 513,Congratulating Joanna Blackwell of Center on being named Miss Rodeo USA.,None, Roy Blake,author,79R
-HR 950,Commemorating the 50th anniversary of the opening of the Hotel Fredonia in Nacogdoches.,None, Roy Blake,author,79R
-HB 129,Relating to the authority to require a convicted person to perform manual labor for a nonprofit organization or a cemetery maintained by the county.,None, Roy Blake,author,79R
-HB 1634,Relating to arson and arson investigation; creating offenses.,None, Roy Blake,author,79R
-HB 1655,Relating to funding for the Texas statewide emergency services personnel retirement fund.,None, Roy Blake,author,79R
-HB 2370,Relating to the regulation of poultry facilities.,None, Roy Blake,author,79R
-HB 3280,Relating to increasing funding for sheriffs in certain small counties.,None, Roy Blake,author,79R
-HB 4,Relating to the use of technology by public schools.,None, Roy Blake,coauthor,79R
-HB 52,Relating to health coverage or compensation supplementation for certain education employees.,None, Roy Blake,coauthor,79R
-HB 157,Relating to the conditions of community supervision for certain persons convicted of an intoxication offense.,None, Roy Blake,coauthor,79R
-HB 225,Relating to the issuance and expiration of certain licenses to carry a concealed handgun.,None, Roy Blake,coauthor,79R
-HB 527,Relating to the punishment of certain assaults committed against employees of primary and secondary schools.,None, Roy Blake,coauthor,79R
-HB 528,Relating to exemptions from the sales tax for school supplies and other instructional material.,None, Roy Blake,coauthor,79R
-HB 864,Relating to the regulation of the cloning of human beings; providing penalties.,None, Roy Blake,coauthor,79R
-HB 894,Relating to produce samples at municipally owned farmers' markets.,None, Roy Blake,coauthor,79R
-HB 1130,Relating to the adoption of a privacy policy by a person who requires the disclosure of an individual's social security number; providing a civil penalty.,None, Roy Blake,coauthor,79R
-HB 1212,Relating to abortion and parental consent to an abortion; providing penalties.,None, Roy Blake,coauthor,79R
-HB 1432,Relating to the regulation of dental assistants who make dental x-rays.,None, Roy Blake,coauthor,79R
-HB 1624,Relating to the establishment of a law school in the city of Dallas by the University of North Texas System.,None, Roy Blake,coauthor,79R
-HB 1771,Relating to the Medicaid managed care delivery system.,None, Roy Blake,coauthor,79R
-HB 2868,Relating to civil liability for provision of alcohol to a minor.,None, Roy Blake,coauthor,79R
-HB 2928,Relating to projects that may be undertaken by certain development corporations with respect to business enterprises or business development.,None, Roy Blake,coauthor,79R
-HB 2997,Relating to the reporting of abortion; creating an offense.,None, Roy Blake,coauthor,79R
-HB 3017,Relating to the procedure for initiating and the award of certain costs in eminent domain proceedings.,None, Roy Blake,coauthor,79R
-HB 3305,Relating to coercing a woman to have an abortion and parental notification of abortion; creating offenses.,None, Roy Blake,coauthor,79R
-HJR 6,Proposing a constitutional amendment providing that marriage in this state consists only of the union of one man and one woman.,None, Roy Blake,coauthor,79R
-HJR 44,Proposing a constitutional amendment to authorize an increase in the amount of the ad valorem tax exemptions for veterans who are certified as having certain disability ratings.,None, Roy Blake,coauthor,79R
-HR 5,House Rules of Procedure for the 79th Legislature.,None, Roy Blake,coauthor,79R
-HR 516,"Amending the Housekeeping Resolution to provide for display of the motto ""In God We Trust"" in the House chamber.",None, Roy Blake,coauthor,79R
-HR 1347,Honoring the students from the Texas A&M Public Policy Internship Program on their service throughout the 79th Legislature.,None, Roy Blake,coauthor,79R
-HR 1825,Honoring Whitney Smith-Nelson on her college graduation.,None, Roy Blake,coauthor,79R
-SB 443,Relating to the regulation of industrialized buildings.,None, Roy Blake,sponsor,79R
-SB 730,Relating to the establishment of a law school in the City of Dallas by the University of North Texas System.,None, Roy Blake,cosponsor,79R
+bill_name,caption,filer_id,filer_name,function,session,leg_id,original_name,parsed_name
+HB 153,Relating to authorizing the issuance of revenue bonds or other obligations to fund capital projects at public institutions of higher education; making an appropriation.,19771, Roy Blake,coauthor,793,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 46,Relating to participation of certain annuitants and their dependents in the state employees group benefits program.,19771, Roy Blake,author,792,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 47,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,19771, Roy Blake,author,792,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 59,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,19771, Roy Blake,author,791,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 119,Relating to participation of certain annuitants and their dependents in the state employees group benefits program.,19771, Roy Blake,author,791,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HJR 19,Proposing a constitutional amendment to restrict the state or a political subdivision from taking private property for the primary purpose of economic development or to benefit a particular class of identifiable individuals.,19771, Roy Blake,coauthor,791,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 598,Relating to a recreational sports fee at Stephen F. Austin State University.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1419,Relating to authorizing the issuance of revenue bonds for Stephen F. Austin State University.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1663,Relating to the creation and operation of a Texas Certified Retirement Community Program.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1981,Relating to the amount of the fee that the Pineywoods Groundwater Conservation District may impose on a well.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1982,Relating to the creation and operation of a Texas Certified Retirement Community Program.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 3269,Relating to the duties of the Texas Historical Commission relating to El Camino Real de los Tejas National Historic Trail.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 150,In memory of Robert W. Murphey of Nacogdoches.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 205,"Welcoming the Student Government Association and the SFA Alumni Association of Stephen F. Austin State University to the Capitol on February 16 and 17, 2005.",19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 243,"Recognizing Nacogdoches County Days at the Capitol on February 16 and 17, 2005.",19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 512,"Recognizing March 3, 2005, as Shelby County Day at the State Capitol.",19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 513,Congratulating Joanna Blackwell of Center on being named Miss Rodeo USA.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 950,Commemorating the 50th anniversary of the opening of the Hotel Fredonia in Nacogdoches.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 129,Relating to the authority to require a convicted person to perform manual labor for a nonprofit organization or a cemetery maintained by the county.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1634,Relating to arson and arson investigation; creating offenses.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1655,Relating to funding for the Texas statewide emergency services personnel retirement fund.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 2370,Relating to the regulation of poultry facilities.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 3280,Relating to increasing funding for sheriffs in certain small counties.,19771, Roy Blake,author,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 4,Relating to the use of technology by public schools.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 52,Relating to health coverage or compensation supplementation for certain education employees.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 157,Relating to the conditions of community supervision for certain persons convicted of an intoxication offense.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 225,Relating to the issuance and expiration of certain licenses to carry a concealed handgun.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 527,Relating to the punishment of certain assaults committed against employees of primary and secondary schools.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 528,Relating to exemptions from the sales tax for school supplies and other instructional material.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 864,Relating to the regulation of the cloning of human beings; providing penalties.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 894,Relating to produce samples at municipally owned farmers' markets.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1130,Relating to the adoption of a privacy policy by a person who requires the disclosure of an individual's social security number; providing a civil penalty.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1212,Relating to abortion and parental consent to an abortion; providing penalties.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1432,Relating to the regulation of dental assistants who make dental x-rays.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1624,Relating to the establishment of a law school in the city of Dallas by the University of North Texas System.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 1771,Relating to the Medicaid managed care delivery system.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 2868,Relating to civil liability for provision of alcohol to a minor.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 2928,Relating to projects that may be undertaken by certain development corporations with respect to business enterprises or business development.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 2997,Relating to the reporting of abortion; creating an offense.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 3017,Relating to the procedure for initiating and the award of certain costs in eminent domain proceedings.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HB 3305,Relating to coercing a woman to have an abortion and parental notification of abortion; creating offenses.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HJR 6,Proposing a constitutional amendment providing that marriage in this state consists only of the union of one man and one woman.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HJR 44,Proposing a constitutional amendment to authorize an increase in the amount of the ad valorem tax exemptions for veterans who are certified as having certain disability ratings.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 5,House Rules of Procedure for the 79th Legislature.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 516,"Amending the Housekeeping Resolution to provide for display of the motto ""In God We Trust"" in the House chamber.",19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 1347,Honoring the students from the Texas A&M Public Policy Internship Program on their service throughout the 79th Legislature.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+HR 1825,Honoring Whitney Smith-Nelson on her college graduation.,19771, Roy Blake,coauthor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+SB 443,Relating to the regulation of industrialized buildings.,19771, Roy Blake,sponsor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake
+SB 730,Relating to the establishment of a law school in the City of Dallas by the University of North Texas System.,19771, Roy Blake,cosponsor,79R,2220,"Rep. Roy Blake, Jr.",Roy Blake

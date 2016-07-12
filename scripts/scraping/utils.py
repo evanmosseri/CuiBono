@@ -10,6 +10,8 @@ import itertools
 import multiprocessing
 import linecache
 import sys
+import os
+shared_dir = "../../data-shared"
 def extract_filer_name(org_name):
     reversed = False
     if "Texans For" in org_name.title():
@@ -58,6 +60,10 @@ def extract_filer_name(org_name):
     if "Citizens For" in org_name.title():
         org_name = org_name.replace("Citizens for","")
         reversed = True
+    if "Lt. Gov" in org_name.title():
+        org_name = org_name.replace("Lt. Gov","")
+        org_name = org_name.replace("Lt. Gov.","")
+        reversed = True
     org_name = org_name.replace(" SPAC ","")
     org_name = re.sub(r'\(.*\)',"",org_name) # replace anything inside parentheses
     org_name = org_name.replace(" Jr.","")
@@ -81,6 +87,9 @@ def extract_filer_name(org_name):
         temp = org_name.split(" ")
         org_name = " ".join([temp[0],temp[1]])
     return org_name
+
+def get_first_last(jumbled):
+    pass
 data_dir = "../../data/texas_ethics_commission"
 def merge_data(columns=None,by=None,debug=False,filename="combined.csv",allowed_contributor_types=["ENTITY",""],allowed_form_types=["COH"]):
     files = glob.glob("{}/contrib*.csv".format(data_dir))
@@ -155,3 +164,28 @@ def PrintException():
 	linecache.checkcache(filename)
 	line = linecache.getline(filename, lineno, f.f_globals)
 	print('EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj))
+
+def merge_folder(folder,func=lambda x:x,data_dir="../../data-shared",drop_duplicates="original_name"):
+    folder = folder[0][:-1] if folder[0][-1] == "/" else folder[0]
+    dat = [func(pd.read_csv(filename)) for filename in glob.glob("{}/*.csv".format(folder)) if os.stat(filename).st_size > 100]
+    pd.concat(dat).drop_duplicates(drop_duplicates).to_csv("{}/{}_preview.csv".format(data_dir,os.path.basename(folder)),index=None)
+    return pd.concat(dat).to_csv("{}/{}.csv".format(data_dir,os.path.basename(folder)),index=None)
+filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
+def lookup(df):
+    try:
+        ident = int(df["filer_id"].iloc[0])
+    except:
+        ident = -1
+    new_name = filers[filers["filerIdent"] == ident]["filerName"]
+    try:
+        new_name = new_name.iloc[0]
+    except:
+        new_name = None
+    df["filer_name_closest"] = ([new_name]*len(df))
+    return df
+
+if __name__ == "__main__":
+    def lookups(id):
+        ret = filers[filers["filerIdent"] == id]["filerName"].iloc[0]
+        return ret
+    print(lookups(66091))
