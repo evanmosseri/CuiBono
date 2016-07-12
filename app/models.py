@@ -30,7 +30,16 @@ class Bill(db.Model):
 	authors = db.relationship("legislator", backref="author")
 	sponsors = db.relationship("legislator", backref="sponsor")
 
-	def to_dict(self):
+	def __init__(self, bill_id, leg_session, type, number, aye_or_nay, text):
+		self.bill_id = bill_id
+		self.leg_session = leg_session
+		self.type = type
+		self.number = number
+		self.aye_or_nay = aye_or_nay
+		self.text = text
+
+
+	def serialize(self):
 		return {
 			"bill_id": self.id,
 			"leg_session": self.leg_session,
@@ -56,7 +65,15 @@ class Legislator(db.Model):
 	district = db.Column(db.Integer)
 	contributions = db.relationship('Legislator', backref='legislator', lazy='dynamic')
 
-	def to_dict(self):
+	def __init__(self, legislator_id, name, filer_id, bio, party, district):
+		self.legislator_id = legislator_id
+		self.name = name
+		self.filer_id = filer_id
+		self.bio = bio
+		self.party = party
+		self.district = district
+
+	def serialize(self):
 		return {
 			"legislator_id": self.legislator_id,
 			"name": self.name,
@@ -79,7 +96,13 @@ class Contributor(db.Model):
 	zipcode = db.Column(db.String(32))
 	contributions = db.relationship('Contribution', backref='contributor', lazy='dynamic')
 
-	def to_dict(self):
+	def __init__(self, contributor_id, type, name, zipcode):
+		self.contributor_id = contributor_id
+		self.type = type
+		self.name = name
+		self.zipcode = zipcode
+
+	def serialize(self):
 		return {
 			"contributor_id": self.contributor_id,
 			"type": self.type,
@@ -98,7 +121,12 @@ class Contribution(db.Model):
 	contributor_id = db.Column(db.Integer, db.ForeignKey('contributor.id'))
 	legislator_id = db.Column(db.Integer, db.ForeignKey('legislator.id'))
 
-	def to_dict(self):
+	def __init__(self, contribution_id, amount, date_contributed):
+		self.contribution_id = contribution_id
+		self.amount = amount
+		self.date_contributed = date_contributed
+
+	def serialize(self):
 		return {
 			"contribution_id": self.contribution_id,
 			"amount": self.amount,
