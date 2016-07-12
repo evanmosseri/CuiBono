@@ -7,11 +7,11 @@ db = SQLAlchemy(app)
 
 #MANY TO MANY relationships
 
-bill_legislators = db.Table('bill_legislator',
+bill_legislator = db.Table('bill_legislator',
 								db.Column('bill_id', db.Integer, db.ForeignKey('bill.id')),
 								db.Column('legislator_id', db.Integer, db.ForeignKey('legislator.legislator_id')))
 
-legislator_contributors = db.Table('legislator_contributor', 
+legislator_contributor = db.Table('legislator_contributor', 
     							db.Column('legislator_id', db.Integer, db.ForeignKey('legislator.legislator_id')),
     							db.Column('contributor_id', db.Integer, db.ForeignKey('contributor.contributor_id')))
 
@@ -27,8 +27,13 @@ class Bill(db.Model):
 	number = db.Column(db.Integer)
 	aye_or_nay = db.Column(db.String(64))
 	text = db.Column(db.Text(10000000))
-	authors = db.relationship("legislator", backref="author")
-	sponsors = db.relationship("legislator", backref="sponsor")
+
+	#authors = db.relationship("legislator", backref="author")
+	#sponsors = db.relationship("legislator", backref="sponsor")
+
+	#many-many
+	legislators = db.relationship("Legislator", secondary=bill_legislator, back_populates="bills")
+
 
 	def __init__(self, bill_id, leg_session, type, number, aye_or_nay, text):
 		self.bill_id = bill_id
@@ -63,7 +68,14 @@ class Legislator(db.Model):
 	bio = db.Column(db.String(100000))
 	party = db.Column(db.String(128))
 	district = db.Column(db.Integer)
-	contributions = db.relationship('Legislator', backref='legislator', lazy='dynamic')
+
+	#many-many
+	bills = db.relationship("Bill", secondary=bill_legislator, back_populates="legislators")
+	contributors = db.relationship("Contributor", secondary=legislator_contributor, back_populates="legislators")
+
+	#1-many
+	contributions = db.relationship('Contribution', backref='legislators', lazy='dynamic')
+
 
 	def __init__(self, legislator_id, name, filer_id, bio, party, district):
 		self.legislator_id = legislator_id
@@ -94,7 +106,13 @@ class Contributor(db.Model):
 	type = db.Column(db.String(16))
 	name = db.Column(db.String(256))
 	zipcode = db.Column(db.String(32))
+
+	#many-many
+	legislators = db.relationship("Legislator", secondary=legislator_contributor, back_populates="contributors")
+
+	#1-many
 	contributions = db.relationship('Contribution', backref='contributor', lazy='dynamic')
+
 
 	def __init__(self, contributor_id, type, name, zipcode):
 		self.contributor_id = contributor_id
@@ -118,6 +136,8 @@ class Contribution(db.Model):
 	contribution_id = db.Column(db.Integer, primary_key=True)
 	amount = db.Column(db.Integer)
 	date_contributed = db.Column(db.Date)
+
+	#many-1
 	contributor_id = db.Column(db.Integer, db.ForeignKey('contributor.id'))
 	legislator_id = db.Column(db.Integer, db.ForeignKey('legislator.id'))
 
