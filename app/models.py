@@ -30,6 +30,17 @@ class Bill(db.Model):
 	authors = db.relationship("legislator", backref="author")
 	sponsors = db.relationship("legislator", backref="sponsor")
 
+	def to_dict(self):
+		return {
+			"bill_id": self.id,
+			"leg_session": self.leg_session,
+			"type": self.type,
+			"number": self.number,
+			"aye_or_nay": self.aye_or_nay,
+			"text": self.text
+		}
+
+
 
 
 # Legislator has many-to-many relationship with Bill and Contributor
@@ -45,6 +56,16 @@ class Legislator(db.Model):
 	district = db.Column(db.Integer)
 	contributions = db.relationship('Legislator', backref='legislator', lazy='dynamic')
 
+	def to_dict(self):
+		return {
+			"legislator_id": self.legislator_id,
+			"name": self.name,
+			"filer_id": self.filer_id,
+			"bio": self.bio,
+			"party": self.party,
+			"district": self.district
+		}
+
 
 
 # Contributor has many-to-many relationship with Legislator
@@ -58,6 +79,14 @@ class Contributor(db.Model):
 	zipcode = db.Column(db.String(32))
 	contributions = db.relationship('Contribution', backref='contributor', lazy='dynamic')
 
+	def to_dict(self):
+		return {
+			"contributor_id": self.contributor_id,
+			"type": self.type,
+			"name": self.name,
+			"zipcode": self.zipcode
+		}
+
 
 # Contribution has many-to-one relationship with Contributor and Legislator
 
@@ -68,3 +97,12 @@ class Contribution(db.Model):
 	date_contributed = db.Column(db.Date)
 	contributor_id = db.Column(db.Integer, db.ForeignKey('contributor.id'))
 	legislator_id = db.Column(db.Integer, db.ForeignKey('legislator.id'))
+
+	def to_dict(self):
+		return {
+			"contribution_id": self.contribution_id,
+			"amount": self.amount,
+			"date_contributed": self.date_contributed,
+			"contributor_id": self.contributor_id,
+			"legislator_id": self.legislator_id
+		}
