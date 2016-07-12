@@ -269,7 +269,14 @@
 		<div class="respons">
 		    <h3>Unit Test</h3>
 		    <ul class="reponsibilities">
-			<li><button class="Run Test" onclick="window.open(); return false;"><span class="Run Test">Run Test</span></button></li>
+			<script>
+			    function unittest()
+			    {
+				myWindow = window.open('http://45.55.200.170:5000/unittest','','width=500,height=500');
+				myWindow.focus();
+			    }
+			</script>		
+			<li><input type="button" value="Run unit tests" onclick="unittest()" /></li>
 		    </ul>
 		</div>
         </li>

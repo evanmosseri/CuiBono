@@ -64,6 +64,16 @@ def AMpac():
 def plumberspac():
 	return render_template("plumberspac.html") 
 
+@app.route('/unittest/')
+@app.route('/unittest/<name>')
+def unittest(name = None):
+	contents = ""
+	with open("TestResult", "r") as file:
+		for line in file:
+			contents +="\n"+line+"\n"
+	file.close()
+	return render_template('unittest.html',name = contents)
+
 if __name__ == "__main__":
 	app.run("0.0.0.0",debug=True)
 
