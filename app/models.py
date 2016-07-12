@@ -1,19 +1,14 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-db = SQLAlchemy(app)
+from sqlalchemy import *
+from db import db
 
 #MANY TO MANY relationships
-
 bill_legislator = db.Table('bill_legislator',
-								db.Column('bill_id', db.Integer, db.ForeignKey('bill.id')),
-								db.Column('legislator_id', db.Integer, db.ForeignKey('legislator.legislator_id')))
+								db.Column('bill_id', db.Integer, db.ForeignKey('Bill.id')),
+								db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')))
 
 legislator_contributor = db.Table('legislator_contributor', 
-    							db.Column('legislator_id', db.Integer, db.ForeignKey('legislator.legislator_id')),
-    							db.Column('contributor_id', db.Integer, db.ForeignKey('contributor.contributor_id')))
+    							db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')),
+    							db.Column('contributor_id', db.Integer, db.ForeignKey('Contributor.id')))
 
 
 # Bill has many-to-many relationship with Legislator seperated into authors and sponsors
@@ -21,7 +16,6 @@ legislator_contributor = db.Table('legislator_contributor',
 class Bill(db.Model):
 	__tablename__ = "bill"
 	id = db.Column(db.Integer, primary_key=True)
-	bill_id = db.Column(db.String, unique=True)
 	leg_session = db.Column(db.String(10))
 	type = db.Column(db.String(32))
 	number = db.Column(db.Integer)
@@ -35,8 +29,8 @@ class Bill(db.Model):
 	legislators = db.relationship("Legislator", secondary=bill_legislator, back_populates="bills")
 
 
-	def __init__(self, bill_id, leg_session, type, number, aye_or_nay, text):
-		self.bill_id = bill_id
+	def __init__(self, id, leg_session, type, number, aye_or_nay, text):
+		self.id = id
 		self.leg_session = leg_session
 		self.type = type
 		self.number = number
@@ -46,7 +40,7 @@ class Bill(db.Model):
 
 	def serialize(self):
 		return {
-			"bill_id": self.id,
+			"id": self.id,
 			"leg_session": self.leg_session,
 			"type": self.type,
 			"number": self.number,
@@ -62,7 +56,7 @@ class Bill(db.Model):
 
 class Legislator(db.Model):
 	__tablename__ = "legislator"
-	legislator_id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(128))
 	filer_id = db.Column(db.Integer)
 	bio = db.Column(db.String(100000))
@@ -77,8 +71,8 @@ class Legislator(db.Model):
 	contributions = db.relationship('Contribution', backref='legislators', lazy='dynamic')
 
 
-	def __init__(self, legislator_id, name, filer_id, bio, party, district):
-		self.legislator_id = legislator_id
+	def __init__(self, id, name, filer_id, bio, party, district):
+		self.id = id
 		self.name = name
 		self.filer_id = filer_id
 		self.bio = bio
@@ -87,7 +81,7 @@ class Legislator(db.Model):
 
 	def serialize(self):
 		return {
-			"legislator_id": self.legislator_id,
+			"id": self.id,
 			"name": self.name,
 			"filer_id": self.filer_id,
 			"bio": self.bio,
@@ -102,7 +96,7 @@ class Legislator(db.Model):
 
 class Contributor(db.Model):
 	__tablename__ = "contributor"
-	contributor_id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	type = db.Column(db.String(16))
 	name = db.Column(db.String(256))
 	zipcode = db.Column(db.String(32))
@@ -114,15 +108,15 @@ class Contributor(db.Model):
 	contributions = db.relationship('Contribution', backref='contributor', lazy='dynamic')
 
 
-	def __init__(self, contributor_id, type, name, zipcode):
-		self.contributor_id = contributor_id
+	def __init__(self, id, type, name, zipcode):
+		self.id = id
 		self.type = type
 		self.name = name
 		self.zipcode = zipcode
 
 	def serialize(self):
 		return {
-			"contributor_id": self.contributor_id,
+			"id": self.id,
 			"type": self.type,
 			"name": self.name,
 			"zipcode": self.zipcode
@@ -133,22 +127,22 @@ class Contributor(db.Model):
 
 class Contribution(db.Model):
 	__tablename__ = "contribution"
-	contribution_id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	amount = db.Column(db.Integer)
-	date_contributed = db.Column(db.Date)
+	date_contributed = db.Column(Date)
 
 	#many-1
-	contributor_id = db.Column(db.Integer, db.ForeignKey('contributor.id'))
-	legislator_id = db.Column(db.Integer, db.ForeignKey('legislator.id'))
+	contributor_id = db.Column(db.Integer, db.ForeignKey('Contributor.id'))
+	legislator_id = db.Column(db.Integer, db.ForeignKey('Legislator.id'))
 
-	def __init__(self, contribution_id, amount, date_contributed):
-		self.contribution_id = contribution_id
+	def __init__(self, id, amount, date_contributed):
+		self.id = id
 		self.amount = amount
 		self.date_contributed = date_contributed
 
 	def serialize(self):
 		return {
-			"contribution_id": self.contribution_id,
+			"id": self.id,
 			"amount": self.amount,
 			"date_contributed": self.date_contributed,
 			"contributor_id": self.contributor_id,

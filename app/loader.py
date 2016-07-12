@@ -1,16 +1,15 @@
 from sqlalchemy import *
-#from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker
 from models import Bill, Legislator, Contributor, Contribution
 import json
+from db import db
 
-#from '' import db
 
-"""
 engine = create_engine(' ')
 Session = sessionmaker(bind=engine)
 session = Session()
 engine.echo = True
-"""
+
 
 # Bill Data
 def create_bills():
@@ -93,7 +92,7 @@ def create_contributions():
 
 
 #INIT DB
-def create_db():
+def my_create_db():
 	db.drop_all()
 	db.create_all()
 	create_bills()
