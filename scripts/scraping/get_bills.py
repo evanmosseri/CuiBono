@@ -158,7 +158,6 @@ def get_closest_match(x, list_strings,attr="filerName",baseline=1):
 
 
 # print(filers["filerName"].tolist())
-d = filers[filers["filerPersentTypeCd"] == "INDIVIDUAL"]["filerName"].tolist()
 def get_id(name):
 	dnew = filers[filers["filerName"]==get_closest_match(name,d)]
 	return dnew.iloc[0].to_dict() if len(dnew) else -1
@@ -364,7 +363,7 @@ if __name__ == "__main__":
 	# print(get_filer_info("","lozano"))
 
 	# print(get_bill_data("84R","HB567"))
-	generate_bills(file="{}/bills_politicians.csv".format(shared_dir),out="../../data-shared/bills_subset.pkl",lim=1000,max_workers=10)
+	# generate_bills(file="{}/bills_politicians.csv".format(shared_dir),out="../../data-shared/bills_subset.pkl",lim=1000,max_workers=10)
 
 	dat = get_bills("bills_subset.pkl")
 	print(len(dat))

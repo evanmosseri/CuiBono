@@ -14,7 +14,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 def get_simple_search_cookie():
 	return requests.get("https://www.ethics.state.tx.us/jasperserver-pro/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri/public/publicData&reportUnit=/public/publicData/datasource/By_Filer_Name&decorate=no&SuperName=straus&FilerType=ANY&FirstName=joe&CorrFlag=N&tec-pp=u=PUBLIC2|expireTime=Sat%20Jul%2002%2020126%2022:30:16%20GMT-0500%20(CDT)",verify=False).cookies.get_dict()["JSESSIONID"]
 
-def get_filer_info(first_name,last_name,debug=False,preview = False, allowed_types = ["COH"],cookie=get_simple_search_cookie()):
+def get_filer_info(first_name,last_name,debug=False,preview = False, allowed_types = ["COH","JCOH"],cookie=get_simple_search_cookie()):
 	jq = pq(
 		"https://www.ethics.state.tx.us/jasperserver-pro/flow.html?_flowExecutionKey=e1s1&_flowId=viewReportFlow&_eventId=refreshReport&pageIndex=0&decorate=no&confirm=true&decorator=empty&ajax=false",
 		data={

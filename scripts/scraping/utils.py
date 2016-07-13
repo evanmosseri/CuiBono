@@ -140,7 +140,6 @@ def concr(func,data,max_workers=50,thread=None):
 			print(e)
 			print(dat)
 
-
 cpus = multiprocessing.cpu_count()-1
 def multiprocess(func,data,cpu_count=cpus):
 	pool = multiprocessing.Pool(cpu_count)
@@ -171,6 +170,7 @@ def merge_folder(folder,func=lambda x:x,data_dir="../../data-shared",drop_duplic
     pd.concat(dat).drop_duplicates(drop_duplicates).to_csv("{}/{}_preview.csv".format(data_dir,os.path.basename(folder)),index=None)
     return pd.concat(dat).to_csv("{}/{}.csv".format(data_dir,os.path.basename(folder)),index=None)
 filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
+d = filers[filers["filerPersentTypeCd"] == "INDIVIDUAL"]["filerName"].tolist()
 def lookup(df):
     try:
         ident = int(df["filer_id"].iloc[0])
@@ -184,8 +184,49 @@ def lookup(df):
     df["filer_name_closest"] = ([new_name]*len(df))
     return df
 
+def get_closest_match(x, list_strings,attr="filerName",baseline=1):
+	assert "," in x
+	def parse_filer_name(st):
+		# print(st)
+		x = re.sub(r" \(.{1,20}\)","",st)
+		x = re.sub(r" (Jr\.)|(Sr\.)","",x)
+		# x = x.replace("(The Honorable)","")
+		return x
+	filt = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
+	if len(filt):
+		return filt[0]
+	else:
+		filt2 = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
+		if len(filt2):
+			return filt2[0]
+	best_match = None
+	highest_jw = 0
+
+	for current_string in list_strings:
+		current_string = parse_filer_name(current_string)
+		current_score = max(
+			jellyfish.jaro_winkler(x, current_string),
+			jellyfish.jaro_winkler(x, ", ".join(reversed(str(extract_filer_name(current_string)).split(" ")))))
+
+	if(current_score > highest_jw):
+		highest_jw = current_score
+		best_match = current_string
+	if highest_jw > baseline:
+		return best_match
+	else:
+		first,last = x.replace(",","").split(" ")[-1].lower(),x.replace(",","").split(" ")[0].lower()
+		info = looks(first,last)
+		if len(info):
+			best_match = filers[filers["filerIdent"] == int(info[0].get("id"))]["filerName"].values[0]
+		return best_match
+def get_id(name):
+	dnew = filers[filers["filerName"]==get_closest_match(name,d)]
+	return dnew.iloc[0].to_dict() if len(dnew) else -1
+
+def get_bill_names():
+    df = pd.read_csv("{}/bills_politicians.csv".format(shared_dir))
+    x = df["bill_name"].drop_duplicates().values
+    return x
+
 if __name__ == "__main__":
-    def lookups(id):
-        ret = filers[filers["filerIdent"] == id]["filerName"].iloc[0]
-        return ret
-    print(lookups(66091))
+    get_bill_names()
