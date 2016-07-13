@@ -4,22 +4,6 @@ from models import Bill, Legislator, Contributor, Contribution
 from loader import my_create_db
 from db import *
 
-@manager.command
-def create_db():
-	app.config['SQLALCHEMY_ECHO'] = True
-	my_create_db()
-
-@manager.command
-def create_test_db():
-	app.config['SQLALCHEMY_DATABASE_URI'] = ''
-	app.config['SQLALCHEMY_ECHO'] = True
-	db.create_all()
-
-@manager.command
-def drop_db():
-	app.config['SQLALCHEMY_ECHO'] = True
-	db.drop_all()
-
 
 # BILL
 
@@ -118,8 +102,4 @@ def get_contribution_by_id(contribution_id, verbose):
 	if row:
 		result = Contribution.serialize(row)
 	return result
-
-if __name__ == "__main__":
-	manager.run()
-
 

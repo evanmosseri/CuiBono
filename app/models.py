@@ -1,32 +1,34 @@
-from sqlalchemy import *
-from db import db
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Table
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from database import Base
 
 #MANY TO MANY relationships
-bill_legislator = db.Table('bill_legislator',
-								db.Column('bill_id', db.Integer, db.ForeignKey('Bill.id')),
-								db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')))
+bill_legislator = Table('bill_legislator',
+								Column('bill_id', Integer, ForeignKey('Bill.id')),
+								Column('legislator_id', Integer, ForeignKey('Legislator.id')))
 
 legislator_contributor = db.Table('legislator_contributor', 
-    							db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')),
-    							db.Column('contributor_id', db.Integer, db.ForeignKey('Contributor.id')))
+    							Column('legislator_id', Integer, ForeignKey('Legislator.id')),
+    							Column('contributor_id', Integer, ForeignKey('Contributor.id')))
 
 
 # Bill has many-to-many relationship with Legislator seperated into authors and sponsors
 
-class Bill(db.Model):
+class Bill(Base):
 	__tablename__ = "bill"
-	id = db.Column(db.Integer, primary_key=True)
-	leg_session = db.Column(db.String(10))
-	type = db.Column(db.String(32))
-	number = db.Column(db.Integer)
-	aye_or_nay = db.Column(db.String(64))
-	text = db.Column(db.Text(10000000))
+	id = Column(Integer, primary_key=True)
+	leg_session = Column(String(10))
+	type = Column(String(32))
+	number = Column(Integer)
+	aye_or_nay = Column(String(64))
+	text = Column(db.Text(10000000))
 
-	#authors = db.relationship("legislator", backref="author")
-	#sponsors = db.relationship("legislator", backref="sponsor")
+	#authors = relationship("legislator", backref="author")
+	#sponsors = relationship("legislator", backref="sponsor")
 
 	#many-many
-	legislators = db.relationship("Legislator", secondary=bill_legislator, back_populates="bills")
+	legislators = relationship("Legislator", secondary=bill_legislator, back_populates="bills")
 
 
 	def __init__(self, id, leg_session, type, number, aye_or_nay, text):
@@ -54,21 +56,21 @@ class Bill(db.Model):
 # Legislator has many-to-many relationship with Bill and Contributor
 # Legislator has one-to-many relationship with Contribution
 
-class Legislator(db.Model):
+class Legislator(Base):
 	__tablename__ = "legislator"
-	id = db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String(128))
-	filer_id = db.Column(db.Integer)
-	bio = db.Column(db.String(100000))
-	party = db.Column(db.String(128))
-	district = db.Column(db.Integer)
+	id = Column(Integer, primary_key=True)
+	name = Column(String(128))
+	filer_id = Column(Integer)
+	bio = Column(String(100000))
+	party = Column(String(128))
+	district = Column(Integer)
 
 	#many-many
-	bills = db.relationship("Bill", secondary=bill_legislator, back_populates="legislators")
-	contributors = db.relationship("Contributor", secondary=legislator_contributor, back_populates="legislators")
+	bills = relationship("Bill", secondary=bill_legislator, back_populates="legislators")
+	contributors = relationship("Contributor", secondary=legislator_contributor, back_populates="legislators")
 
 	#1-many
-	contributions = db.relationship('Contribution', backref='legislators', lazy='dynamic')
+	contributions = relationship('Contribution', backref='legislators', lazy='dynamic')
 
 
 	def __init__(self, id, name, filer_id, bio, party, district):
@@ -94,18 +96,18 @@ class Legislator(db.Model):
 # Contributor has many-to-many relationship with Legislator
 # Contributor has one-to-many relationship with Contribution
 
-class Contributor(db.Model):
+class Contributor(Base):
 	__tablename__ = "contributor"
-	id = db.Column(db.Integer, primary_key=True)
-	type = db.Column(db.String(16))
-	name = db.Column(db.String(256))
-	zipcode = db.Column(db.String(32))
+	id = Column(Integer, primary_key=True)
+	type = Column(String(16))
+	name = Column(String(256))
+	zipcode = Column(String(32))
 
 	#many-many
-	legislators = db.relationship("Legislator", secondary=legislator_contributor, back_populates="contributors")
+	legislators = relationship("Legislator", secondary=legislator_contributor, back_populates="contributors")
 
 	#1-many
-	contributions = db.relationship('Contribution', backref='contributor', lazy='dynamic')
+	contributions = relationship('Contribution', backref='contributor', lazy='dynamic')
 
 
 	def __init__(self, id, type, name, zipcode):
@@ -125,15 +127,15 @@ class Contributor(db.Model):
 
 # Contribution has many-to-one relationship with Contributor and Legislator
 
-class Contribution(db.Model):
+class Contribution(Base):
 	__tablename__ = "contribution"
-	id = db.Column(db.Integer, primary_key=True)
-	amount = db.Column(db.Integer)
-	date_contributed = db.Column(Date)
+	id = Column(Integer, primary_key=True)
+	amount = Column(Integer)
+	date_contributed = Column(Date)
 
 	#many-1
-	contributor_id = db.Column(db.Integer, db.ForeignKey('Contributor.id'))
-	legislator_id = db.Column(db.Integer, db.ForeignKey('Legislator.id'))
+	contributor_id = Column(Integer, ForeignKey('Contributor.id'))
+	legislator_id = Column(Integer, ForeignKey('Legislator.id'))
 
 	def __init__(self, id, amount, date_contributed):
 		self.id = id

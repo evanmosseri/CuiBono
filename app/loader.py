@@ -2,13 +2,7 @@ from sqlalchemy import *
 from sqlalchemy.orm import sessionmaker
 from models import Bill, Legislator, Contributor, Contribution
 import json
-from db import db
-
-
-engine = create_engine(' ')
-Session = sessionmaker(bind=engine)
-session = Session()
-engine.echo = True
+from database import db_session
 
 
 # Bill Data
@@ -27,9 +21,9 @@ def create_bills():
 			aye_or_nay = data['aye_or_nay'],
 			text = data['text']
 			)
-		db.session.add(current_bill)
+		db_session.add(current_bill)
 
-	db.session.commit()
+	db_session.commit()
 
 
 
@@ -48,9 +42,9 @@ def create_legislators():
 			party = data['party'],
 			district = data['district']
 			)
-		db.session.add(current_legislator)
+		db_session.add(current_legislator)
 
-	db.session.commit()
+	db_session.commit()
 
 
 
@@ -67,9 +61,9 @@ def create_contributors():
 			name = data['name'],
 			zipcode = data['zipcode']
 			)
-		db.session.add(current_contributor)
+		db_session.add(current_contributor)
 
-	db.session.commit()
+	db_session.commit()
 
 
 # Contribution Data
@@ -86,9 +80,9 @@ def create_contributions():
 			contributor_id = data['contributor_id'],
 			legislator_id = data['legislator_id']
 			)
-		db.session.add(current_contribution)
+		db_session.add(current_contribution)
 
-	db.session.commit()
+	db_session.commit()
 
 
 #INIT DB
