@@ -3,6 +3,9 @@ import requests
 import json
 from pprint import pprint
 from scrape_politician import get_filer_info
+import jellyfish
+import difflib
+import time
 
 # print(get_id("Watson, Kirk")["filerIdent"])
 apikey = "bf74569aec8a4ba69d4afcbda75498fe"
@@ -53,17 +56,25 @@ def lookup_legislator(leg_id,n=0):
 def load_bills():
 	return json.load(open("{}/bills.json".format(shared_dir),"r"))
 
+def closest_match(first,last,df=filers):
+	return max(df.iterrows(),key=lambda row: jellyfish.jaro_winkler("{}, {}".format(last.title(),first.title()),row[1]["filerName"]))[1]
+
 def get_pol_id(first,last):
 	first, last = first.lower(), last.lower()
+	df_lookup = filers[filers["filerName"].str.contains("{}, {}".format(last.title(),first.title()))]
+	if len(df_lookup):
+		return df_lookup.iloc[0].to_dict()["filerIdent"]
+	online_lookup = get_filer_info(first,last)
+	if(online_lookup):
+		return int(online_lookup[0]["id"])
+	best_match = closest_match(first,last)
+	if len(best_match):
+		return best_match["filerIdent"]
+	return -1
 
-
-
-def find_filer_id():
-	pass
 
 
 bills = load_bills()
-b = bills[sorted(bills.keys())[1]]
 
 # print(b)
 
@@ -78,24 +89,49 @@ def get_leg_id_vals(leg_id,tries=0):
 		else:
 			return None
 
+def get_keys(da,keys):
+	return {k:v for k,v in da.items() if ((k in keys) and (k in da))}
+
 def get_sponsors(bill):
-	inds = list(map(lambda x: x["leg_id"],b["sponsors"]))
+	inds = list(filter(lambda x:x,list(map(lambda x: x["leg_id"],bill["sponsors"]))))
 	def get_ind(ind):
 		d = get_leg_id_vals(ind)
-		print(d["first_name"],d["last_name"])
-		d["filer_id"] = get_pol_id(d["first_name"].lower(),d["last_name"].lower())
-		return d
-	return list(map(get_ind,inds))
+		# print(d["first_name"],d["last_name"])
+		id = get_pol_id(d["first_name"].lower(),d["last_name"].lower())
+		d["filer_id"] = id
+		return get_keys(d,["filer_id","party","photo_url","offices","id","district","first_name","last_name","middle_name","sources"])
+	ret = concr(get_ind,inds)
+	print(bill["id"])
+	return ret
+
+def extract_bill_info(bill):
+	return dict(dict(get_keys(bill,
+				["sponsors","subjects","title","sources","id","session"]),
+				**(get_keys(bill["votes"][-1],["yes_count","no_count","yes_votes","no_votes"]) if len(bill["votes"]) else {})
+				),prefix=bill["bill_id"].split(" ")[0],number=bill["bill_id"].split(" ")[1])
+
+def save_extracted_bill_data():
+	pd.DataFrame(data=list(map(extract_bill_info,bills.values()))).to_csv("{}/bill_data.csv".format(shared_dir),index=False)
+
+t = time.time()
+
+def get_chunk(chunk):
+	return concr(get_sponsors,chunk,max_workers=10)
+
+def save_legislators():
+	bs = list(map(lambda x: x[1],list(sorted(bills.items(),key=lambda a: int(a[0][3:])))))
+	pd.DataFrame(data=multiprocess(get_sponsors,bs)).drop_duplicates("id").to_csv("{}/legislators.csv".format(shared_dir),index=False)
 
 
-# print(get_leg_id_vals(leg))
+# for bill in list(bills.values())[:5]:
+# 	# pprint(bill)
+# 	pprint(extract_bill_info(bill))
 
-pprint(get_sponsors(b))
 
-# save_bills()
-# # pprint(bills)
-# # print(bills[)
-# # print(get_bill_by_id(bills[list(bills.keys())[1]]["session"],bills[list(bills.keys())[1]]["bill_id"])["sponsors"])
-#
 
-# pprint(lookup_legislator("TXL000195"))
+print(time.time()-t)
+	# pprint(get_sponsors(bills[bill]))
+
+# print(get_pol_id("John","Carona"))
+
+# print(closest_match("John","Carona"))
