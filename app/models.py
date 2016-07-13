@@ -1,12 +1,12 @@
 from sqlalchemy import *
-from db import db
+from db import db,app
 
 #MANY TO MANY relationships
 bill_legislator = db.Table('bill_legislator',
 								db.Column('bill_id', db.Integer, db.ForeignKey('Bill.id')),
 								db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')))
 
-legislator_contributor = db.Table('legislator_contributor', 
+legislator_contributor = db.Table('legislator_contributor',
     							db.Column('legislator_id', db.Integer, db.ForeignKey('Legislator.id')),
     							db.Column('contributor_id', db.Integer, db.ForeignKey('Contributor.id')))
 
@@ -148,3 +148,6 @@ class Contribution(db.Model):
 			"contributor_id": self.contributor_id,
 			"legislator_id": self.legislator_id
 		}
+
+if __name__ == "__main__":
+	db.create_all()
