@@ -8,6 +8,8 @@ import re
 import glob
 import argparse
 from utils import *
+import os
+
 
 # data_file = csv.DictReader(open("../../data/cont_ss.csv"))
 if __name__ == "__main__":
@@ -19,14 +21,17 @@ if __name__ == "__main__":
     parser.add_argument("-groupby", "--groupby",help="groups the merged dataframe by a column",action="store_true")
     parser.add_argument("-lookup", "--lookup",help="looks up filer by filer id",type=str,required=False)
     parser.add_argument("-filerinfo", "--filerinfo",help="looks up filer info by filer id",type=int,required=False, nargs="*")
-
+    parser.add_argument("-mergefolder", "--mergefolder",help="merges folder of csvs",type=str,required=False, nargs="*")
     args = parser.parse_args()
     
     # df = pd.read_csv("../../data/combined_all_preview.csv")
-    df = pd.read_csv("../../data/combined_all.csv")
-    df = df[df["contributorPersentTypeCd"] == "ENTITY"]
-    df["contributorNameOrganization"] = df["contributorNameOrganization"].apply(lambda x: x.strip())
-    pprint(df.drop_duplicates("contributorNameOrganization")["contributorNameOrganization"].values.tolist())
+    # df = pd.read_csv("../../data/combined_all.csv")
+    # df = df[df["contributorPersentTypeCd"] == "ENTITY"]
+    # df["contributorNameOrganization"] = df["contributorNameOrganization"].apply(lambda x: x.strip())
+    # pprint(df.drop_duplicates("contributorNameOrganization")["contributorNameOrganization"].values.tolist())
+
+    if args.mergefolder:
+        merge_folder(args.mergefolder,func=lookup)
 
     if args.merge:
         if args.merge.lower() == "individual":

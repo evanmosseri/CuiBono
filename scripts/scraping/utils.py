@@ -5,7 +5,13 @@ import sys
 import numpy as np
 import re
 import glob
-
+import concurrent.futures
+import itertools
+import multiprocessing
+import linecache
+import sys
+import os
+shared_dir = "../../data-shared"
 def extract_filer_name(org_name):
     reversed = False
     if "Texans For" in org_name.title():
@@ -54,6 +60,10 @@ def extract_filer_name(org_name):
     if "Citizens For" in org_name.title():
         org_name = org_name.replace("Citizens for","")
         reversed = True
+    if "Lt. Gov" in org_name.title():
+        org_name = org_name.replace("Lt. Gov","")
+        org_name = org_name.replace("Lt. Gov.","")
+        reversed = True
     org_name = org_name.replace(" SPAC ","")
     org_name = re.sub(r'\(.*\)',"",org_name) # replace anything inside parentheses
     org_name = org_name.replace(" Jr.","")
@@ -77,6 +87,9 @@ def extract_filer_name(org_name):
         temp = org_name.split(" ")
         org_name = " ".join([temp[0],temp[1]])
     return org_name
+
+def get_first_last(jumbled):
+    pass
 data_dir = "../../data/texas_ethics_commission"
 def merge_data(columns=None,by=None,debug=False,filename="combined.csv",allowed_contributor_types=["ENTITY",""],allowed_form_types=["COH"]):
     files = glob.glob("{}/contrib*.csv".format(data_dir))
@@ -112,3 +125,108 @@ def merge_data(columns=None,by=None,debug=False,filename="combined.csv",allowed_
 def filer_id_lookup(filerinfo):
     dat = pd.read_csv("{}/filers.csv".format(data_dir))
     return dat[dat["filerIdent"].isin(filerinfo)][["filerIdent","filerName","filerTypeCd","filerPersentTypeCd"]].to_dict("records")
+def concr(func,data,max_workers=50,thread=None):
+	thread = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) if not(thread) else thread
+	dat = list(thread.map(func,data))
+	if len(dat) and (type(dat[0]) is dict):
+		return dat
+	else:
+		try:
+			if len(dat) and dat != None and not(all(map(lambda x: x == None, dat))):
+				return list(itertools.chain(*dat))
+			else:
+				return dat
+		except Exception as e:
+			print(e)
+			print(dat)
+
+cpus = multiprocessing.cpu_count()-1
+def multiprocess(func,data,cpu_count=cpus):
+	pool = multiprocessing.Pool(cpu_count)
+	dat = list(pool.map(func,data))
+	if len(dat) and type(dat[0]) is dict:
+		return dat
+	else:
+		try:
+			if len(dat) and dat != None and not(all(map(lambda x: x == None, dat))):
+				return list(itertools.chain(*dat))
+			else:
+				return dat
+		except Exception as e:
+			print(e)
+			print(dat)
+def PrintException():
+	exc_type, exc_obj, tb = sys.exc_info()
+	f = tb.tb_frame
+	lineno = tb.tb_lineno
+	filename = f.f_code.co_filename
+	linecache.checkcache(filename)
+	line = linecache.getline(filename, lineno, f.f_globals)
+	print('EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj))
+
+def merge_folder(folder,func=lambda x:x,data_dir="../../data-shared",drop_duplicates="original_name"):
+    folder = folder[0][:-1] if folder[0][-1] == "/" else folder[0]
+    dat = [func(pd.read_csv(filename)) for filename in glob.glob("{}/*.csv".format(folder)) if os.stat(filename).st_size > 100]
+    pd.concat(dat).drop_duplicates(drop_duplicates).to_csv("{}/{}_preview.csv".format(data_dir,os.path.basename(folder)),index=None)
+    return pd.concat(dat).to_csv("{}/{}.csv".format(data_dir,os.path.basename(folder)),index=None)
+filers = pd.read_csv("../../data/texas_ethics_commission/filers.csv")
+d = filers[filers["filerPersentTypeCd"] == "INDIVIDUAL"]["filerName"].tolist()
+def lookup(df):
+    try:
+        ident = int(df["filer_id"].iloc[0])
+    except:
+        ident = -1
+    new_name = filers[filers["filerIdent"] == ident]["filerName"]
+    try:
+        new_name = new_name.iloc[0]
+    except:
+        new_name = None
+    df["filer_name_closest"] = ([new_name]*len(df))
+    return df
+
+def get_closest_match(x, list_strings,attr="filerName",baseline=1):
+	assert "," in x
+	def parse_filer_name(st):
+		# print(st)
+		x = re.sub(r" \(.{1,20}\)","",st)
+		x = re.sub(r" (Jr\.)|(Sr\.)","",x)
+		# x = x.replace("(The Honorable)","")
+		return x
+	filt = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
+	if len(filt):
+		return filt[0]
+	else:
+		filt2 = list(filter(lambda c: c.startswith(x) or c.startswith(",".join([x.split(",")[0],x.split(",")[1][:1]]) or (" ".join(x.split(",")[-1],x.split(",")[0]) in c)),list_strings))
+		if len(filt2):
+			return filt2[0]
+	best_match = None
+	highest_jw = 0
+
+	for current_string in list_strings:
+		current_string = parse_filer_name(current_string)
+		current_score = max(
+			jellyfish.jaro_winkler(x, current_string),
+			jellyfish.jaro_winkler(x, ", ".join(reversed(str(extract_filer_name(current_string)).split(" ")))))
+
+	if(current_score > highest_jw):
+		highest_jw = current_score
+		best_match = current_string
+	if highest_jw > baseline:
+		return best_match
+	else:
+		first,last = x.replace(",","").split(" ")[-1].lower(),x.replace(",","").split(" ")[0].lower()
+		info = looks(first,last)
+		if len(info):
+			best_match = filers[filers["filerIdent"] == int(info[0].get("id"))]["filerName"].values[0]
+		return best_match
+def get_id(name):
+	dnew = filers[filers["filerName"]==get_closest_match(name,d)]
+	return dnew.iloc[0].to_dict() if len(dnew) else -1
+
+def get_bill_names():
+    df = pd.read_csv("{}/bills_politicians.csv".format(shared_dir))
+    x = df["bill_name"].drop_duplicates().values
+    return x
+
+if __name__ == "__main__":
+    get_bill_names()
