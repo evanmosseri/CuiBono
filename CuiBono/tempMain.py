@@ -2,91 +2,68 @@ from flask import Flask, render_template
 # from models_new import *
 from flask.ext.sqlalchemy import SQLAlchemy
 from models_new import *
+from flask import request
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///database"
 db = SQLAlchemy(app)
 
-billz = db.session.query(Bill).all()
-legislatorz = db.session.query(Legislator).all()
-contributorz = db.session.query(Contributor).all()
-contributionz = db.session.query(Contribution).all()
+# billz = db.session.query(Bill).limit(5).all()
+# legislatorz = db.session.query(Legislator).limit(5).all()
+# contributorz = db.session.query(Contributor).limit(5).all()
+# contributionz = db.session.query(Contribution).filter(Contribution.legislator != None).limit(5).all()
 
 @app.route("/")
 def index():
 	return render_template("index.html")
+	
 
 @app.route("/legislators/<id>")
-def legislator(legislator_id):
-	return render_template("legislator.html", legislator = legislatorz["legislator_id"])
-
 @app.route("/legislators")
 def legislators(id=None):
-	return render_template("legislators.html" legislators = legislatorz) 
+	if not(id):
+		page = int(request.args.get("page")) if request.args.get("page") else 0	
+		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
+		return render_template("legislators.html", legislators = db.session.query(Legislator).offset(2*page).limit(num_per_page)) 
+	else:
+		return render_template("legislator.html", legislator = db.session.query(Legislator).get(id))
+
 
 @app.route("/bills/<id>")
-def bill(bill_id):
-	return render_template("bill.html", bill = billz["bill_id"])
-
-@app.route("/bills")
-def bills(id=None):	
-	return render_template("bills.html", bills = billz) 
-
+@app.route("/bills/")
+def bills(id=None, methods=["GET"]):
+	if not(id):
+		page = int(request.args.get("page")) if request.args.get("page") else 0	
+		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
+		return render_template("bills.html", bills = db.session.query(Bill).offset(2*page).limit(num_per_page)) 
+	else:
+		return render_template("bill.html", bill = db.session.query(Bill).get(id))
+	
 @app.route("/contributors/<int:id>")
-def contributor(contributor_id):
-	return render_template("contributor.html" contributor = contributorz["contributor_id"])
-
-@app.route("/contributors")
+@app.route("/contributors/")
 def contributors(id=None):
-	return render_template("contributors.html", contributors = contributorz) 
+	if not(id):
+		page = int(request.args.get("page")) if request.args.get("page") else 0	
+		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
+		return render_template("contributors.html", contributors = db.session.query(Contributor).offset(2*page).limit(num_per_page))  
+	else:
+		return render_template("contributor.html", contributor = db.session.query(Contributor).get(id))
+
 
 @app.route("/contributions/<int:id>")
-def contribution(contribution_id):
-	return render_template("contribution.html", contribution = contributionz["contribution_id"])
-
 @app.route("/contributions")
 def contributions(id=None):
-	return render_template("contributions.html") 	
+	if not(id):
+		page = int(request.args.get("page")) if request.args.get("page") else 0	
+		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
+		temp = db.session.query(Contribution).filter(Contribution.legislator != None).offset(2*page).limit(num_per_page)
+		return render_template("contributions.html",**{"contributions":temp}) 	
+	else:
+		return render_template("contribution.html", contributions= db.session.query(Contribution).get(id))
 
 @app.route("/about")
 def about():
 	return render_template("about.html") 
-
-@app.route("/bills/hb1")
-def hb1():
-	return render_template("hb1.html") 
-
-@app.route("/bills/hb15")
-def hb15():
-	return render_template("hb15.html") 
-
-@app.route("/bills/hb24")
-def hb24():
-	return render_template("hb24.html") 
-
-@app.route("/legislators/54588")
-def otto():
-	return render_template("otto.html") 
-
-@app.route("/legislators/58277")
-def walle():
-	return render_template("walle.html") 
-
-@app.route("/legislators/66272")
-def davis():
-	return render_template("davis.html") 
-
-@app.route("/contributors/borderhealthpac")
-def borderhealthpac():
-	return render_template("borderhealthpac.html") 
-
-@app.route("/contributors/ampac")
-def AMpac():
-	return render_template("AMpac.html") 
-
-@app.route("/contributors/plumberspac")
-def plumberspac():
-	return render_template("plumberspac.html") 
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')

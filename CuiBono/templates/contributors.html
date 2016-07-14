@@ -17,6 +17,8 @@
             <table id="contributorsTable" class="table table-responsive" style="">
               <thead>
                <tr>
+                 <th>ID</th>
+                 <th>Number of Contribution</th>
                  <th>Name</th>
                  <th>Type</th>
                  <th>Zip Code</th>
@@ -24,6 +26,8 @@
             </thead>
         {% for contributor in contributors %}
         <tr>
+          <td><a href="/contributors/{{contributor.id}}">{{contributor.id}}</a></td>
+          <td>{{contributor.contributions|length}}</td>
           <td>{{contributor.name}}</td>
           <td>{{contributor.type}}</td>
           <td>{{contributor.zip}}</td>

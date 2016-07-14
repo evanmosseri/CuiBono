@@ -29,8 +29,13 @@
       <td>{{contribution.amount}}</td>
       <td>{{contribution.filer_id}}</td>
       <td>{{contribution.submitted_date}}</td>
-      <td>{{contribution.contributor.first_name + " " + contribution.contributor.last_name}}</td>
-      <td>{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</td>
+      <td><a href="/contributions/{{contribution.contributor.id}}">{{contribution.contributor.name}}</a></td>
+      {%if contribution.legislator%}
+            <td><a href="/legislators/{{contribution.legislator.id}}">{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</a></td>
+      {%else%}
+        <td></td>
+      {%endif%}
+
     </tr>
     {% endfor %}
   </table>

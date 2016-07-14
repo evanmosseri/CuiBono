@@ -14,6 +14,20 @@
         <div class="intro-body">
 <div class="container">
   <h2>Bills</h2>
+    <div class ="pager">
+        <img src="http://mottie.github.com/tablesorter/addons/pager/icons/first.png" class="first"/> 
+        <img src="http://mottie.github.com/tablesorter/addons/pager/icons/prev.png" class="prev"/> 
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input --> 
+        <img src="http://mottie.github.com/tablesorter/addons/pager/icons/next.png" class="next"/> 
+        <img src="http://mottie.github.com/tablesorter/addons/pager/icons/last.png" class="last"/> 
+        <select class="pagesize" title="Select page size"> 
+            <option selected="selected" value="10">10</option> 
+            <option value="20">20</option> 
+            <option value="30">30</option> 
+            <option value="40">40</option> 
+        </select>
+        <select class="gotoPage" title="Select page number"></select>
+    </div>
     <table id = "billsTable" class="table table-responsive" style="">
       <thead>
         <th>id</th>
@@ -24,25 +38,62 @@
       </thead>
        {% for bill in bills %}
         <tr>
-        <th>{{bill.id}}</th>
+        <th><a href="/bills/{{bill.id}}">{{bill.id}}</a></th>
         <th>{{bill.prefix}}</th>
         <th>{{bill.number}}</th>
         <th>{{bill.session}}</th>
         <th>
-            {%for legis in bill.sponsors%}  
-                {{legis.first_name + " " + legis.last_name + ", "}}   
+            {%set index =0%}
+            {%if not bill.sponsors%}
+                {{"None"}}
+            {%endif%}
+            {%for legis in bill.sponsors%} 
+            <a href="/legislator/{{legis.id}}">
+                {% if not legis.first_name %}
+                    {{"None"}}
+                {%else%}
+                    {%if index == 0%}
+                        {{legis.first_name + " " + legis.last_name}}
+                        {%set index = 1%}
+                    {%endif%}
+                {%endif%}
+                </a>
             {%endfor%}
+        
         </th>
         </tr>
         {% endfor %}
     </table>
-</div>
-
-     
-       
-
     
+</div>      
 </div>
     </header>
 {% endblock %}
+{%block footer%}
+<script type="text/javascript" src="/static/jquery.tablesorter.js"></script>
+<script defer = "defer">
+$(document).ready(function()
+    {
+        var $table = $('billsTable'),
+        pagerOptions =
+        {
+            contianer:$(".pager"),
+            output: '{startRow} - {endRow} / {filteredRows} ({totalRows})',
+            fixedHeight: true,
+            removeRows: false,
+            cssGoto: '.gotoPage'
+        };
+        $table
+    .tablesorter({
+      theme: 'blue',
+      headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+      widthFixed: true,
+      widgets: ['zebra', 'filter']
+    })
+
+    .tablesorterPager(pagerOptions);
+    }
+);
+</script>
+{%endblock%}
 
