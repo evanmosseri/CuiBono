@@ -9,8 +9,8 @@ import numpy as np
 import ast
 
 app = Flask(__name__)
-engine = create_engine("sqlitaeaa:///myapp.db")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///testdb"
+engine = create_engine("sqlite:///myapp.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///database"
 db = SQLAlchemy(app)
 shared_dir = "../data-shared"
 
@@ -173,7 +173,7 @@ def load_legislators():
 	db.session.commit()
 
 def load_contributions():
-	df = pd.read_csv("{}/contributions.csv".format(shared_dir))
+	df = pd.read_csv("{}/entities_combined_grouped_preview.csv".format(shared_dir))
 	le = float(len(df))
 	with db.session.no_autoflush:
 		for i,row in df.iterrows():
@@ -226,7 +226,7 @@ def build_db():
 	load_legislators()
 	load_bills()
 	load_contributors()
-	#load_contributions()
+	load_contributions()
 
 
 if __name__ == "__main__":
