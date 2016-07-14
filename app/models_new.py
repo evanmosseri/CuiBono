@@ -173,7 +173,7 @@ def load_legislators():
 	db.session.commit()
 
 def load_contributions():
-	df = pd.read_csv("{}/entities_combined_grouped_preview.csv".format(shared_dir))
+	df = pd.read_csv("{}/contributions.csv".format(shared_dir))
 	le = float(len(df))
 	with db.session.no_autoflush:
 		for i,row in df.iterrows():
@@ -231,8 +231,8 @@ def build_db():
 
 if __name__ == "__main__":
 	pass
-	print(db.session.query(Legislator).filter(Legislator.filer_id==20745)[0].first_name)
+	#print(db.session.query(Legislator).filter(Legislator.filer_id==20745)[0].first_name)
 	# load_contributions()
-	#build_db()
+	build_db()
 	# load_bills()
 	#tests()

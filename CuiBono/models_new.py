@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy import create_engine
+from sqlalchemy.dialects.postgresql import JSON
 import json
 from pprint import pprint
 import pandas as pd

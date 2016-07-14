@@ -14,14 +14,25 @@
         <div class="intro-body">
 <div class="container" onload="create_table()">
   <h2>Bills</h2>
+
+    {%for bill in bills%}
+    <h2>{{bill.id}}</h2>
+    {%endfor%}
+
     <table class="table table-responsive" style=""></table>
+      <tr>
+        <th>id</th>
+        <th>prefix</th>
+        <th>number</th>
+        <th>session</th>
+        <th>sponsors</th>
+      </tr>
+    <tr>
+    </tr>
     <script>
       $(document).ready(function(){
         $("table").append($("<tr><th>id</th><th>prefix</th><th>number</th><th>session</th><th>sponsors</th></tr>"));
-        for(var i=0; i<10; i++)
-        {
-           $("table").append($('<tr><td><a href="http://0.0.0.0:5000/bills/' +i + '"">id</a></td><td>prefix</td><td>number</td><td>session</td><td>sponsors</td></tr>'));
-        }     
+          
       });
   
     </script>

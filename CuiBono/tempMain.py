@@ -1,6 +1,7 @@
 from flask import Flask, render_template
-from models_new import *
+# from models_new import *
 from flask.ext.sqlalchemy import SQLAlchemy
+from models_new import *
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///database"
@@ -10,6 +11,7 @@ bills = db.session.query(Bill).all()
 legislators = db.session.query(Legislator).all()
 contributors = db.session.query(Contributor).all()
 contributions = db.session.query(Contribution).all()
+
 
 
 @app.route("/")
@@ -24,7 +26,7 @@ def legislators(id=None):
 @app.route("/bills/<id>")
 @app.route("/bills")
 def bills(id=None):
-	return render_template("bills.html") 
+	return render_template("bills.html",{"bills":bills}) 
 
 @app.route("/contributors/<id>")
 @app.route("/contributors")
