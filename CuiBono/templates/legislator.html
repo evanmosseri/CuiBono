@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <header class="intro">
+        <div class="intro-body">
+<div class="container">
+  <h2>{{legislator.first_name +" "+ legislator.middle_name +" "+ legislator.last_name}}</h2>
+  <table id="legislatorTable" class="table table-responsive" style="">
+      <tr>
+        <td>Filer ID</td>
+        <td>{{legislator.filer_id}}</td>
+      </tr>
+      <tr>
+        <td>District</td>
+        <td>{{legislator.district}}</td>
+      </tr>
+      <tr>
+        <td>Party</td>
+        <td>{{legislator.party}}</td>
+      </tr>
+        <td>Type</td>
+        <td>{{legislator.type}}</td>
+      </tr>
+      <tr>
+        <td>Offices</td>
+        <td>{{legislator.offices}}</td>
+      </tr>
+        <td>Sources</td>
+        <td>{{legislator.sources}}</td>
+      </tr>
+      <tr>
+        <td>Photo</td>
+        <td>{{legislator.photo_u}}</td>
+      </tr>
+    </table>
+</div>
+</div>
+</header>
+
+{% endblock %}
