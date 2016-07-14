@@ -4,43 +4,27 @@
 <style>
 .table.table-responsive tr th{
   text-align: center;
-}
+};
 </style>
 {%endblock%}
 
 {% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <header class="intro">
         <div class="intro-body">
-<div class="container">
+<div class="container" onload="create_table()">
   <h2>Bills</h2>
-  <table class="table table-responsive" style="">
-    <tbody>
-      <tr>
-        <th>Prefix</th>
-        <th>Number</th>
-        <th>Authors</th>
-        <th>Party</th>
-      </tr>
-      <tr>
-        <td>House</td>
-        <td><a href="/bills/hb1">1</a></td>
-        <td><a href="/legislators/54588">John Otto</a></td>
-        <td>Republican</td>
-      </tr>
-      <tr>
-        <td>House</td>
-        <td><a href="/bills/hb15">15</a></td>
-        <td><a href="/legislators/54588">John Otto</a>,<a href="/legislators/58277"> Armando Walle</a></td>
-        <td>Republican</td>
-      </tr>
-      <tr>
-        <td>House</td>
-        <td><a href="/bills/hb24">24</a></td>
-        <td><a href="/legislators/66272">Sarah Davis</a></td>
-        <td>Republican</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-responsive" style=""></table>
+    <script>
+      $(document).ready(function(){
+        $("table").append($("<tr><th>id</th><th>prefix</th><th>number</th><th>session</th><th>sponsors</th></tr>"));
+        for(var i=0; i<10; i++)
+        {
+           $("table").append($('<tr><td><a href="http://0.0.0.0:5000/bills/' +i + '"">id</a></td><td>prefix</td><td>number</td><td>session</td><td>sponsors</td></tr>'));
+        }     
+      });
+  
+    </script>
 </div>
         </div>
     </header>
