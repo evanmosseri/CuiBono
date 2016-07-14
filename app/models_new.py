@@ -136,7 +136,7 @@ def tests():
 	pprint(db.session.query(Contributor).get(1).contributions)
 	print()
 	pprint("Bill 2 Contributions:")
-	pprint(db.session.query(Bill).get("2").sponsors)
+	pprint(db.session.query(Bill).get("2").id)
 	print()
 	print("Legislator T1 Contributions:")
 	pprint(db.session.query(Legislator).get("T1").contributions)
@@ -231,7 +231,8 @@ def build_db():
 
 if __name__ == "__main__":
 	pass
-	# print(db.session.query(Legislator).filter(Legislator.filer_id==20745)[0])
+	print(db.session.query(Legislator).filter(Legislator.filer_id==20745)[0].first_name)
 	# load_contributions()
-	build_db()
+	#build_db()
 	# load_bills()
+	#tests()

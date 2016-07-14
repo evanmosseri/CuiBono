@@ -6,6 +6,11 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///database"
 db = SQLAlchemy(app)
 
+bills = db.session.query(Bill).all()
+legislators = db.session.query(Legislator).all()
+contributors = db.session.query(Contributor).all()
+contributions = db.session.query(Contribution).all()
+
 
 @app.route("/")
 def index():
