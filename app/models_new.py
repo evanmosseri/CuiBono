@@ -10,7 +10,7 @@ import ast
 
 app = Flask(__name__)
 engine = create_engine("sqlite:///myapp.db")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://:evan@localhost/cuibono"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///testdb"
 db = SQLAlchemy(app)
 shared_dir = "../data-shared"
 
@@ -226,7 +226,7 @@ def build_db():
 	load_legislators()
 	load_bills()
 	load_contributors()
-	load_contributions()
+	#load_contributions()
 
 
 if __name__ == "__main__":
