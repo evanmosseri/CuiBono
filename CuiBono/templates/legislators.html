@@ -8,41 +8,41 @@
 </style>
 {%endblock%}
 
-{%block pagename%}legislators{%endblock%}
 {% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <header class="intro">
         <div class="intro-body">
 <div class="container">
   <h2>Legislators</h2>
-  <table class="table table-responsive" style="">
+  <table id="legislatorTable" class="table table-responsive" style="">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Filer ID</th>
         <th>District</th>
         <th>Party</th>
         <th>Type</th>
+        <th>Offices</th>
+        <th>Sources</th>
+        <th>Photo</th>
       </tr>
     </thead>
-    <tbody>
+    {% for legis in legislators %}
       <tr>
-        <td><a href="/legislators/54588">John Otto</a></td>
-        <td>18</td>
-        <td>Republican</td>
-        <td>House Representative</td>
+        <td>{{legis.first_name}}</td>
+        <td>{{legis.middle_name}}</td>
+        <td>{{legis.last_name}}</td>
+        <td>{{legis.filer_id}}</td>
+        <td>{{legis.district}}</td>
+        <td>{{legis.party}}</td>
+        <td>{{legis.type}}</td>
+        <td>{{legis.offices}}</td>
+        <td>{{legis.sources}}</td>
+        <td>{{legis.photo_u}}</td>
       </tr>
-      <tr>
-        <td><a href="/legislators/58277">Armando Walle</a></td>
-        <td>140</td>
-        <td>Democratic</td>
-        <td>House Representative</td>
-      </tr>
-      <tr>
-        <td><a href="/legislators/66272">Sarah Davis</a></td>
-        <td>134</td>
-        <td>Republican</td>
-        <td>House Representative</td>
-      </tr>
-    </tbody>
+      {% endfor %}
   </table>
 </div>
 </div>
