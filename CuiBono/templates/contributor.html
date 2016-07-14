@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <header class="intro">
+        <div class="intro-body">
+<div class="container">
+  <h2>{{contributor.name}}</h2>
+  <table id="contributorTable" class="table table-responsive" style="">
+      <tr>
+        <td>Type</td>
+        <td>{{contributor.type}}</td>
+      </tr>
+      <tr>
+        <td>Zip Code</td>
+        <td>{{contributor.zip}}</td>
+      </tr>
+    </table>
+</div>
+</div>
+</header>
+
+{% endblock %}
