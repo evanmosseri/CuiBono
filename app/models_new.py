@@ -218,7 +218,7 @@ def load_bills():
 		db.session.commit()
 
 def build_db():
-	db.session.create_all()
+	db.create_all()
 	load_legislators()
 	load_bills()
 	load_contributors()

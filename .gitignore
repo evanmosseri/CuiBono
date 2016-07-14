@@ -10,4 +10,4 @@ data/*
 *.pyc
 *.txt
 entities_combined_grouped.csv
-data-shared/contributors.csv
+data-shared/contributions.csv
