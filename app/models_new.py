@@ -9,7 +9,7 @@ import numpy as np
 import ast
 
 app = Flask(__name__)
-engine = create_engine("sqlite:///myapp.db")
+engine = create_engine("sqlitae:///myapp.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///testdb"
 db = SQLAlchemy(app)
 shared_dir = "../data-shared"
