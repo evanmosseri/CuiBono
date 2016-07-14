@@ -6,10 +6,11 @@ import json
 from pprint import pprint
 import pandas as pd
 import numpy as np
+import ast
 
 app = Flask(__name__)
 engine = create_engine("sqlite:///myapp.db")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://:evan@localhost/cuibono"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://:root@localhost/cuibono"
 db = SQLAlchemy(app)
 shared_dir = "../data-shared"
 
@@ -201,6 +202,8 @@ def load_bills():
 		for i,row in df.iterrows():
 			print("%.2f%%" % ((i/le)*100))
 			dat = row.to_dict()
+			new_sponsors = ast.literal_eval(dat["sponsors"]) if dat["sponsors"] else []
+			spons = [x["leg_id"] for x in new_sponsors if x["leg_id"]]
 			db.session.add(Bill(**{
 				"id":dat["id"],
 				"no_count":int(dat["no_count"]) if not(row.isnull()["no_count"]) else -1,
@@ -212,6 +215,7 @@ def load_bills():
 				"session":dat["session"],
 				"sources":dat["sources"] if not(row.isnull()["sources"]) else [],
 				"sponsor_meta":dat["sponsors"] if not(row.isnull()["sponsors"]) else [],
+				"sponsors": [db.session.query(Legislator).get(c) for c in spons if db.session.query(Legislator).get(c)],
 				"subjects":dat["subjects"] if not(row.isnull()["subjects"]) else [],
 				"title":dat["title"]
 			}))
@@ -224,8 +228,10 @@ def build_db():
 	load_contributors()
 	load_contributions()
 
+
 if __name__ == "__main__":
 	pass
 	# print(db.session.query(Legislator).filter(Legislator.filer_id==20745)[0])
 	# load_contributions()
 	build_db()
+	# load_bills()
