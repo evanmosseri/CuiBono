@@ -12,9 +12,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <header class="intro">
         <div class="intro-body">
-<div class="container" onload="create_table()">
+<div class="container">
   <h2>Bills</h2>
-    <table id = "billsTable" class="table table-responsive" style=""></table>
+    <table id = "billsTable" class="table table-responsive" style="">
       <thead>
         <th>id</th>
         <th>prefix</th>
@@ -22,70 +22,26 @@
         <th>session</th>
         <th>sponsors</th>
       </thead>
-     <tbody>
-        {% for bill in bills%}
+       {% for bill in bills %}
         <tr>
-         <th><a href="/bills/{{bill.id}}">{{ bill.bill_id }}</a></th>
-         <th><{{ bill.prefix }}</th>
-         <th>{{ bill.number }}</th>
-         <th>{{ bill.session }}</th>
-         <th><{{ bill.sponsors }}</th>
+        <th>{{bill.id}}</th>
+        <th>{{bill.prefix}}</th>
+        <th>{{bill.number}}</th>
+        <th>{{bill.session}}</th>
+        <th>
+            {%for legis in bill.sponsors%}  
+                {{legis.first_name + " " + legis.last_name + ", "}}   
+            {%endfor%}
+        </th>
         </tr>
-     </tbody> 
-      <table id = "legislatorsTable" class="table table-responsive" style=""></table>
-      <thead>
-        <th>filer_id</th>
-        <th>first_name</th>
-        <th>last_name</th>
-        <th>district</th>
-        <th>party</th>
-      </thead>
-     <tbody>
-        {% for legislator in legislators%}
-        <tr>
-         <th><a href="/contributors/{{legislator.filer_id}}">{{ legislator.filer_id }}</a></th>
-         <th>{{ legislator.first_name }}</th>
-         <th>{{ legislator.last_name }}</th>
-         <th>{{ legislator.district }}</th>
-         <th><{{ legislator.party }}</th>
-        </tr>
-     </tbody> 
-      <table id = "contributorsTable" class="table table-responsive" style=""></table>
-      <thead>
-        <th>id</th>
-        <th>name</th>
-        <th>number of contributions</th>
-        <th>type</th>
-        <th>zip code</th>
-      </thead>
-     <tbody>
-        {% for contributor in contributors%}
-        <tr>
-         <th><a href="/contributors/{{contributor.id}}">{{ contributor.id }}</a></th>
-         <th><{{ contributor.name }}</th>
-         <th>{{ contributor.number }}</th>
-         <th>{{ contributor.type }}</th>
-         <th><{{ contributor.zip }}</th>
-        </tr>
-     </tbody> 
-      <table id = "contributionsTable" class="table table-responsive" style=""></table>
-      <thead>
-        <th>id</th>
-        <th>amount</th>
-        <th>filer_id</th>
-        <th>contributor id</th>
-        <th>submitted date</th>
-      </thead>
-     <tbody>
-        {% for contribution in contributions%}
-        <tr>
-         <th><a href="/contributions/{{contribution.id}}">{{ contribution.id }}</a></th>
-         <th><{{ contribution.amount }}</th>
-         <th>{{ contribution.filer_id }}</th>
-         <th>{{ contribution.contributor_id }}</th>
-         <th><{{ contribution.submitted_date }}</th>
-        </tr>
-     </tbody> 
+        {% endfor %}
+    </table>
+</div>
+
+     
+       
+
+    
 </div>
     </header>
 {% endblock %}

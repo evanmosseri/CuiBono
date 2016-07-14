@@ -173,7 +173,7 @@ def load_legislators():
 	db.session.commit()
 
 def load_contributions():
-	df = pd.read_csv("{}/contributions.csv".format(shared_dir))
+	df = pd.read_csv("{}/entities_combined_grouped_preview.csv".format(shared_dir))
 	le = float(len(df))
 	with db.session.no_autoflush:
 		for i,row in df.iterrows():

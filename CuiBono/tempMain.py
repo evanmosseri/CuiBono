@@ -7,11 +7,12 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///database"
 db = SQLAlchemy(app)
 
-bills = db.session.query(Bill).all()
-legislators = db.session.query(Legislator).all()
-contributors = db.session.query(Contributor).all()
-contributions = db.session.query(Contribution).all()
+billz = db.session.query(Bill).all()
+legislatorz = db.session.query(Legislator).all()
+contributorz = db.session.query(Contributor).all()
+contributionz = db.session.query(Contribution).all()
 
+print(billz[0].sponsors[0].contributions)
 
 
 @app.route("/")
@@ -25,8 +26,8 @@ def legislators(id=None):
 
 @app.route("/bills/<id>")
 @app.route("/bills")
-def bills(id=None):
-	return render_template("bills.html",{"bills":bills}) 
+def bills(id=None):	
+	return render_template("bills.html",bills = billz) 
 
 @app.route("/contributors/<id>")
 @app.route("/contributors")
