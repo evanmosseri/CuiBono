@@ -10,7 +10,7 @@ import ast
 
 app = Flask(__name__)
 engine = create_engine("sqlite:///myapp.db")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://:root@localhost/cuibono"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://:evan@localhost/cuibono"
 db = SQLAlchemy(app)
 shared_dir = "../data-shared"
 
