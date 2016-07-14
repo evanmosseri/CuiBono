@@ -9,20 +9,26 @@
 {%endblock%}
 
 {% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <header class="intro">
         <div class="intro-body">
           <div class="container">
             <h2>Contributors</h2>
-            <table class="table table-responsive" style="">
-            <tbody>
+            <table id="contributorsTable" class="table table-responsive" style="">
+              <thead>
                <tr>
                  <th>Name</th>
                  <th>Type</th>
-                 <th>City</th>
-                  <th>Zip Code</th>
+                 <th>Zip Code</th>
               </tr>
-               
-    </tbody>
+            </thead>
+        {% for contributor in contributors %}
+        <tr>
+          <td>{{contributor.name}}</td>
+          <td>{{contributor.type}}</td>
+          <td>{{contributor.zip}}</td>
+        </tr>
+        {% endfor %}
   </table>
 </div>
 </div>
