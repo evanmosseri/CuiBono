@@ -29,8 +29,8 @@
       <td>{{contribution.amount}}</td>
       <td>{{contribution.filer_id}}</td>
       <td>{{contribution.submitted_date}}</td>
-      <td>{{contribution.contributor_id}}</td>
-      <td>{{contribution.legislator_id}}</td>
+      <td>{{contribution.contributor.first_name + " " + contribution.contributor.last_name}}</td>
+      <td>{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</td>
     </tr>
     {% endfor %}
   </table>
