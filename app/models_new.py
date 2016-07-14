@@ -181,7 +181,7 @@ def load_contributions():
 			id = int(i)
 			amount = float(dat["contributionAmount"])
 			filer_id = int(dat["filerIdent"])
-			submitted_date = str(int(dat["receivedDt"]))
+			submitted_date = str(int(dat["receivedDt"])) if not(row.isnull()["receivedDt"]) else None,
 			contributor = db.session.query(Contributor).get(dat["contributor_id"])
 			ans = db.session.query(Legislator).filter(Legislator.filer_id==filer_id)
 			try:
