@@ -9,37 +9,30 @@
 {%endblock%}
 
 {% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <header class="intro">
         <div class="intro-body">
 <div class="container">
   <h2>Contributions</h2>
-  <table class="table table-responsive" style="">
-    <tbody>
+  <table id="contributionsTable" class="table table-responsive" style="">
+     <thead> 
       <tr>
         <th>Amount</th>
+        <th>Filer ID</th>
+        <th>Date Submitted</th>
         <th>Contributor</th>
         <th>Legislator</th>
-        <th>Date</th>
       </tr>
-      <tr>
-        <td>$5,000</td>
-        <td><a href="/contributors/borderhealthpac">Border Health PAC</a></td>
-        <td><a href="/legislators/58277">Armando Walle</a></td>
-        <td>8-17-2015</td>
-      </tr>
-      <tr>
-        <td>$2,500</td>
-        <td><a href="/contributors/ampac">A&M PAC</a></td>
-        <td><a href="/legislators/66272">Sarah Davis</a></td>
-        <td>2-26-2016</td>
-      </tr>
-      <tr>
-        <td>$2,000</td>
-        <td><a href="/contributors/plumberspac">Plumbers Local Union No. 68 PAC Fund</a></td>
-        <td><a href="/legislators/58277">Armando Walle</a></td>
-        <td>10-20-2015</td>
-      </tr>
-    </tbody>
+    </thead>
+    {% for contribution in contributions %}
+    <tr>
+      <td>{{contribution.amount}}</td>
+      <td>{{contribution.filer_id}}</td>
+      <td>{{contribution.submitted_date}}</td>
+      <td>{{contribution.contributor_id}}</td>
+      <td>{{contribution.legislator_id}}</td>
+    </tr>
+    {% endfor %}
   </table>
 </div>
 </div>
