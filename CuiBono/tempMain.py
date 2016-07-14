@@ -19,7 +19,7 @@ def index():
 	
 
 @app.route("/legislators/<id>")
-@app.route("/legislators")
+@app.route("/legislators/")
 def legislators(id=None):
 	if not(id):
 		page = int(request.args.get("page")) if request.args.get("page") else 0	
@@ -35,7 +35,7 @@ def bills(id=None, methods=["GET"]):
 	if not(id):
 		page = int(request.args.get("page")) if request.args.get("page") else 0	
 		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
-		return render_template("bills.html", bills = db.session.query(Bill).offset(2*page).limit(num_per_page)) 
+		return render_template("bills.html", bills = db.session.query(Bill).offset(2*page).limit(num_per_page),page=page) 
 	else:
 		return render_template("bill.html", bill = db.session.query(Bill).get(id))
 	
@@ -57,9 +57,9 @@ def contributions(id=None):
 		page = int(request.args.get("page")) if request.args.get("page") else 0	
 		num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 		temp = db.session.query(Contribution).filter(Contribution.legislator != None).offset(2*page).limit(num_per_page)
-		return render_template("contributions.html",**{"contributions":temp}) 	
+		return render_template("contributions.html",contributions = temp) 	
 	else:
-		return render_template("contribution.html", contributions= db.session.query(Contribution).get(id))
+		return render_template("contribution.html", contribution= db.session.query(Contribution).get(id))
 
 @app.route("/about")
 def about():

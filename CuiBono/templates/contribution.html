@@ -17,7 +17,7 @@
   <table id="contributionTable" class="table table-responsive" style="">
       <tr>
         <td>Amount</td>
-        <td>{{contribution.amount}}</td>
+        <td>${{contribution.amount}}</td>
       </tr>
       <tr>
         <td>Date Submitted</td>
@@ -25,11 +25,11 @@
       </tr>
       <tr>
         <td>Legislator</td>
-        <td>{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</td>
+        <td><a href = "/legislators/{{contribution.legislator.id}}">{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</a></td>
       </tr>
       <tr>
         <td>Contributor</td>
-        <td>{{contribution.contributor.first_name + " " + contribution.contributor.last_name}}</td>
+        <td><a href="/contributors/{{contribution.contributor.id}}">{{contribution.contributor.name}}</a></td>
       </tr>
     </table>
 </div>
