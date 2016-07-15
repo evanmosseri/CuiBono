@@ -87,12 +87,12 @@ def get_all_legislators():
 
 @app.route("/api/contributor/")
 def get_all_contributor():
-	contributors = db.session.query(Contributor).limit(50).all()
+	contributors = db.session.query(Contributor).all()
 	return jsonify([contributor_to_dict(contra) for contra in contributors])
 
 @app.route("/api/contribution/")
 def get_all_legislator():
-	contributions = db.session.query(Contribution).limit(50).all()
+	contributions = db.session.query(Contribution).all()
 	return jsonify([contribution_to_dict(x) for x in contributions])
 
 def bill_to_dict(bill):
