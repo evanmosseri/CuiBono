@@ -48,12 +48,11 @@
                 {{"None"}}
             {%endif%}
             {%for legis in bill.sponsors%} 
-            <a href="/legislator/{{legis.id}}">
                 {% if not legis.first_name %}
                     {{"None"}}
                 {%else%}
                     {%if index == 0%}
-                        {{legis.first_name + " " + legis.last_name}}
+                        <a href="/legislators/{{legis.id}}">{{legis.first_name + " " + legis.last_name}}
                         {%set index = 1%}
                     {%endif%}
                 {%endif%}

@@ -18,25 +18,28 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>ID</th>
         <th>Filer ID</th>
         <th>District</th>
         <th>Party</th>
-        <th>Type</th>
         <th>Offices</th>
         <th>Sources</th>
-        <th>Photo</th>
       </tr>
     </thead>
     {% for legis in legislators %}
       <tr>
-        <td><a href="/legislators/{{legis.id}}">{{legis.first_name +" "+ legis.middle_name +" " + legis.last_name}}</a></td>
+        <td><a href="/legislators/{{legis.id}}">{{legis.first_name +" " + legis.last_name}}</a></td>
+        <td>{{legis.id}}</td>
         <td>{{legis.filer_id}}</td>
-        <td>{{legis.district}}</td>
+        <td>{%if legis.district == -1%}
+                N/A
+              {%else%}
+                {{legis.district}}
+              {%endif%}</td>
         <td>{{legis.party}}</td>
-        <td>{{legis.type}}</td>
         <td>{{legis.offices}}</td>
         <td>{{legis.sources}}</td>
-        <td>{{legis.photo_u}}</td>
+
       </tr>
       {% endfor %}
   </table>

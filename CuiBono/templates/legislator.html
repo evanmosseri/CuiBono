@@ -13,7 +13,7 @@
     <header class="intro">
         <div class="intro-body">
 <div class="container">
-  <h2>{{legislator.first_name +" "+ legislator.middle_name +" "+ legislator.last_name}}</h2>
+  <h2>{{legislator.first_name +" "+ legislator.last_name}}</h2>
   <table id="legislatorTable" class="table table-responsive" style="">
       <tr>
         <td>Filer ID</td>
@@ -42,6 +42,13 @@
         <td>{{legislator.photo_u}}</td>
       </tr>
     </table>
+    <div class="row">
+      <table class="bills" class="table table-responsive" style="">
+      {%for bill in legislator.bills%}
+        <tr><td>{{bill.number}}</td><tr>
+      {%endfor%}
+      </table>
+    </div>
 </div>
 </div>
 </header>
