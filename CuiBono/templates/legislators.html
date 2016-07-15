@@ -17,13 +17,13 @@
   <table id="legislatorsTable" class="table table-responsive" style="">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Filer ID</th>
-        <th>District</th>
-        <th>Party</th>
-        <th>Offices</th>
-        <th>Sources</th>
+        <th><a href="/legislators?sort=name">Name</a></th>
+        <th><a href="/legislators?sort=id">ID</a></th>
+        <th><a href="/legislators?sort=filer_id">Filer ID</a></th>
+        <th><a href="/legislators?sort=district">District</a></th>
+        <th><a href="/legislators?sort=party">Party</a></th>
+        <th><a href="/legislators?sort=offices">Offices</a></th>
+        <th><a href="/legislators?sort=sources">Sources</a></th>
       </tr>
     </thead>
     {% for legis in legislators %}
@@ -43,6 +43,10 @@
       </tr>
       {% endfor %}
   </table>
+  <div>
+      <a href="/bills?page={{page-1}}">Previous</a>
+      <a href="/bills?page={{page+1}}">Next</a>
+  </div>
 </div>
 </div>
 </header>
