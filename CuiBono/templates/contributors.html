@@ -17,11 +17,11 @@
             <table id="contributorsTable" class="table table-responsive" style="">
               <thead>
                <tr>
-                 <th>ID</th>
+                 <th><a href="/contributions?sort=id">ID</a></th>
                  <th>Number of Contribution</th>
-                 <th>Name</th>
-                 <th>Type</th>
-                 <th>Zip Code</th>
+                 <th><a href="/contributions?sort=name">Name</a></th>
+                 <th><a href="/contributions?sort=type">Type</a></th>
+                 <th><a href="/contributions?sort=zip">Zip Code</a></th>
               </tr>
             </thead>
         {% for contributor in contributors %}
@@ -34,6 +34,11 @@
         </tr>
         {% endfor %}
   </table>
+  <div>
+    <a href="/bills?page={{page-1}}">Previous</a>
+    <a href="/bills?page={{page+1}}">Next</a>
+  </div>
+
 </div>
 </div>
 </header>

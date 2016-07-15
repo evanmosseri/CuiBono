@@ -30,11 +30,11 @@
     </div>
     <table id = "billsTable" class="table table-responsive" style="">
       <thead>
-        <th>id</th>
-        <th>prefix</th>
-        <th>number</th>
-        <th>session</th>
-        <th>sponsors</th>
+        <th><a href="/bills?sort=id">ID</a></th>
+        <th><a href="/bills?sort=prefix">Prefix</a></th>
+        <th><a href="/bills?sort=number">Number</a></th>
+        <th><a href="/bills?sort=session">Session</a></th>
+        <th><a href="/bills?sort=sponsors">Sponsors</a></th>
       </thead>
        {% for bill in bills %}
         <tr>
@@ -63,7 +63,10 @@
         </tr>
         {% endfor %}
     </table>
-    
+  <div>
+  <a href="/bills?page={{page-1}}">Previous</a>
+  <a href="/bills?page={{page+1}}">Next</a>
+  </div>
 </div>      
 </div>
     </header>
