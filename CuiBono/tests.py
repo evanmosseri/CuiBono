@@ -4,7 +4,7 @@ import unittest
 import tempfile
 from unittest import main, TestCase
 
-from tempMain import db
+from tempMain import db 
 from models_new import *
 
 class MyTest(TestCase):
@@ -24,15 +24,14 @@ class MyTest(TestCase):
 class FlaskTest(MyTest):
 
     def test_add(self):
-        db.session.add(Bill(id = "TX0000000", prefix = "House"))
-        db.sessino.commit()
-        bill = db.session.query(Bill).get("TX0000000")
+        
+	bill = db.session.query(Bill).get("TX0000000")
         self.assertEqual(bill.prefix, "House")
 
     def test_add1(self):
         db.session.add(Legislator(id = "3838", filer_id = 3883))
         db.sessino.commit()
-        legi = db.session.query(Legislator).get("3838")
+        legi = db.sesion.query(Legislator).get("3838")
         self.assertEqual(legi.filer_id, 3883)
 
     def test_add2(self):
