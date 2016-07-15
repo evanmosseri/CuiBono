@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style type="text/css">
+	
+.tempBG {
+	background: url(../static/img/intro-bg.jpg) no-repeat bottom center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+
+<div class="tempBG">
+<br>
+<h1 style="text-align:center;">Bill 1</h1>
+
+<p style="text-align:center"><a href="http://www.legis.state.tx.us/BillLookup/Text.aspx?LegSess=84R&Bill=HB1">Bill text</a></p>
+	<br><br>
+
+	         <p style="padding-left: 40px">Authors: <a href="/legislators/54588">John Otto</a></p>
+             
+	         <p style="padding-left: 40px">Prefix: House</p>
+	         	         <p style="padding-left: 40px">Session ID: 84R</p>
+	         <p style="padding-left: 40px">Session Year: 2015</p>
+	         <p style="padding-left: 40px">Sponsors: Senator Jane Nelson</p>
+
+    <br><br>
+
+</div>
+
+{% endblock %}

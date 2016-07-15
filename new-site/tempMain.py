@@ -21,7 +21,7 @@ def index():
 @app.route("/legislators/<id>")
 @app.route("/legislators/")
 def legislators(id=None):
-	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0
+	page = int(request.args.get("page")) if request.args.get("page") else 0
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
@@ -33,7 +33,7 @@ def legislators(id=None):
 @app.route("/bills/<id>")
 @app.route("/bills/")
 def bills(id=None, methods=["GET"]):
-	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0
+	page = int(request.args.get("page")) if request.args.get("page") else 0
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
@@ -44,7 +44,7 @@ def bills(id=None, methods=["GET"]):
 @app.route("/contributors/<int:id>")
 @app.route("/contributors/")
 def contributors(id=None):
-	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0
+	page = int(request.args.get("page")) if request.args.get("page") else 0
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
@@ -56,7 +56,7 @@ def contributors(id=None):
 @app.route("/contributions/<int:id>")
 @app.route("/contributions")
 def contributions(id=None):
-	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0	
+	page = int(request.args.get("page")) if request.args.get("page") else 0	
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
