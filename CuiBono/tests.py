@@ -2,6 +2,7 @@ import os
 import flask
 import unittest
 import tempfile
+from unittest import main, TestCase
 
 from tempMain import db
 from models_new import *
@@ -98,4 +99,4 @@ class FlaskTest(MyTest):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    main()

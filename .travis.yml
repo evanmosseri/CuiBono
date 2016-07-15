@@ -1,0 +1,17 @@
+language: python
+ 
+python:
+  - "3.4"
+ 
+branches:
+  only:
+    - master
+ 
+install: "pip install -r tools"
+
+addons:
+  postgresql: "9.3"
+
+before_script:
+ 
+script: "bash travis.bash"
