@@ -69,6 +69,13 @@ def contributions(id=None):
 def about():
 	return render_template("about.html")
 
+@app.route("/search")
+def search():
+	query = str(request.args.get('q', '')).split(' ')
+	refined = [x for x in query if x != '']
+	single_query = ' '.join(refined)
+	return render_template("search.html", textInput = single_query)
+
 @app.route('/unittest/')
 @app.route('/unittest/<name>')
 def unittest(name = None):

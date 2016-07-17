@@ -69,6 +69,14 @@
                     <li>
                         <a href="/about">About</a>
                     </li>
+                    <li>
+                    <a>
+<form action="#" onsubmit="return false;">
+    <input style="color: #C0C0C0;" type="text" id="textInput" placeholder="Search..">
+    <button id="submit" onclick="location.href='/search?q=' + document.getElementById('textInput').value;">Go</button>
+</form>
+</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -167,6 +175,18 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $(function () {
+            $("#textInput").keyup(function (e) {
+                if (e.keyCode === 13) {
+                    window.location.href = "/search?q=" + $('#textInput').val();
+                }
+            });
+
+        });
+    });
+</script>
 
 </body>
 
