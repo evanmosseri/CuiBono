@@ -9,4 +9,5 @@ data
 data/*
 *.pyc
 *.txt
-bootstrap-tutorial
+entities_combined_grouped.csv
+data-shared/contributions.csv

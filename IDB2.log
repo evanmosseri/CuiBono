@@ -1,0 +1,828 @@
+commit aa2cce1a3709b08651b8adfb43be03d07a268f80
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Thu Jul 14 21:17:48 2016 -0500
+
+    Added tests
+
+commit 5ef4e953aabe96a8056e32d74b59a8f3ce20040f
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 21:16:02 2016 -0400
+
+    Removed limits
+
+commit c879a0b909ab095d2755721cc41b9d41b90d58f7
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 21:14:29 2016 -0400
+
+    Finsihed apiary API
+
+commit 8cbedd3cff870bf6111ac894400d823373bc6bea
+Merge: 3db2d3c b5777d5
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Thu Jul 14 19:04:11 2016 -0500
+
+    merged
+
+commit 3db2d3cba99376199d38584442831ee445c0cd67
+Author: Zin20 <jimmyne@gmail.com>
+Date:   Thu Jul 14 18:56:36 2016 -0500
+
+    Added apiary api
+
+commit b5777d5d3e6a2754cc0fb7e326a6ad07dbabec4e
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 19:51:35 2016 -0400
+
+    Added more links between pages
+
+commit 6fb12c06f30a6c9cfeec751c71b1fa3a8497ca8e
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 18:18:27 2016 -0400
+
+    Add routing progress
+
+commit 1525637b2682e56691c666e3371dfda073a54696
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 15:21:53 2016 -0500
+
+    Update uml diagram
+
+commit 31f80af35e6815e3b7c78ff609a80a7768d4dd25
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 15:00:48 2016 -0500
+
+    Add tempMain progress
+
+commit 5a14a7ceb8c054318d625515f4bf3e3c042b5b1f
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 14:42:21 2016 -0500
+
+    Add more templates
+
+commit d9bdad1c29971071079fe70cfccb66a724d012f4
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 14:31:14 2016 -0500
+
+    Add legislator template
+
+commit d693806ae6352fc93ee3c5ff68d89dbe9f623937
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 14:18:25 2016 -0500
+
+    Add contributor template
+
+commit 3326bf06d50aa3762c2ed2d1134e1812b273708c
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 14:13:48 2016 -0500
+
+    Update contribution template
+
+commit cbb41f53e21c21f14bdecd6357eddb2a8832ba4e
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 14:07:09 2016 -0500
+
+    Add contributions template
+
+commit ae5165fe0b06d4abb013c168e09d049d709ee509
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Thu Jul 14 13:49:42 2016 -0500
+
+    Add legislator template
+
+commit 8d2e7ee17bd62ad8e8a54a9b7991dcfcda61e716
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 14:20:14 2016 -0400
+
+    Bills template is working
+
+commit 7e462b7c4ff3c2cec4a8635409ef1c316beba789
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Thu Jul 14 12:14:57 2016 -0500
+
+    LOLOLOLOL
+
+commit 7835c4863371c02a9df6c8b29468b32737cca0d7
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 12:24:37 2016 -0400
+
+    C
+    Making complete database and working on template for bills
+
+commit dc2837ae0593d058082def3366bdbbd05bfc68d9
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 11:29:12 2016 -0400
+
+    Querying all the tables in tempMain.py
+    :
+
+commit a6e1c91f2251575c0002868a6e12b2ed7404bf54
+Author: Zin20 <jimmyne@gmail.com>
+Date:   Thu Jul 14 01:38:00 2016 -0500
+
+    Testing some database stuff
+
+commit 531fac502809ae13bc00102ad85ab1e0091f9542
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 02:15:55 2016 -0400
+
+    Database is up check models_new.py for more info on it
+
+commit f56cdfe259fbe90891741c8fd1bd2cf16a08be74
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 01:44:55 2016 -0400
+
+    Freaking push already
+
+commit 95db5755c4e1191c08970107260adc55cc06961a
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 01:43:23 2016 -0400
+
+    NEW BRANCH
+
+commit c0b611b6e5d4d23f6b431768c073ba030b3243b6
+Author: Adam Miller <jimmyne@gmail.com>
+Date:   Thu Jul 14 01:33:15 2016 -0400
+
+    Added a new branch for testing stuff
+
+commit 94db9c43a3c00f57f913fe323966b495270798ea
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Wed Jul 13 20:46:12 2016 -0500
+
+    table created
+
+commit 2cbfa658b22f01bc6c316f00ea96a726d199c331
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 20:35:10 2016 -0500
+
+    changed postgres user
+
+commit 1e9e9de0f2d1c84eb5ccc63d3b70ea4437baae79
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 20:29:30 2016 -0500
+
+    readied for server
+
+commit 0d8aec3b9f0046379e0ff7d03b77ab6d786d6cf7
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 19:58:21 2016 -0500
+
+    fixed session create_all bug
+
+commit b887813725c2ae167e87d78a910330765ccb5716
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 19:39:52 2016 -0500
+
+    fixed nan bug
+
+commit 88c1d07597629e20aeba4c0aab589e0184b06376
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 19:30:04 2016 -0500
+
+    loaded data into database
+
+commit c40a1ae38558329842077d98092fd6f38eaec732
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 12:30:43 2016 -0500
+
+    test
+
+commit a373deaa213e95da9b4fb8f1078cf7c679e2e76f
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 11:34:33 2016 -0500
+
+    Merge branch 'dev' of http://github.com/evanmosseri/cs373-idb into dev
+
+commit fd839f89b81d1d313fc2e70aa5abaac9b6aba916
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 10:38:03 2016 -0500
+
+    compressed files that are too large
+
+commit 9cba65890ed08fa1e4459291a7744dcaea14eeaa
+Merge: 88c1449 f8f97ca
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 10:35:24 2016 -0500
+
+    Merge branch 'dbdev' into dev
+    
+    Merged stewart's database work with dev branch for flask development
+
+commit 88c1449a1cefea7a87b13aad37f9a639ff58bced
+Merge: 767778a 4d8b54d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 10:30:16 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' into dev
+    
+    merged scraping scripts and data files to dev branch for use in flask
+
+commit 4d8b54d30aa7720b0618b359e2a6683c899a216b
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Wed Jul 13 10:29:54 2016 -0500
+
+    got all data
+
+commit 48053b7409a60355f4065f1534b1e9364fb75647
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 12 21:29:52 2016 -0500
+
+    got bills from api
+
+commit cd9862a5fa48b0e607db9da4e21eb6db00c2ebe1
+Merge: f4f1ddb 29c1c93
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 12 17:44:41 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' of http://github.com/evanmosseri/cs373-idb into Scraping-and-Storing
+
+commit f4f1ddbde38453c27a0718aa0d1d89ac9cf078fe
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 12 17:44:28 2016 -0500
+
+    scraped bills, matched bills with politicians, downloaded subset data, wrote function to get legislator id from name
+
+commit f8f97ca7d3153fce3b986d8260b20bf4e387d855
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Tue Jul 12 17:33:27 2016 -0500
+
+    Add db init
+
+commit c73dcc9a69f2edcf803b0fdb255061feab61b678
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Tue Jul 12 13:10:06 2016 -0500
+
+    Refactor loader
+
+commit 767778aec79fc2f31340ff5b0074840f58602173
+Author: williamzhxb <whozhy@gmail.com>
+Date:   Tue Jul 12 13:21:30 2016 -0400
+
+    unit test button linked into output file to print result
+
+commit d9980d306d54f545c67e4529b31ffe99b3307814
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Tue Jul 12 02:29:06 2016 -0500
+
+    Update model relationships
+
+commit 9706bdd5b4abcfe16f3a7953d50862db4185f314
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Tue Jul 12 01:34:25 2016 -0500
+
+    add init methods
+
+commit 29c1c939181ad5522a3dfbe5d6102e4a8586bbaa
+Author: Zin20 <jimmyne@gmail.com>
+Date:   Tue Jul 12 00:44:13 2016 -0500
+
+    Still need to merge all this data together
+
+commit 49f8dea79030ee639db988025e8eb5b9e32f5889
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 12 00:04:18 2016 -0500
+
+    wrote function to get individual bill data, resolves #42, wrote function to get all bills associated with legislator, resolves #43
+
+commit 281e58ff262223d4366869ab693a70dd195f5f71
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Mon Jul 11 23:52:25 2016 -0500
+
+    add json to db loader
+
+commit 16bdb8da4a1b0e80e1fdaacf4d6e5a8786ef829a
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Mon Jul 11 22:36:10 2016 -0500
+
+    add to_dict functions to models.py
+
+commit df26fd8129e7882d4a767ebada54c4bf439a5560
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 11 18:04:20 2016 -0500
+
+    added shared data
+
+commit 48be275a4dc3f04ea3c91f4174f40d45b5b1b57d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 11 18:02:42 2016 -0500
+
+    broken get_bills script
+
+commit 48f7e6b820c0d608a48709e0f6015d270151621e
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 11 12:10:52 2016 -0500
+
+    scraped all bills off of texas legislature site, associated politicans with bills, wrote fuzzy search function
+
+commit 385a8f56ea8558400d45c3cd40989fbad24fff76
+Author: williamzhxb <whozhy@gmail.com>
+Date:   Mon Jul 11 00:06:52 2016 -0400
+
+    unit test button created
+
+commit 8f97c46290b62b3503ea4a1ff3af3e96ccea26c2
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 21:28:23 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 99ae67cc273f3e7204c4f7e4d038098ebd56e2a7
+Merge: 37429e7 54d9235
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 21:19:05 2016 -0500
+
+    Merge branch 'dev'
+
+commit 54d9235d29cfdcb47997137f074f419cb16a2704
+Merge: d47782e 05af31e
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 21:14:58 2016 -0500
+
+    Merge branch 'dev' of https://github.com/evanmosseri/cs373-idb into dev
+
+commit d47782e6a6e1ed497985d6caba12a1598722118a
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 21:14:25 2016 -0500
+
+    added html file
+
+commit 05af31e0e5b7e45e29db86c0a642075e4f3b5fd8
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 21:09:21 2016 -0500
+
+    fixed stat on about page
+
+commit b389ae908b369dc060d6165a78643ffa2992a607
+Merge: b345f27 42bb7c5
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 21:08:33 2016 -0500
+
+    Merge branch 'dev' of http://github.com/evanmosseri/cs373-idb into dev
+
+commit b345f27e542cb69a319b0573baa834a253572cdc
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 21:08:26 2016 -0500
+
+    fixed stat on about page
+
+commit 42bb7c5d31ab97084c948af8f87368e20a5f4b2a
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 21:03:40 2016 -0500
+
+    edited the makefile to create html file for models.py
+
+commit 1b353432880c0eb978800bbcb1369eb0e2352020
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:59:50 2016 -0500
+
+    fixed stat on about page
+
+commit 37429e70930c5384ea8b18d2a43292bdfb23525b
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:46:31 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 32d7589c40588a50e7412a73942a9248bf2fd91f
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:44:02 2016 -0500
+
+    fixed wsgi file
+
+commit 5d7fd72562cb0197d71e5532af5bc0fac3be20ec
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:43:18 2016 -0500
+
+    added wsgi file
+
+commit 4aa24e99af5a62e241c1afb502821bdb98514c5d
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 20:38:19 2016 -0500
+
+    Added more to about page
+
+commit 66ba418afdf7fc94e2308eac0a7e6f9dd0ebf76b
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:22:55 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 2a710f686e986a98054ca362419e029bf51c57f8
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 20:20:06 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 36829ea440298b5a2cf58a624ba524f2eb378cc9
+Author: Stewart Johnson <shjohnson01@gmail.com>
+Date:   Tue Jul 5 20:16:43 2016 -0500
+
+    Add uml diagram and models.py
+
+commit 8d1c92a0b204e50bfd02e5e1a63e331b7bbf5cc2
+Author: yu zhong <yuzhong@wireless-10-147-28-130.public.utexas.edu>
+Date:   Tue Jul 5 20:03:16 2016 -0500
+
+    edited the makeifle to create .log for commit
+
+commit f9ce7f4fd8261e4c41f28f8e3501e9ffee309b91
+Merge: 8c75e73 c9f23d1
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 19:46:11 2016 -0500
+
+    Merge branch 'dev' of git://github.com/evanmosseri/cs373-idb into dev
+
+commit 8c75e737a2237c61ca59a23d69b7519b7eb774a8
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 19:45:49 2016 -0500
+
+    Fixed Stretching on all Pages
+
+commit c9f23d190d47fefd1d6c4cf1756140d0ded0aa31
+Merge: 14f7152 d2f0f47
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 19:38:36 2016 -0500
+
+    Merge branch 'dev' of http://github.com/evanmosseri/cs373-idb into dev
+
+commit 14f71528bf4c3b5f3d3d5d12292d5bf8c116f5b4
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 19:38:28 2016 -0500
+
+    filled in team about paragraphs
+
+commit d2f0f47a102e687a475d572edb85601e3378454c
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 19:34:40 2016 -0500
+
+    Fixed contributors and Stretched First Page
+
+commit e8f4b42585823cfef5703a1d29c6835abc3fdd5f
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 19:27:41 2016 -0500
+
+    Carousel and fixed block
+
+commit 099fd6a973ab51c91a7b3ba0f0e10b78553b31b1
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 19:25:52 2016 -0500
+
+    made about page responsive
+
+commit ed16ad2eb0391f089902be08d56bb210295e31fb
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 19:16:28 2016 -0500
+
+    began models
+
+commit cf88619af67cfb3edcbeaf9f34daf0c00961a42c
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 19:15:43 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 45ef24aeb20e152f6b6873ecb9366b28a34552bb
+Merge: 9cdcf2d 11f7379
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 18:06:46 2016 -0500
+
+    Merge branch 'dev' of http://github.com/evanmosseri/cs373-idb into dev
+
+commit 9cdcf2d1669bcfa2c8a349feb5f11fe81f632161
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 18:06:39 2016 -0500
+
+    about page almost finished
+
+commit 11f73793eb135d9eecfccb65805801a100d95797
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 17:18:29 2016 -0500
+
+    fixed some unit tests
+
+commit 0f1892785370c0d51c030ba4a5b942a2577f58a9
+Merge: 28935d5 14df6e8
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 16:59:35 2016 -0500
+
+    Merge branch 'dev' of http://github.com/evanmosseri/cs373-idb into dev
+
+commit 14df6e855c68126939652295026146c444c0af92
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 16:58:55 2016 -0500
+
+    Added legislator photo
+
+commit 0c5f614b663b5f4252041b5aacad176403eb9cce
+Author: yu zhong <williamz@cs.utexas.edu>
+Date:   Tue Jul 5 16:41:55 2016 -0500
+
+    added more unittest
+
+commit 2dfe6d585fb72b15f3f0ec23bdf8cde1b59cd0b4
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 16:35:29 2016 -0500
+
+    Added more rows to tables
+
+commit 43ea57f1baa87f272d81326c1c5bb892a5d3d832
+Author: Zin20 <jimmyne@gmail.com>
+Date:   Tue Jul 5 16:26:14 2016 -0500
+
+    Changed unit tests to reflect database
+
+commit be6ca508444ad0c169f3589be3ca2311070a3b3e
+Merge: e4fee90 4da3da1
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 16:17:02 2016 -0500
+
+    Merge branch 'dev' of git://github.com/evanmosseri/cs373-idb into dev
+
+commit e4fee905bfb3671d34fae5c2aeb308da0c7ee90a
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 16:14:18 2016 -0500
+
+    Created Contributions page
+
+commit 28935d5181e718caf06c4f0b622611c17197b740
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 16:06:44 2016 -0500
+
+    started doing models
+
+commit 4da3da1b53c1929460dbe2a9744d1d5b42932420
+Author: Zin20 <jimmyne@gmail.com>
+Date:   Tue Jul 5 15:18:45 2016 -0500
+
+    Tests were added to this branch so make sure to pull
+
+commit 4ec31743c713c4382e165a4408d2c7692e44e59e
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 14:58:28 2016 -0500
+
+    Navigatable links in each category
+
+commit 71906c343779834d55d5f464ebf11dee7dfb8afb
+Merge: a0215ad 52ea584
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 14:14:21 2016 -0500
+
+    merged with luke's commit
+
+commit a0215ad62234fbbc9ed4ebaadbfe40e1ea90b723
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 14:11:31 2016 -0500
+
+    fixed legislator stray div
+
+commit 52ea584474c49130644f8d54d9d8dccb4ec070bf
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 14:10:54 2016 -0500
+
+    Created static bills and legislators
+
+commit 052f211eeeb56dec6cd678d921584219e0a0b2d6
+Merge: 436f896 c20e7a3
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 13:25:55 2016 -0500
+
+    Merge branch 'dev' of git://github.com/evanmosseri/cs373-idb into dev
+
+commit 436f8968947e6618ea7ca24f7bb5babb38f7da88
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 13:25:37 2016 -0500
+
+    creating bills
+
+commit c20e7a3944a8e1654f57c5f448428cd2aacb962f
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 13:24:45 2016 -0500
+
+    created about page, closes #24
+
+commit fe22ab952f4510726d7144c4765bf5ead7c82014
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 12:40:15 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 74d70f670ba6cf3568b566323eb321fe595f20ae
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Tue Jul 5 12:26:32 2016 -0500
+
+    fixed logo
+
+commit c9d9336844b003d1d501c8f255bfb71ad9c7b58d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 12:09:58 2016 -0500
+
+    fixed css not loading bug, closes #25
+
+commit 923b69bbe555e767461b7024fe8a6f46c68c3a29
+Merge: 8da877d 9a51e4d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:49:33 2016 -0500
+
+    created base template - close #17, created basic routings - close #16 , created sub templates - close #18, started about page, installed and began to use scss - closes #24
+
+commit 8da877d6bfaeeea100063326074d982e1aa6a1b0
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:48:43 2016 -0500
+
+    created base template - close #17, created basic routings - close #16 , created sub templates - close #18, started about page, installed and began to use scss - closes #24
+
+commit 9a51e4def5d54f2de3ccad7d4380bd59a527292b
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 11:06:56 2016 -0500
+
+    commmit before i go to gdc
+
+commit 172a05ad2daba29ab74b2fc87d99f1ca1f3eb7b6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 07:18:54 2016 -0500
+
+    creating base templates
+
+commit 8605a821e9d73b75622b441fbc2a964bfce8e491
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Tue Jul 5 07:07:56 2016 -0500
+
+    started basic django app
+
+commit be233ceac64b8d71f4e6b984e84e7305382a8902
+Merge: 50801f2 8299f4c
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 4 21:34:44 2016 -0500
+
+    Merge remote-tracking branch 'origin/html' into dev
+
+commit 50801f2314ad1622c0b322c5ba2c973d81954ae9
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Mon Jul 4 20:48:49 2016 -0500
+
+    reworking data files
+
+commit 8299f4ce6ab436cfabe96cb262b5f48f008d2329
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sun Jul 3 09:07:21 2016 -0500
+
+    Updated index CSS to use Bootstrap GrayScale Theme
+
+commit a48c32eb1141a5c9e76a224f0f2467ffb6ec07de
+Merge: 4f73ae9 9ab3479
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 01:06:58 2016 -0500
+
+    debugging
+
+commit 4f73ae9f411bd241054a18787dd76d3a3434fd03
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 00:54:36 2016 -0500
+
+    refactoring
+
+commit 313957ee8c3b324d918d2ed1526ff3ffefce1d1d
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sun Jul 3 00:37:32 2016 -0500
+
+    gave up on scraping the data, revisiting using csvs
+
+commit ee1a1946cce11f3466786e961c647b90ceb126f1
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sat Jul 2 19:27:06 2016 -0500
+
+    Fixed navigation
+
+commit 130178892d7aa62c1d98472831ae8af73362a98b
+Author: 13lheytens <lukeheytens@utexas.edu>
+Date:   Sat Jul 2 19:02:59 2016 -0500
+
+    Simple html skeleton for data
+
+commit 9ab3479d53295623641e842ea85e7e38269e6a5a
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sat Jul 2 18:21:56 2016 -0500
+
+    wrote function to lookup politicians and get their unique id for further search
+
+commit 2a2a0e03bce41f951c66097b53f0965d8daf3cb7
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Sat Jul 2 18:21:56 2016 -0500
+
+    wrote function to lookup politicians and get their unique id for further search
+
+commit 2782477b1e2bc142e2b7f2774645f8b090e0e669
+Merge: 3951b3d a105c97
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:31:14 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' of ssh://github.com/evanmosseri/cs373-idb into Scraping-and-Storing
+
+commit 9fac6e6ca642db083041ffce54c689ce4ca36a9f
+Merge: b35366a 125ceb8
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:31:14 2016 -0500
+
+    Merge branch 'Scraping-and-Storing' of ssh://github.com/evanmosseri/cs373-idb into Scraping-and-Storing
+
+commit 3951b3dc0c57d3cf8250a3f1ef7e4a2d30b4fa6e
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned filer name from contribution data 95%
+
+commit b35366a3a59c8ad4e55e51cf1fa3a8e129a7cba6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned filer name from contribution data 95%
+
+commit a105c97715b30ff2e92bff89f6cd67f5c84a2063
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned contribution reports 95%
+
+commit 125ceb8999f0a7d90d096725a4c11fde736d6d86
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Fri Jul 1 12:28:06 2016 -0500
+
+    Cleaned contribution reports 95%
+
+commit 7b11db1fffee6f31fda28dd2922be495c0bd36d4
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:42:40 2016 -0500
+
+    removed unnecessary folder
+
+commit d0f502b9b98e48a138c8929e66d9f3663cf38208
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:42:40 2016 -0500
+
+    removed unnecessary folder
+
+commit a222efd455120afedcee538cc1afa63c43341807
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:41:54 2016 -0500
+
+    removed unnecessary folder
+
+commit 988cfe2dce5b8ae9f5f0ce9cdc1e1eb049fcadcd
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:41:54 2016 -0500
+
+    removed unnecessary folder
+
+commit 662a73c8842d120a8d226b73e7f38d2510534652
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:40:19 2016 -0500
+
+    partially cleaned filerName column
+
+commit 212f5a05e3746b581b8c9868ac783869699aa4f6
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 23:40:19 2016 -0500
+
+    partially cleaned filerName column
+
+commit 30d205b8d62d5f3e4b2537c2be3a1d6533a624bf
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:54:57 2016 -0500
+
+    changed folder hierarchy
+
+commit 03b95d8d1c673176938fdd4ccbcecea9865c59e7
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:54:57 2016 -0500
+
+    changed folder hierarchy
+
+commit 892f8d65cc51bb8770db4805ff287eeec80def80
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:40:56 2016 -0500
+
+    began scraping
+
+commit 82c70a160ea8cde23ba2689f0c85d1d4d187ae34
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 14:40:56 2016 -0500
+
+    began scraping
+
+commit 9d87a9c71edfd76cefb6f549862dcabb2fb9186a
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 13:05:00 2016 -0500
+
+    uploaded contributor datafiles
+
+commit ca81fceeebb31891d3502e5287bc5085295d0544
+Author: Evan Mosseri <evan.mosseri@gmail.com>
+Date:   Thu Jun 30 13:05:00 2016 -0500
+
+    uploaded contributor datafiles
+
+commit 21c076904704a64ad2047637a4f171206396c036
+Author: evanmosseri <evan.mosseri@gmail.com>
+Date:   Wed Jun 29 18:16:24 2016 -0500
+
+    Initial commit

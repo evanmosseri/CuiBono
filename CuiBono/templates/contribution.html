@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <header class="intro">
+        <div class="intro-body">
+<div class="container">
+  <h2>{{contribution.filer_id}}</h2>
+  <table id="contributionTable" class="table table-responsive" style="">
+      <tr>
+        <td>Amount</td>
+        <td>${{contribution.amount}}</td>
+      </tr>
+      <tr>
+        <td>Date Submitted</td>
+        <td>{{contribution.submitted_date}}</td>
+      </tr>
+      <tr>
+        <td>Legislator</td>
+        <td><a href = "/legislators/{{contribution.legislator.id}}">{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</a></td>
+      </tr>
+      <tr>
+        <td>Contributor</td>
+        <td><a href="/contributors/{{contribution.contributor.id}}">{{contribution.contributor.name}}</a></td>
+      </tr>
+    </table>
+</div>
+</div>
+</header>
+
+{% endblock %}

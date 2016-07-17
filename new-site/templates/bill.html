@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+.table.table-responsive tr th{
+  text-align: center;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <header class="intro">
+        <div class="intro-body">
+<div class="container">
+  <h2>{{bill.id}}</h2>
+  <table id="billTable" class="table table-responsive" style="">
+      <tr>
+        <td>Prefix</td>
+        <td>{{bill.prefix}}</td>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>{{bill.number}}</td>
+      </tr>
+      <tr>
+        <td>Session</td>
+        <td>{{bill.session}}</td>
+      </tr>
+      <tr>
+        <td>Sponsors</td>
+        <td>
+          {%for legis in bill.sponsors%}  
+              {{legis.first_name + " " + legis.last_name + ", "}}   
+          {%endfor%}
+        </td>
+      </tr>
+    </table>
+</div>
+</div>
+</header>
+
+{% endblock %}

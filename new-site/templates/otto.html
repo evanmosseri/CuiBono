@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style type="text/css">
+	
+.tempBG {
+	background: url(../static/img/intro-bg.jpg) no-repeat bottom center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+{%endblock%}
+
+{% block outerContent %}
+
+<div class="tempBG">
+<br>
+<h1 style="text-align:center;">Representative<br>John Otto</h1>
+
+<p style="text-align:center">District 18</p>
+<center><img src="../static/img/otto.jpg" alt="Otto" style="width:200px;height:228px;"></center>
+
+	<br><br>
+	         <p style="padding-left: 40px">Party: Republican</p>
+	         	         <p style="padding-left: 40px">Hometown: Dayton, TX</p>
+	         <p style="padding-left: 40px">Bills: <a href="/bills/hb1">House Bill 1</a>, <a href="/bills/hb15">House Bill 15</a></p>
+	         <p style="padding-left: 40px">Contributors: No contributors/contributions</p>
+
+    <br><br>
+
+</div>
+
+{% endblock %}
