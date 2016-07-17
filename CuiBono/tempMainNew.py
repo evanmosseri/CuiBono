@@ -5,7 +5,7 @@ from models_new import *
 from flask import request
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@localhost/cuibono"
 db = SQLAlchemy(app)
 
 # billz = db.session.query(Bill).limit(5).all()
