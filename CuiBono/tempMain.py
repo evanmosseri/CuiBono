@@ -3,15 +3,12 @@ from flask import Flask, render_template, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from models_new import *
 from flask import request
+from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
 db = SQLAlchemy(app)
 
-# billz = db.session.query(Bill).limit(5).all()
-# legislatorz = db.session.query(Legislator).limit(5).all()
-# contributorz = db.session.query(Contributor).limit(5).all()
-# contributionz = db.session.query(Contribution).filter(Contribution.legislator != None).limit(5).all()
 
 @app.route("/")
 def index():
@@ -69,12 +66,14 @@ def contributions(id=None):
 def about():
 	return render_template("about.html")
 
-@app.route("/search")
-def search():
-	query = str(request.args.get('q', '')).split(' ')
+@app.route("/search/<id>")
+def search(id=None):
+	query = id.split(' ')
 	refined = [x for x in query if x != '']
 	single_query = ' '.join(refined)
-	return render_template("search.html", textInput = single_query)
+	diction = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in single_query)) + '%')).all(),
+		db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in single_query)) + '%')).all()]
+	return render_template('search.html', data = diction, query = single_query )
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')

@@ -73,7 +73,7 @@
                     <a>
 <form action="#" onsubmit="return false;">
     <input style="color: #C0C0C0;" type="text" id="textInput" placeholder="Search..">
-    <button id="submit" onclick="location.href='/search?q=' + document.getElementById('textInput').value;">Go</button>
+    <button id="submit" onclick="location.href='/search/' + document.getElementById('textInput').value;">Go</button>
 </form>
 </a>
                     </li>
@@ -180,7 +180,7 @@
         $(function () {
             $("#textInput").keyup(function (e) {
                 if (e.keyCode === 13) {
-                    window.location.href = "/search?q=" + $('#textInput').val();
+                    window.location.href = "/search/" + $('#textInput').val();
                 }
             });
 

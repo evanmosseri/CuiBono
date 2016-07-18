@@ -13,13 +13,9 @@
     <header class="intro">
         <div class="intro-body">
 <div class="container">
-  <h2>SEARCH RESULTS</h2>
-  <table id="searchTable" class="table table-responsive" style="">
-      <tr>
-        <td>Searching: {{textInput}}</td>
-        <td></td>
-      </tr>
-    </table>
+  <h2>SEARCH RESULTS for {{ query }}</h2>
+      <p>Searching Legislators: {{ data[0] }}</p>
+      <p>Searching Contributors: {{ data[1] }}</p>
 </div>
 </div>
 </header>
