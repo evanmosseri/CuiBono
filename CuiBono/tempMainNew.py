@@ -65,12 +65,11 @@ def contributions(id=None):
 	else:
 		return render_template("contribution.html", contribution= db.session.query(Contribution).get(id),page=page)
 
-@app.route("/about")
+@app.route("/about/")
 def about():
 	return render_template("about.html")
 
-@app.route('/unittest/')
-@app.route('/unittest/<name>')
+@app.route('/unittest')
 def unittest(name = None):
 	contents = ""
 	with open("TestResult", "r") as file:
