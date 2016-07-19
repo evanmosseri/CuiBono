@@ -1,0 +1,18 @@
+/u/williamz/.local/lib/python3.4/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
+  warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
+Traceback (most recent call last):
+  File "tests.py", line 92, in <module>
+    main()
+  File "/usr/lib/python3.4/unittest/main.py", line 92, in __init__
+    self.parseArgs(argv)
+  File "/usr/lib/python3.4/unittest/main.py", line 139, in parseArgs
+    self.createTests()
+  File "/usr/lib/python3.4/unittest/main.py", line 146, in createTests
+    self.module)
+  File "/usr/lib/python3.4/unittest/loader.py", line 146, in loadTestsFromNames
+    suites = [self.loadTestsFromName(name, module) for name in names]
+  File "/usr/lib/python3.4/unittest/loader.py", line 146, in <listcomp>
+    suites = [self.loadTestsFromName(name, module) for name in names]
+  File "/usr/lib/python3.4/unittest/loader.py", line 114, in loadTestsFromName
+    parent, obj = obj, getattr(obj, part)
+AttributeError: 'module' object has no attribute '2'

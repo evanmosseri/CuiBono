@@ -24,12 +24,11 @@ class FlaskTest(TestCase):
         tributor = db.session.query(Contributor).get(39945)
         self.assertEqual(tributor.name, "El Paso Corp./Coastal Emp. Action Fund")
         self.assertEqual(tributor.type, "entity")
-    """
+    
     def test_get4(self):
-        con = db.session.query(Contribution).get(37743)
-        self.assertEqual(con.amount, 250)
-        self.assertEqual(con.legislator, "Allan Ritter")
-    """
+        con = db.session.query(Contribution).get(1)
+        assert(con == None)
+    
     def test_add(self):
         db.session.add(Bill(id = "TX1234567890", prefix = "House"))
         db.session.commit()
