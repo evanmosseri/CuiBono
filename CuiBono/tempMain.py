@@ -4,10 +4,22 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from models_new import *
 from flask import request
 from sqlalchemy.orm import sessionmaker
+from pprint import pprint
+from urllib.parse import urlparse, urlencode, urlunparse, parse_qsl
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
 db = SQLAlchemy(app)
+
+
+def add_args(url,**params):
+	url_parts = list(urlparse(url))
+	query = dict(parse_qsl(url_parts[4]))
+	query.update(params)
+	url_parts[4] = urlencode(query)
+	return urlunparse(url_parts)
+
 
 
 @app.route("/")
@@ -24,7 +36,18 @@ def legislators(id=None):
 	if not(id):
 		return render_template("legislators.html", legislators = db.session.query(Legislator).order_by(sort if sort else id).offset(num_per_page*page).limit(num_per_page),page=page)
 	else:
-		return render_template("legislator.html", legislator = db.session.query(Legislator).get(id),page=page)
+		leg = db.session.query(Legislator).get(id)
+		contrib_page = int(request.args.get("contrib_page")) if request.args.get("contrib_page") else 1
+		num_contribs_per_page = int(request.args.get("num_contribs_per_page")) if request.args.get("num_contribs_per_page") else 10
+		print(request.url)
+		prev_url, next_url = add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=max(contrib_page-1,0)),add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=contrib_page+1)
+		return render_template("legislator.html", 
+			prev_url=prev_url, 
+			next_url=next_url,
+			legislator = leg,
+			page=page,
+			contributions=leg.contributions[contrib_page*num_contribs_per_page:((contrib_page+1)*(num_contribs_per_page))]
+			)
 
 
 @app.route("/bills/<id>")
@@ -75,29 +98,41 @@ def search(id=None):
 	single_query_float = -1.0
 	try:
 		single_query_int = int(single_query)
+	except:
+		single_query_int = -1
+
+	try:
 		single_query_float = float(single_query)
 	except:
-		single_query_int = -2
-		single_query_float = -2.0
+		single_query_float = -1.0
 
-	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(), 
-	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0	
+	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 10
 
-	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page), 
+	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+
+	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Contributor).filter( Contributor.id == single_query_int).all(),
-	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
-	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Bill).filter( Bill.id == single_query).all(),
-	db.session.query(Bill).filter( Bill.prefix == single_query).all(),
-	db.session.query(Bill).filter( Bill.number == single_query_int).all()]
+	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.id == single_query).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.prefix == single_query).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.number == single_query_int).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter(Bill.session.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+
 
 	contributionsArray = []
+	if single_query_float != -1:
+		contributionsArray = [db.session.query(Contribution).filter(Contribution.amount == single_query_float).offset(page*num_per_page).limit(num_per_page)]
 
-	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query )
+
+
+	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query, single_query_float = single_query_float, single_query_int = single_query_int )
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')

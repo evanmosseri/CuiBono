@@ -1,50 +1,102 @@
-{% extends "index.html" %}
-
-{%block morecss%}
+{% extends "index.html" %} {%block morecss%}
 <style>
-.table.table-responsive tr th{
-  text-align: center;
+.table.table-responsive tr th {
+    text-align: center;
 }
 </style>
-{%endblock%}
-
-{% block outerContent %}
+{%endblock%} {% block outerContent %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <header class="intro">
-        <div class="intro-body">
-<div class="container">
-  <h2>{{legislator.first_name +" "+ legislator.last_name}}</h2>
-  <table id="legislatorTable" class="table table-responsive" style="">
-      <tr>
-        <td>Filer ID</td>
-        <td>{{legislator.filer_id}}</td>
-      </tr>
-      <tr>
-        <td>District</td>
-        <td>{{legislator.district}}</td>
-      </tr>
-      <tr>
-        <td>Party</td>
-        <td>{{legislator.party}}</td>
-      </tr>
-        <td>Type</td>
-        <td>{{legislator.type}}</td>
-      </tr>
-      <tr>
-        <td>Offices</td>
-        <td>{{legislator.offices}}</td>
-      </tr>
-        <td>Sources</td>
-        <td>{{legislator.sources}}</td>
-      </tr>
-      <tr>
-        <td>Photo</td>
-        <td>{{legislator.photo_u}}</td>
-      </tr>
-    </table>
-
-</div>
-</div>
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <h2>{{legislator.first_name +" "+ legislator.last_name}}</h2>
+            <table id="legislatorTable" class="table table-responsive" style="">
+                <tr>
+                    <td>Filer ID</td>
+                    <td>{{legislator.filer_id}}</td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td>{{legislator.district}}</td>
+                </tr>
+                <tr>
+                    <td>Party</td>
+                    <td>{{legislator.party}}</td>
+                </tr>
+                <td>Type</td>
+                <td>{{legislator.type}}</td>
+                </tr>
+                <tr>
+                    <td>Offices</td>
+                    <td>{{legislator.offices}}</td>
+                </tr>
+                <td>Sources</td>
+                <td>{{legislator.sources}}</td>
+                </tr>
+                <tr>
+                    <td>Photo</td>
+                    <td>{{legislator.photo_u}}</td>
+                </tr>
+            </table>
+            <h2>Contributions</h2>
+            <table id="contributionsTable" class="table table-responsive" style="">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Filer ID</th>
+                        <th>Date Submitted</th>
+                        <th>Contributor</th>
+                    </tr>
+                </thead>
+                {% for contribution in contributions %}
+                <tr>
+                    <td>${{contribution.amount}}</td>
+                    <td>{{contribution.filer_id}}</td>
+                    <td>{{contribution.submitted_date}}</td>
+                    <td><a href="/contributions/{{contribution.id}}">{{contribution.contributor.name}}</a></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="contribution-pagination">
+                <a href="{{prev_url}}">
+                    <button>Previous</button>
+                </a>
+                <a href="{{next_url}}">
+                    <button>Next</button>
+                </a>
+            </div>
+             <h2>Bills</h2>
+            <table id="billsTable" class="table table-responsive" style="">
+                <thead>
+                    <th>ID</th>
+                    <th>Prefix</th>
+                    <th>Number</th>
+                    <th>Session</th>
+                    <th>Sponsors</th>
+                </thead>
+                {% for bill in bills %}
+                <tr>
+                    <th><a href="/bills/{{bill.id}}">{{bill.id}}</a></th>
+                    <th>{{bill.prefix}}</th>
+                    <th>{{bill.number}}</th>
+                    <th>{{bill.session}}</th>
+                    <th>
+                        {%set index =0%} {%if not bill.sponsors%} {{"None"}} {%endif%} {%for legis in bill.sponsors%} {% if not legis.first_name %} {{"None"}} {%else%} {%if index == 0%}
+                        <a href="/legislators/{{legis.id}}">{{legis.first_name + " " + legis.last_name}}
+                        {%set index = 1%}
+                    {%endif%}
+                {%endif%}
+                </a> {%endfor%}
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="bill pagination">
+                <a href="/bills?page={{page-1}}">Previous</a>
+                <a href="/bills?page={{page+1}}">Next</a>
+            </div>
+        </div>
+    </div>
 </header>
-
 {% endblock %}
