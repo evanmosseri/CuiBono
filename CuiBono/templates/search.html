@@ -14,7 +14,7 @@
         <div class="intro-body">
 <div class="container">
   <h2>SEARCH RESULTS for "{{ query }}"</h2>
-      {% if legis[0].count() > 0 or legis[1].count() > 0 or legis[2].count() > 0 or legis[3].count() > 0 %}
+      {% if legis[0] and legis[0].count() > 0 or legis[1] and legis[1].count() > 0 or legis[2] and legis[2].count() > 0 or legis[3] and legis[3].count() > 0 %}
       <div>
                         <div class=".col-md-12">
                             <div>
@@ -59,7 +59,7 @@
                                             
                                         </tr>
                                         {% endfor %}
-                                        {{ legis[3] }}
+
                                         {% for lg in legis[3] %}
                                         <tr>
                                             <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     {% endif %}
-                    {% if contrib[0].count() > 0 or contrib[1].count() > 0 or contrib[2].count() > 0 or contrib[3].count() > 0 %}
+                    {% if (contrib[0] and contrib[0].count() > 0) or (contrib[1] and contrib[1].count() > 0) or (contrib[2] and contrib[2].count() > 0) or (contrib[3] and contrib[3].count() > 0) %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
@@ -132,7 +132,7 @@
                         </div>
                         {% endif %}
 
-                        {% if bill[0].count() > 0 or bill[1].count() > 0 or bill[2].count() > 0 or bill[3].count() > 0 %}
+                        {% if bill[0] and bill[0].count() > 0 or bill[0] and bill[1].count() > 0 or bill[2] and bill[2].count() > 0 or bill[3] and bill[3].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
@@ -233,6 +233,11 @@
                         </div>
                         {% endif %}
                     </div>
+                    <br>
+                      <div>
+    <a href="/search/{{query}}?page={{page-1}}">Previous</a>
+    <a href="/search/{{query}}?page={{page+1}}">Next</a>
+  </div>
 </div>
 </div>
 </header>

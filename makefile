@@ -1,8 +1,8 @@
-ifeq($(CI),true)
-	COVERAGE := coverage
-	PYLINT   := pylint
+ifeq ($(CI), true)
+    COVERAGE := coverage
+    PYLINT   := pylint
 else
-	COVERAGE := coverage-3.5
+    COVERAGE := coverage-3.5
 	PYLINT   := pylint3
 endif
 
@@ -18,9 +18,9 @@ download_files:
 
 tests.tmp: .pylintrc tests.py
 	-$(PYLINT) tests.py
-	$(COVERAGE) run  --omit='*numpy*' --branch tests.py >  TestResult 2>&1
-	$(COVERAGE) report -m                      >> TestResult
-	cat TestResult
+	$(COVERAGE) run  --omit='*numpy*' --branch tests.py > TestResult.out 2>&1
+	$(COVERAGE) report -m                      >> TestResult.out
+	cat TestResult.out
 
 
 Models.html: CuiBono/models/models.py 
