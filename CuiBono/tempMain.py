@@ -71,10 +71,32 @@ def search(id=None):
 	query = id.split(' ')
 	refined = [x for x in query if x != '']
 	single_query = ' '.join(refined)
-	diction = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in single_query)) + '%')).all(),
-		db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in single_query)) + '%')).all(),
-		db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in single_query)) + '%')).all()]
-	return render_template('search.html', data = diction, query = single_query )
+	single_query_int = -1
+	single_query_float = -1.0
+	try:
+		single_query_int = int(single_query)
+		single_query_float = float(single_query)
+	except:
+		single_query_int = -2
+		single_query_float = -2.0
+
+	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(), 
+	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+
+	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	db.session.query(Contributor).filter( Contributor.id == single_query_int).all(),
+	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+
+	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	db.session.query(Bill).filter( Bill.id == single_query).all(),
+	db.session.query(Bill).filter( Bill.prefix == single_query).all()]
+
+	contributionsArray = []
+
+	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query )
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')

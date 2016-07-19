@@ -13,20 +13,37 @@
     <header class="intro">
         <div class="intro-body">
 <div class="container">
-  <h2>SEARCH RESULTS for {{ query }}</h2>
+  <h2>SEARCH RESULTS for "{{ query }}"</h2>
+      {% if legis[0] or legis[1] or legis[2] %}
       <div>
                         <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <caption>Legislators</caption>
+                                        <h3>Legislators:</h3>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>  First Name  </th>
                                                 <th>  Last Name  </th>
                                             </tr>
                                         <tbody>
-                                        {% for lg in data[0] %}
+                                        {% for lg in legis[0] %}
+                                        <tr>
+                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td>{{ lg.first_name }}</td>
+                                            <td>{{ lg.last_name }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for lg in legis[1] %}
+                                        <tr>
+                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td>{{ lg.first_name }}</td>
+                                            <td>{{ lg.last_name }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for lg in legis[2] %}
                                         <tr>
                                             <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
                                             <td>{{ lg.first_name }}</td>
@@ -40,38 +57,68 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if contrib[0] or contrib[1] or contrib[2] or contrib[3] %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <caption>Contributors</caption>
+                                        <h3>Contributors:</h3>
                                             <tr>
-                                                <th>Type</th>
+                                                <th>ID</th>
                                                 <th>  Name  </th>
                                                 <th>  Zip  </th>
-                                                <th>  ID  </th>
+                                                <th>  Type  </th>
                                             </tr>
                                         <tbody>
-                                        {% for ct in data[1] %}
+                                        {% for ct in contrib[0] %}
                                         <tr>
                                             <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
                                             <td>{{ ct.name }}</td>
                                             <td>{{ ct.zip }}</td>
-                                            <td>{{ ct.id }}</td>
+                                            <td>{{ ct.type }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for ct in contrib[1] %}
+                                        <tr>
+                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td>{{ ct.name }}</td>
+                                            <td>{{ ct.zip }}</td>
+                                            <td>{{ ct.type }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for ct in contrib[2] %}
+                                        <tr>
+                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td>{{ ct.name }}</td>
+                                            <td>{{ ct.zip }}</td>
+                                            <td>{{ ct.type }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         </tbody>
+                                        {% for ct in contrib[3] %}
+                                        <tr>
+                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td>{{ ct.name }}</td>
+                                            <td>{{ ct.zip }}</td>
+                                            <td>{{ ct.type }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {% endif %}
+                        {% if bill[0] or bill[1] or bill[2]%}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <caption>Bills</caption>
+                                        <h3>Bills:</h3>
                                             <tr>
                                                 <th> ID </th>
                                                 <th>  Prefix  </th>
@@ -80,7 +127,27 @@
                                                 <th> Title </th>
                                             </tr>
                                         <tbody>
-                                        {% for bl in data[2] %}
+                                        {% for bl in bill[0] %}
+                                        <tr>
+                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td>{{ bl.prefix }}</td>
+                                            <td>{{ bl.number }}</td>
+                                            <td>{{ bl.session }}</td>
+                                            <td>{{ bl.title }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for bl in bill[1] %}
+                                        <tr>
+                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td>{{ bl.prefix }}</td>
+                                            <td>{{ bl.number }}</td>
+                                            <td>{{ bl.session }}</td>
+                                            <td>{{ bl.title }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for bl in bill[2] %}
                                         <tr>
                                             <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
                                             <td>{{ bl.prefix }}</td>
@@ -95,6 +162,37 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
+                        {% if contributions[0]%}
+                    <div class=".col-md-12">
+                            <div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <h3>Contributions:</h3>
+                                            <tr>
+                                                <th> Amount </th>
+                                                <th>  ID  </th>
+                                                <th>  Date  </th>
+                                                <th>  Contributor  </th>
+                                                <th> Legislator </th>
+                                            </tr>
+                                        <tbody>
+                                        {% for cn in contributions[0] %}
+                                        <tr>
+                                            <td>{{ cn.amount }}</td>
+                                            <td>{{ cn.id }}</td>
+                                            <td>{{ cn.submitted_date }}</td>
+                                            <td><a href="/contributors/{{cn.contributor.id}}">{{ cn.contributor.name }}</a></td>
+                                            <td><a href="/legislators/{{cn.legislator.id}}">{{cn.legislator.first_name + " " + cn.legislator.last_name}}</a></td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
 </div>
 </div>
