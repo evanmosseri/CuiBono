@@ -6,7 +6,7 @@ from flask import request
 from sqlalchemy.orm import sessionmaker
 from pprint import pprint
 from urllib.parse import urlparse, urlencode, urlunparse, parse_qsl
-
+import json
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
@@ -20,7 +20,9 @@ def add_args(url,**params):
 	url_parts[4] = urlencode(query)
 	return urlunparse(url_parts)
 
-
+# @app.template_filter('tojson')
+# def reverse_filter(s):
+#     return json.loads(s)
 
 @app.route("/")
 def index():
@@ -40,7 +42,6 @@ def legislators(id=None):
 		contrib_page = int(request.args.get("contrib_page")) if request.args.get("contrib_page") else 1
 		num_contribs_per_page = min(int(request.args.get("num_contribs_per_page")),250) if request.args.get("num_contribs_per_page") else 10
 		prev_contribs, next_contribs = add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=max(contrib_page-1,0)),add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=contrib_page+1)
-
 
 		return render_template("legislator.html", 
 			prev_contribs=prev_contribs, 
