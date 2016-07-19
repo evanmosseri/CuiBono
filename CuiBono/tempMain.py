@@ -92,7 +92,8 @@ def search(id=None):
 
 	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).all(),
 	db.session.query(Bill).filter( Bill.id == single_query).all(),
-	db.session.query(Bill).filter( Bill.prefix == single_query).all()]
+	db.session.query(Bill).filter( Bill.prefix == single_query).all(),
+	db.session.query(Bill).filter( Bill.number == single_query_int).all()]
 
 	contributionsArray = []
 

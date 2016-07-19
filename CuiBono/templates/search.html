@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         {% endif %}
-                        {% if bill[0] or bill[1] or bill[2]%}
+                        {% if bill[0] or bill[1] or bill[2] or bill[3]%}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
@@ -148,6 +148,16 @@
                                         </tr>
                                         {% endfor %}
                                         {% for bl in bill[2] %}
+                                        <tr>
+                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td>{{ bl.prefix }}</td>
+                                            <td>{{ bl.number }}</td>
+                                            <td>{{ bl.session }}</td>
+                                            <td>{{ bl.title }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {% for bl in bill[3] %}
                                         <tr>
                                             <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
                                             <td>{{ bl.prefix }}</td>
