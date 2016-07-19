@@ -115,7 +115,7 @@ def search(id=None):
 	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
 	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Contributor).filter( Contributor.id == single_query_int).all(),
+	db.session.query(Contributor).filter( Contributor.id == single_query_int).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
@@ -132,7 +132,7 @@ def search(id=None):
 
 
 
-	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query, single_query_float = single_query_float, single_query_int = single_query_int )
+	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query, single_query_float = single_query_float, single_query_int = single_query_int, page = page )
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')
