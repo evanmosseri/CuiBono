@@ -1,22 +1,24 @@
 language: python
- 
+
 python:
-  - "3.4"
+  - "3.5"
+
+sudo: false
  
 install: "pip install -r tools"
   - pip install pylint
-  - pip install numpy
 
 postgresql: "9.3"
+  - pip install numpy
 
 before_script:
   - uname -a
   - printenv
   - pip list
   - coverage --version
-  - pylint --version
-  - ulimit -s 1082768	
+  - pylint   --version
+  - ulimit -s 1082768
+
 
 scripts:
   - make tests.tmp
-
