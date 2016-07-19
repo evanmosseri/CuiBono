@@ -1,0 +1,17 @@
+venv
+mac_env
+.DS_Store
+.idea
+cs373-idb
+data/combined.csv
+data/texas_ethics_commission
+data
+data/*
+*.pyc
+*.txt
+<<<<<<< HEAD
+bootstrap-tutorial
+=======
+entities_combined_grouped.csv
+data-shared/contributions.csv
+>>>>>>> apairyAPI
