@@ -38,15 +38,17 @@ def legislators(id=None):
 	else:
 		leg = db.session.query(Legislator).get(id)
 		contrib_page = int(request.args.get("contrib_page")) if request.args.get("contrib_page") else 1
-		num_contribs_per_page = int(request.args.get("num_contribs_per_page")) if request.args.get("num_contribs_per_page") else 10
-		print(request.url)
-		prev_url, next_url = add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=max(contrib_page-1,0)),add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=contrib_page+1)
+		num_contribs_per_page = min(int(request.args.get("num_contribs_per_page")),250) if request.args.get("num_contribs_per_page") else 10
+		prev_contribs, next_contribs = add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=max(contrib_page-1,0)),add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=contrib_page+1)
+
+
 		return render_template("legislator.html", 
-			prev_url=prev_url, 
-			next_url=next_url,
+			prev_contribs=prev_contribs, 
+			next_contribs=next_contribs,
 			legislator = leg,
 			page=page,
-			contributions=leg.contributions[contrib_page*num_contribs_per_page:((contrib_page+1)*(num_contribs_per_page))]
+			contributions=leg.contributions[contrib_page*num_contribs_per_page:((contrib_page+1)*(num_contribs_per_page))],
+			bills = leg.bills
 			)
 
 

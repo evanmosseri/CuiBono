@@ -12,6 +12,8 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
+    - pip install Flask-SQLAlchemy
+    - pip install pandas
 
 before_script:
     - uname -a
@@ -24,5 +26,4 @@ before_script:
 script:
     - date
     - ls -al
-    - cd Cuibono/
     - make tests.tmp
