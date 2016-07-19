@@ -18,8 +18,8 @@ download_files:
 
 tests.tmp: .pylintrc tests.py
 	-$(PYLINT) tests.py
-	$(COVERAGE) run  --omit='*numpy*' --branch tests.py > TestResult.out 2>&1
-	$(COVERAGE) report -m                      >> TestResult.out
+	$(COVERAGE) run  --omit='*numpy*' --branch tests.py > TestResult.out
+	# $(COVERAGE) report -m                      >> TestResult.out
 	cat TestResult.out
 
 
