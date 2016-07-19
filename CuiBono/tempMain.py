@@ -72,7 +72,8 @@ def search(id=None):
 	refined = [x for x in query if x != '']
 	single_query = ' '.join(refined)
 	diction = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in single_query)) + '%')).all(),
-		db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in single_query)) + '%')).all()]
+		db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in single_query)) + '%')).all(),
+		db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in single_query)) + '%')).all()]
 	return render_template('search.html', data = diction, query = single_query )
 
 @app.route('/unittest/')

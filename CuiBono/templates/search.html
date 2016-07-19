@@ -14,8 +14,88 @@
         <div class="intro-body">
 <div class="container">
   <h2>SEARCH RESULTS for {{ query }}</h2>
-      <p>Searching Legislators: {{ data[0] }}</p>
-      <p>Searching Contributors: {{ data[1] }}</p>
+      <div>
+                        <div class=".col-md-12">
+                            <div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <caption>Legislators</caption>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>  First Name  </th>
+                                                <th>  Last Name  </th>
+                                            </tr>
+                                        <tbody>
+                                        {% for lg in data[0] %}
+                                        <tr>
+                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td>{{ lg.first_name }}</td>
+                                            <td>{{ lg.last_name }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=".col-md-12">
+                            <div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <caption>Contributors</caption>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>  Name  </th>
+                                                <th>  Zip  </th>
+                                                <th>  ID  </th>
+                                            </tr>
+                                        <tbody>
+                                        {% for ct in data[1] %}
+                                        <tr>
+                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td>{{ ct.name }}</td>
+                                            <td>{{ ct.zip }}</td>
+                                            <td>{{ ct.id }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=".col-md-12">
+                            <div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <caption>Bills</caption>
+                                            <tr>
+                                                <th> ID </th>
+                                                <th>  Prefix  </th>
+                                                <th>  Number  </th>
+                                                <th>  Session  </th>
+                                                <th> Title </th>
+                                            </tr>
+                                        <tbody>
+                                        {% for bl in data[2] %}
+                                        <tr>
+                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td>{{ bl.prefix }}</td>
+                                            <td>{{ bl.number }}</td>
+                                            <td>{{ bl.session }}</td>
+                                            <td>{{ bl.title }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 </div>
 </div>
 </header>
