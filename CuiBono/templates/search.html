@@ -14,40 +14,58 @@
         <div class="intro-body">
 <div class="container">
   <h2>SEARCH RESULTS for "{{ query }}"</h2>
-      {% if legis[0] or legis[1] or legis[2] %}
+      {% if legis[0].count() > 0 or legis[1].count() > 0 or legis[2].count() > 0 or legis[3].count() > 0 %}
       <div>
                         <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <h3>Legislators:</h3>
+                                        <br><h3>Legislators:</h3>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>  First Name  </th>
                                                 <th>  Last Name  </th>
+                                                <th> Party </th>
                                             </tr>
                                         <tbody>
+                                        
                                         {% for lg in legis[0] %}
                                         <tr>
                                             <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
                                             <td>{{ lg.first_name }}</td>
                                             <td>{{ lg.last_name }}</td>
+                                            <td>{{ lg.party }}</td>
+
                                             
                                         </tr>
                                         {% endfor %}
+                                        
                                         {% for lg in legis[1] %}
                                         <tr>
                                             <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
                                             <td>{{ lg.first_name }}</td>
                                             <td>{{ lg.last_name }}</td>
+                                            <td>{{ lg.party }}</td>
                                             
                                         </tr>
                                         {% endfor %}
+                                        
                                         {% for lg in legis[2] %}
                                         <tr>
                                             <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
                                             <td>{{ lg.first_name }}</td>
                                             <td>{{ lg.last_name }}</td>
+                                            <td>{{ lg.party }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        {{ legis[3] }}
+                                        {% for lg in legis[3] %}
+                                        <tr>
+                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td>{{ lg.first_name }}</td>
+                                            <td>{{ lg.last_name }}</td>
+                                            <td>{{ lg.party }}</td>
                                             
                                         </tr>
                                         {% endfor %}
@@ -58,12 +76,12 @@
                         </div>
                     </div>
                     {% endif %}
-                    {% if contrib[0] or contrib[1] or contrib[2] or contrib[3] %}
+                    {% if contrib[0].count() > 0 or contrib[1].count() > 0 or contrib[2].count() > 0 or contrib[3].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <h3>Contributors:</h3>
+                                        <br><h3>Contributors:</h3>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>  Name  </th>
@@ -113,12 +131,13 @@
                             </div>
                         </div>
                         {% endif %}
-                        {% if bill[0] or bill[1] or bill[2] or bill[3]%}
+
+                        {% if bill[0].count() > 0 or bill[1].count() > 0 or bill[2].count() > 0 or bill[3].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <h3>Bills:</h3>
+                                        <br><h3>Bills:</h3>
                                             <tr>
                                                 <th> ID </th>
                                                 <th>  Prefix  </th>
@@ -167,18 +186,28 @@
                                             
                                         </tr>
                                         {% endfor %}
+                                        {% for bl in bill[4] %}
+                                        <tr>
+                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td>{{ bl.prefix }}</td>
+                                            <td>{{ bl.number }}</td>
+                                            <td>{{ bl.session }}</td>
+                                            <td>{{ bl.title }}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                         {% endif %}
-                        {% if contributions[0]%}
+                        {% if contributions[0] and contributions[0].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
                                     <table>
-                                        <h3>Contributions:</h3>
+                                        <br><h3>Contributions:</h3>
                                             <tr>
                                                 <th> Amount </th>
                                                 <th>  ID  </th>

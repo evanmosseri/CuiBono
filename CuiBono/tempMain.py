@@ -75,29 +75,41 @@ def search(id=None):
 	single_query_float = -1.0
 	try:
 		single_query_int = int(single_query)
+	except:
+		single_query_int = -1
+
+	try:
 		single_query_float = float(single_query)
 	except:
-		single_query_int = -2
-		single_query_float = -2.0
+		single_query_float = -1.0
 
-	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(), 
-	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0	
+	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 10
 
-	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).all(),
+	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page), 
+	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+
+	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Contributor).filter( Contributor.id == single_query_int).all(),
-	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).all()]
+	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
-	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).all(),
-	db.session.query(Bill).filter( Bill.id == single_query).all(),
-	db.session.query(Bill).filter( Bill.prefix == single_query).all(),
-	db.session.query(Bill).filter( Bill.number == single_query_int).all()]
+	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.id == single_query).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.prefix == single_query).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter( Bill.number == single_query_int).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Bill).filter(Bill.session.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+
 
 	contributionsArray = []
+	if single_query_float != -1:
+		contributionsArray = [db.session.query(Contribution).filter(Contribution.amount == single_query_float).offset(page*num_per_page).limit(num_per_page)]
 
-	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query )
+
+
+	return render_template('search.html', bill = billArray, legis = legis, contrib = contrib, contributions = contributionsArray, query = single_query, single_query_float = single_query_float, single_query_int = single_query_int )
 
 @app.route('/unittest/')
 @app.route('/unittest/<name>')
