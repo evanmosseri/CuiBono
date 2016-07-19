@@ -5,21 +5,23 @@ python:
 
 sudo: false
 
- 
-install: 
-  - pip install pylint
-
-postgresql: "9.3"
-  - pip install numpy
+install:
+    - pip install -r tools
+    - pip install --upgrade pip
+    - pip --version
+    - pip install coverage
+    - pip install numpy
+    - pip install pylint
 
 before_script:
-  - uname -a
-  - printenv
-  - pip list
-  - coverage --version
-  - pylint   --version
-  - ulimit -s 1082768
-
+    - uname -a
+    - printenv
+    - pip list
+    - coverage --version
+    - pylint   --version
+    - ulimit -s 1082768
 
 script:
-  - make tests.tmp
+    - date
+    - ls -al
+    - make tests.tmp
