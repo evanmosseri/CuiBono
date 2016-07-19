@@ -4,10 +4,22 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from models_new import *
 from flask import request
 from sqlalchemy.orm import sessionmaker
+from pprint import pprint
+from urllib.parse import urlparse, urlencode, urlunparse, parse_qsl
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
 db = SQLAlchemy(app)
+
+
+def add_args(url,**params):
+	url_parts = list(urlparse(url))
+	query = dict(parse_qsl(url_parts[4]))
+	query.update(params)
+	url_parts[4] = urlencode(query)
+	return urlunparse(url_parts)
+
 
 
 @app.route("/")
@@ -24,7 +36,18 @@ def legislators(id=None):
 	if not(id):
 		return render_template("legislators.html", legislators = db.session.query(Legislator).order_by(sort if sort else id).offset(num_per_page*page).limit(num_per_page),page=page)
 	else:
-		return render_template("legislator.html", legislator = db.session.query(Legislator).get(id),page=page)
+		leg = db.session.query(Legislator).get(id)
+		contrib_page = int(request.args.get("contrib_page")) if request.args.get("contrib_page") else 1
+		num_contribs_per_page = int(request.args.get("num_contribs_per_page")) if request.args.get("num_contribs_per_page") else 10
+		print(request.url)
+		prev_url, next_url = add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=max(contrib_page-1,0)),add_args(request.url,num_contribs_per_page=num_contribs_per_page,contrib_page=contrib_page+1)
+		return render_template("legislator.html", 
+			prev_url=prev_url, 
+			next_url=next_url,
+			legislator = leg,
+			page=page,
+			contributions=leg.contributions[contrib_page*num_contribs_per_page:((contrib_page+1)*(num_contribs_per_page))]
+			)
 
 
 @app.route("/bills/<id>")
