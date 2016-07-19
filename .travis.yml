@@ -4,19 +4,19 @@ python:
   - "3.4"
  
 install: "pip install -r tools"
-	-pip install pylint
-	-pip install numpy
+  -pip install pylint
+  ZZ-pip install numpy
 
 postgresql: "9.3"
 
 before_script:
-	-uname -a
-	-printenv
-	-pip list
-	-coverage --version
-	-pylint --version
-	-ulimit -s 1082768	
+  -uname -a
+  -printenv
+  -pip list
+  -coverage --version
+  -pylint --version
+  -ulimit -s 1082768	
 
 scripts:
-	-make tests.tmp
+  -make tests.tmp
 
