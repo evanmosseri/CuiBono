@@ -22,7 +22,7 @@ def legislators(id=None):
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
-		return render_template("legislators.html", legislators = db.session.query(Legislator).order_by(sort if sort else id).offset(2*page).limit(num_per_page),page=page)
+		return render_template("legislators.html", legislators = db.session.query(Legislator).order_by(sort if sort else id).offset(20*page).limit(num_per_page),page=page)
 	else:
 		return render_template("legislator.html", legislator = db.session.query(Legislator).get(id),page=page)
 
@@ -34,7 +34,7 @@ def bills(id=None, methods=["GET"]):
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
-		return render_template("bills.html", bills = db.session.query(Bill).order_by(sort if sort else id).offset(2*page).limit(num_per_page),page=page) 
+		return render_template("bills.html", bills = db.session.query(Bill).order_by(sort if sort else id).offset(20*page).limit(num_per_page),page=page) 
 	else:
 		return render_template("bill.html", bill = db.session.query(Bill).get(id),page=page)
 
@@ -45,7 +45,7 @@ def contributors(id=None):
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
-		return render_template("contributors.html", contributors = db.session.query(Contributor).order_by(sort if sort else id).offset(2*page).limit(num_per_page),page=page)
+		return render_template("contributors.html", contributors = db.session.query(Contributor).order_by(sort if sort else id).offset(20*page).limit(num_per_page),page=page)
 	else:
 		return render_template("contributor.html", contributor = db.session.query(Contributor).get(id),page=page)
 
@@ -57,7 +57,7 @@ def contributions(id=None):
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 20
 	sort = request.args.get("sort") if request.args.get("sort") else 0	
 	if not(id):
-		temp = db.session.query(Contribution).filter(Contribution.legislator != None).order_by(sort if sort else id).offset(2*page).limit(num_per_page)
+		temp = db.session.query(Contribution).filter(Contribution.legislator != None).order_by(sort if sort else id).offset(20*page).limit(num_per_page)
 		return render_template("contributions.html",contributions = temp,page=page) 	
 	else:
 		return render_template("contribution.html", contribution= db.session.query(Contribution).get(id),page=page)
