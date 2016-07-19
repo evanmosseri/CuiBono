@@ -24,4 +24,5 @@ before_script:
 script:
     - date
     - ls -al
+    - cd Cuibono
     - make tests.tmp
