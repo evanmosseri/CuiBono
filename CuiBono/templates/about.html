@@ -269,13 +269,13 @@
 		<div class="respons">
 		    <h3>Unit Test</h3>
 		    <ul class="reponsibilities">
-            <li><input type="button" value="Run unit tests" onclick="myVar=setTimeout(unittest(), 4500)" /></li>
+            <li><button onclick="myVar = setTimeout(unittest, 4000)">Run Unit Test</button></li>
 			<script>
 			    function unittest()
 			    {
 				    myWindow = window.open('/unittest','','width=500,height=500');
 				    myWindow.focus();
-			    };
+			    }
 			</script>		
 			
 		    </ul>
