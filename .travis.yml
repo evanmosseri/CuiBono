@@ -1,11 +1,12 @@
 language: python
 
 python:
-  - "3.5"
+   - "3.5"
 
 sudo: false
+
  
-install: "pip install -r tools"
+install: 
   - pip install pylint
 
 postgresql: "9.3"
