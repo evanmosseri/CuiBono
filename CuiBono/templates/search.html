@@ -19,22 +19,22 @@
                         <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
-                                    <table>
-                                        <br><h3>Legislators:</h3>
+                                    <table style="width:100%">
+                                        <br><h3 style="text-align:left">Legislators:</h3>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>  First Name  </th>
-                                                <th>  Last Name  </th>
-                                                <th> Party </th>
+                                                <th style="text-align:left">ID</th>
+                                                <th style="text-align:left">  First Name  </th>
+                                                <th style="text-align:left">  Last Name  </th>
+                                                <th style="text-align:left"> Party </th>
                                             </tr>
                                         <tbody>
                                         
                                         {% for lg in legis[0] %}
                                         <tr>
-                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
-                                            <td>{{ lg.first_name }}</td>
-                                            <td>{{ lg.last_name }}</td>
-                                            <td>{{ lg.party }}</td>
+                                            <td style="text-align:left"><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td style="text-align:left"><mark>{{ lg.first_name }}</mark></td>
+                                            <td style="text-align:left">{{ lg.last_name }}</td>
+                                            <td style="text-align:left">{{ lg.party }}</td>
 
                                             
                                         </tr>
@@ -42,32 +42,33 @@
                                         
                                         {% for lg in legis[1] %}
                                         <tr>
-                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
-                                            <td>{{ lg.first_name }}</td>
-                                            <td>{{ lg.last_name }}</td>
-                                            <td>{{ lg.party }}</td>
+                                            <td style="text-align:left"><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td style="text-align:left">{{ lg.first_name }}</td>
+                                            <td style="text-align:left"><mark>{{ lg.last_name }}</mark></td>
+                                            <td style="text-align:left">{{ lg.party }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         
                                         {% for lg in legis[2] %}
                                         <tr>
-                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
-                                            <td>{{ lg.first_name }}</td>
-                                            <td>{{ lg.last_name }}</td>
-                                            <td>{{ lg.party }}</td>
+                                            <td style="text-align:left"><a href="/legislators/{{ lg.id }}"><mark>{{ lg.id }}</mark></a></td>
+                                            <td style="text-align:left">{{ lg.first_name }}</td>
+                                            <td style="text-align:left">{{ lg.last_name }}</td>
+                                            <td style="text-align:left">{{ lg.party }}</td>
                                             
                                         </tr>
                                         {% endfor %}
 
                                         {% for lg in legis[3] %}
                                         <tr>
-                                            <td><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
-                                            <td>{{ lg.first_name }}</td>
-                                            <td>{{ lg.last_name }}</td>
-                                            <td>{{ lg.party }}</td>
+                                            <td style="text-align:left"><a href="/legislators/{{ lg.id }}">{{ lg.id }}</a></td>
+                                            <td style="text-align:left">{{ lg.first_name }}</td>
+                                            <td style="text-align:left">{{ lg.last_name }}</td>
+                                            <td style="text-align:left"><mark>{{ lg.party }}</mark></td>
                                             
                                         </tr>
+
                                         {% endfor %}
                                         </tbody>
                                     </table>
@@ -75,54 +76,55 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     {% endif %}
                     {% if (contrib[0] and contrib[0].count() > 0) or (contrib[1] and contrib[1].count() > 0) or (contrib[2] and contrib[2].count() > 0) or (contrib[3] and contrib[3].count() > 0) %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
-                                    <table>
-                                        <br><h3>Contributors:</h3>
+                                    <table style="width:100%">
+                                        <br><h3 style="text-align:left">Contributors:</h3>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>  Name  </th>
-                                                <th>  Zip  </th>
-                                                <th>  Type  </th>
+                                                <th style="text-align:left">ID</th>
+                                                <th style="text-align:left">  Name  </th>
+                                                <th style="text-align:left">  Zip  </th>
+                                                <th style="text-align:left">  Type  </th>
                                             </tr>
                                         <tbody>
                                         {% for ct in contrib[0] %}
                                         <tr>
-                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
-                                            <td>{{ ct.name }}</td>
-                                            <td>{{ ct.zip }}</td>
-                                            <td>{{ ct.type }}</td>
+                                            <td style="text-align:left"><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td style="text-align:left"><mark>{{ ct.name }}</mark></td>
+                                            <td style="text-align:left">{{ ct.zip }}</td>
+                                            <td style="text-align:left">{{ ct.type }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for ct in contrib[1] %}
                                         <tr>
-                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
-                                            <td>{{ ct.name }}</td>
-                                            <td>{{ ct.zip }}</td>
-                                            <td>{{ ct.type }}</td>
+                                            <td style="text-align:left"><a href="/contributors/{{ ct.id }}"><mark>{{ ct.id }}</mark></a></td>
+                                            <td style="text-align:left">{{ ct.name }}</td>
+                                            <td style="text-align:left">{{ ct.zip }}</td>
+                                            <td style="text-align:left">{{ ct.type }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for ct in contrib[2] %}
                                         <tr>
-                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
-                                            <td>{{ ct.name }}</td>
-                                            <td>{{ ct.zip }}</td>
-                                            <td>{{ ct.type }}</td>
+                                            <td style="text-align:left"><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td style="text-align:left">{{ ct.name }}</td>
+                                            <td style="text-align:left"><mark>{{ ct.zip }}</mark></td>
+                                            <td style="text-align:left">{{ ct.type }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         </tbody>
                                         {% for ct in contrib[3] %}
                                         <tr>
-                                            <td><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
-                                            <td>{{ ct.name }}</td>
-                                            <td>{{ ct.zip }}</td>
-                                            <td>{{ ct.type }}</td>
+                                            <td style="text-align:left"><a href="/contributors/{{ ct.id }}">{{ ct.id }}</a></td>
+                                            <td style="text-align:left">{{ ct.name }}</td>
+                                            <td style="text-align:left">{{ ct.zip }}</td>
+                                            <td style="text-align:left"><mark>{{ ct.type }}</mark></td>
                                             
                                         </tr>
                                         {% endfor %}
@@ -130,69 +132,70 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         {% endif %}
 
                         {% if bill[0] and bill[0].count() > 0 or bill[0] and bill[1].count() > 0 or bill[2] and bill[2].count() > 0 or bill[3] and bill[3].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
-                                    <table>
-                                        <br><h3>Bills:</h3>
+                                    <table style="width:100%" cellpadding="20">
+                                        <br><h3 style="text-align:left">Bills:</h3>
                                             <tr>
-                                                <th> ID </th>
-                                                <th>  Prefix  </th>
-                                                <th>  Number  </th>
-                                                <th>  Session  </th>
-                                                <th> Title </th>
+                                                <th style="text-align:left"> ID </th>
+                                                <th style="text-align:left">  Prefix  </th>
+                                                <th style="text-align:left">  Number  </th>
+                                                <th style="text-align:left">  Session  </th>
+                                                <th style="text-align:left"> Title </th>
                                             </tr>
                                         <tbody>
                                         {% for bl in bill[0] %}
                                         <tr>
-                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
-                                            <td>{{ bl.prefix }}</td>
-                                            <td>{{ bl.number }}</td>
-                                            <td>{{ bl.session }}</td>
-                                            <td>{{ bl.title }}</td>
+                                            <td style="text-align:left"><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td style="text-align:left">{{ bl.prefix }}</td>
+                                            <td style="text-align:left">{{ bl.number }}</td>
+                                            <td style="text-align:left">{{ bl.session }}</td>
+                                            <td style="text-align:left"><mark>{{ bl.title }}</mark></td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for bl in bill[1] %}
                                         <tr>
-                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
-                                            <td>{{ bl.prefix }}</td>
-                                            <td>{{ bl.number }}</td>
-                                            <td>{{ bl.session }}</td>
-                                            <td>{{ bl.title }}</td>
+                                            <td style="text-align:left"><a href="/bills/{{ bl.id }}"><mark>{{ bl.id }}</mark></a></td>
+                                            <td style="text-align:left">{{ bl.prefix }}</td>
+                                            <td style="text-align:left">{{ bl.number }}</td>
+                                            <td style="text-align:left">{{ bl.session }}</td>
+                                            <td style="text-align:left">{{ bl.title }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for bl in bill[2] %}
                                         <tr>
-                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
-                                            <td>{{ bl.prefix }}</td>
-                                            <td>{{ bl.number }}</td>
-                                            <td>{{ bl.session }}</td>
-                                            <td>{{ bl.title }}</td>
+                                            <td style="text-align:left"><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td style="text-align:left"><mark>{{ bl.prefix }}</mark></td>
+                                            <td style="text-align:left">{{ bl.number }}</td>
+                                            <td style="text-align:left">{{ bl.session }}</td>
+                                            <td style="text-align:left">{{ bl.title }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for bl in bill[3] %}
                                         <tr>
-                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
-                                            <td>{{ bl.prefix }}</td>
-                                            <td>{{ bl.number }}</td>
-                                            <td>{{ bl.session }}</td>
-                                            <td>{{ bl.title }}</td>
+                                            <td style="text-align:left"><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td style="text-align:left">{{ bl.prefix }}</td>
+                                            <td style="text-align:left"><mark>{{ bl.number }}</mark></td>
+                                            <td style="text-align:left">{{ bl.session }}</td>
+                                            <td style="text-align:left">{{ bl.title }}</td>
                                             
                                         </tr>
                                         {% endfor %}
                                         {% for bl in bill[4] %}
                                         <tr>
-                                            <td><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
-                                            <td>{{ bl.prefix }}</td>
-                                            <td>{{ bl.number }}</td>
-                                            <td>{{ bl.session }}</td>
-                                            <td>{{ bl.title }}</td>
+                                            <td style="text-align:left"><a href="/bills/{{ bl.id }}">{{ bl.id }}</a></td>
+                                            <td style="text-align:left">{{ bl.prefix }}</td>
+                                            <td style="text-align:left">{{ bl.number }}</td>
+                                            <td style="text-align:left"><mark>{{ bl.session }}</mark></td>
+                                            <td style="text-align:left">{{ bl.title }}</td>
                                             
                                         </tr>
                                         {% endfor %}
@@ -201,28 +204,29 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         {% endif %}
                         {% if contributions[0] and contributions[0].count() > 0 %}
                     <div class=".col-md-12">
                             <div>
                                 <div class="table-responsive">
-                                    <table>
-                                        <br><h3>Contributions:</h3>
+                                    <table style="width:100%">
+                                        <br><h3 style="text-align:left">Contributions:</h3>
                                             <tr>
-                                                <th> Amount </th>
-                                                <th>  ID  </th>
-                                                <th>  Date  </th>
-                                                <th>  Contributor  </th>
-                                                <th> Legislator </th>
+                                                <th style="text-align:left"> Amount </th>
+                                                <th style="text-align:left">  ID  </th>
+                                                <th style="text-align:left">  Date  </th>
+                                                <th style="text-align:left">  Contributor  </th>
+                                                <th style="text-align:left"> Legislator </th>
                                             </tr>
                                         <tbody>
                                         {% for cn in contributions[0] %}
                                         <tr>
-                                            <td>{{ cn.amount }}</td>
-                                            <td>{{ cn.id }}</td>
-                                            <td>{{ cn.submitted_date }}</td>
-                                            <td><a href="/contributors/{{cn.contributor.id}}">{{ cn.contributor.name }}</a></td>
-                                            <td><a href="/legislators/{{cn.legislator.id}}">{{cn.legislator.first_name + " " + cn.legislator.last_name}}</a></td>
+                                            <td style="text-align:left"><mark>{{ cn.amount }}</mark></td>
+                                            <td style="text-align:left">{{ cn.id }}</td>
+                                            <td style="text-align:left">{{ cn.submitted_date }}</td>
+                                            <td style="text-align:left"><a href="/contributors/{{cn.contributor.id}}">{{ cn.contributor.name }}</a></td>
+                                            <td style="text-align:left"><a href="/legislators/{{cn.legislator.id}}">{{cn.legislator.first_name + " " + cn.legislator.last_name}}</a></td>
                                             
                                         </tr>
                                         {% endfor %}
@@ -231,6 +235,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         {% endif %}
                     </div>
                     <br>
