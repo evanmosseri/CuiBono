@@ -4,6 +4,19 @@ python:
   - "3.4"
  
 install: "pip install -r tools"
+	-pip install pylint
+	-pip install numpy
 
-addons:
-  postgresql: "9.3"
+postgresql: "9.3"
+
+before_script:
+	-uname -a
+	-printenv
+	-pip list
+	-coverage --version
+	-pylint --version
+	-ulimit -s 1082768	
+
+scripts:
+	-make tests.tmp
+

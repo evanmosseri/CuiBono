@@ -19,3 +19,5 @@ urllib3==1.7.1
 uWSGI==2.0.9
 virtualenv==1.11.4
 watchdog==0.8.3
+
+
