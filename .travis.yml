@@ -20,5 +20,5 @@ before_script:
   - ulimit -s 1082768
 
 
-scripts:
+script:
   - make tests.tmp
