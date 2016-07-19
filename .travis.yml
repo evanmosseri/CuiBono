@@ -12,6 +12,7 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
+    - pip install Flask-SQLAlchemy
 
 before_script:
     - uname -a
