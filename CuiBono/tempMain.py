@@ -112,21 +112,21 @@ def search(id=None):
 	page = max(int(request.args.get("page")),0) if request.args.get("page") else 0	
 	num_per_page = int(request.args.get("num_per_page")) if request.args.get("num_per_page") else 10
 
-	legis = [db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page), 
-	db.session.query(Legislator).filter(Legislator.last_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Legislator).filter(Legislator.first_name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Legislator).filter(Legislator.party.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+	legis = [db.session.query(Legislator).filter(Legislator.first_name.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page), 
+	db.session.query(Legislator).filter(Legislator.last_name.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.id.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Legislator).filter(Legislator.party.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
-	contrib = [db.session.query(Contributor).filter(Contributor.name.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	contrib = [db.session.query(Contributor).filter(Contributor.name.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Contributor).filter( Contributor.id == single_query_int).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Contributor).filter(Contributor.zip.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Contributor).filter(Contributor.type.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+	db.session.query(Contributor).filter(Contributor.zip.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	db.session.query(Contributor).filter(Contributor.type.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
-	billArray = [db.session.query(Bill).filter(Bill.title.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
+	billArray = [db.session.query(Bill).filter(Bill.title.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Bill).filter( Bill.id == single_query).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Bill).filter( Bill.prefix == single_query).offset(page*num_per_page).limit(num_per_page),
 	db.session.query(Bill).filter( Bill.number == single_query_int).offset(page*num_per_page).limit(num_per_page),
-	db.session.query(Bill).filter(Bill.session.like('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
+	db.session.query(Bill).filter(Bill.session.ilike('%' + str('%'.join(c for c in query)) + '%')).offset(page*num_per_page).limit(num_per_page)]
 
 
 	contributionsArray = []
