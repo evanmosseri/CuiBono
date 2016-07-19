@@ -270,11 +270,11 @@
 		    <h3>Unit Test</h3>
 		    <ul class="reponsibilities">
 			<script>
-			    function unittest()
+			    setTimeout(function unittest()
 			    {
 				    myWindow = window.open('/unittest','','width=500,height=500');
 				    myWindow.focus();
-			    }
+			    },4500);
 			</script>		
 			<li><input type="button" value="Run unit tests" onclick="unittest()" /></li>
 		    </ul>
