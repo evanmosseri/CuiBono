@@ -241,7 +241,7 @@ def unittest(name=None):
 
 @app.route("/api/bill/")
 def get_all_bills():
-    bills = db.session.query(Bill).all()
+    bills = db.session.query(Bill).limit(1000).all()
     return jsonify([bill_to_dict(bil)for bil in bills])
 
 
@@ -262,9 +262,6 @@ def get_all_legislator():
     contributions = db.session.query(Contribution).all()
     return jsonify([contribution_to_dict(x) for x in contributions])
 
-=======
-	bills = db.session.query(Bill).limit(1000).all()
-	return jsonify([bill_to_dict(bil)for bil in bills])
 
 @app.route("/api/legislator/")
 def get_all_legislators():
