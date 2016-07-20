@@ -9,9 +9,7 @@ data
 data/*
 *.pyc
 *.txt
-<<<<<<< HEAD
 bootstrap-tutorial
-=======
 entities_combined_grouped.csv
 data-shared/contributions.csv
->>>>>>> apairyAPI
+apairyAPI

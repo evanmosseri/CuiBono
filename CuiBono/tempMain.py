@@ -281,7 +281,6 @@ def get_all_contributor():
 def get_all_legislator():
 	contributions = db.session.query(Contribution).limit(1000).all()
 	return jsonify([contribution_to_dict(x) for x in contributions])
->>>>>>> 8a7efee217d5833fda0090a9f4962bb76a87abf6
 
 def bill_to_dict(bill):
     if bill is None:
