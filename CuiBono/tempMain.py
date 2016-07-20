@@ -244,25 +244,6 @@ def get_all_bills():
     bills = db.session.query(Bill).limit(1000).all()
     return jsonify([bill_to_dict(bil)for bil in bills])
 
-
-@app.route("/api/legislator/")
-def get_all_legislators():
-    legislators = db.session.query(Legislator).all()
-    return jsonify([legis_to_dict(never_skip_leg_day) for never_skip_leg_day in legislators])
-
-
-@app.route("/api/contributor/")
-def get_all_contributor():
-    contributors = db.session.query(Contributor).all()
-    return jsonify([contributor_to_dict(contra) for contra in contributors])
-
-
-@app.route("/api/contribution/")
-def get_all_legislator():
-    contributions = db.session.query(Contribution).all()
-    return jsonify([contribution_to_dict(x) for x in contributions])
-
-
 @app.route("/api/legislator/")
 def get_all_legislators():
 	legislators = db.session.query(Legislator).limit(1000).all()
