@@ -23,8 +23,8 @@ tests.tmp: .pylintrc tests.py
 	cat TestResult.out
 
 
-Models.html: CuiBono/models/models.py 
-	pydoc3 -w CuiBono/models/models.py
+models.html: models_new.py 
+	pydoc3 -w models_new.py
 
 
 clean:
