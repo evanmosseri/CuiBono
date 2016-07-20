@@ -241,7 +241,6 @@ def unittest(name=None):
 
 @app.route("/api/bill/")
 def get_all_bills():
-<<<<<<< HEAD
     bills = db.session.query(Bill).all()
     return jsonify([bill_to_dict(bil)for bil in bills])
 
