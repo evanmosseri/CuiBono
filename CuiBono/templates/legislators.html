@@ -27,8 +27,9 @@
       </tr>
     </thead>
     {% for legis in legislators %}
+      {% if legis.first_name%}
       <tr>
-        <td><a href="/legislators/{{legis.id}}">{{legis.first_name +" " + legis.last_name}}</a></td>
+        <td><a href="/legislators/{{legis.id}}">{{legis.first_name}} &nbsp {{legis.last_name}}</a></td>
         <td>{{legis.id}}</td>
         <td>{{legis.filer_id}}</td>
         <td>{%if legis.district == -1%}
@@ -41,11 +42,12 @@
         <td>{{legis.sources}}</td>
 
       </tr>
+      {%endif%}
       {% endfor %}
   </table>
   <div>
-      <a href="/legislators?page={{page-1}}">Previous</a>
-      <a href="/legislators?page={{page+1}}">Next</a>
+      <a href="{{prev_page}}">Previous</a>
+      <a href="{{next_page}}">Next</a>
   </div>
 </div>
 </div>

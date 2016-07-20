@@ -17,6 +17,7 @@
   <table id="contributionsTable" class="table table-responsive" style="">
      <thead> 
       <tr>
+        <th><a href="/contributions?sort=id">ID</a></th>
         <th><a href="/contributions?sort=amount">Amount</a></th>
         <th><a href="/contributions?sort=filer_id">Filer ID</a></th>
         <th><a href="/contributions?sort=submitted_date">Date Submitted</a></th>
@@ -26,22 +27,22 @@
     </thead>
     {% for contribution in contributions %}
     <tr>
+      <td><a href="/contributions/{{contribution.id}}">{{contribution.id}}</a></td>
       <td>${{contribution.amount}}</td>
       <td>{{contribution.filer_id}}</td>
       <td>{{contribution.submitted_date}}</td>
-      <td><a href="/contributions/{{contribution.id}}">{{contribution.contributor.name}}</a></td>
+      <td><a href="/contributors/{{contribution.contributor.id}}">{{contribution.contributor.name}}</a></td>
       {%if contribution.legislator%}
             <td><a href="/legislators/{{contribution.legislator.id}}">{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</a></td>
       {%else%}
         <td></td>
       {%endif%}
-
     </tr>
     {% endfor %}
   </table>
   <div>
-    <a href="/contributions?page={{page-1}}">Previous</a>
-    <a href="/contributions?page={{page+1}}">Next</a>
+      <a href="{{prev_page}}">Previous</a>
+      <a href="{{next_page}}">Next</a>
   </div>
 </div>
 </div>

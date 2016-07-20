@@ -10,6 +10,14 @@
     <div class="intro-body">
         <div class="container">
             <h2>{{legislator.first_name +" "+ legislator.last_name}}</h2>
+            {%if legislator.photo_url%}
+            <img src="{{legislator.photo_url}}">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            {%endif%}
             <table id="legislatorTable" class="table table-responsive" style="">
                 <tr>
                     <td>Filer ID</td>
@@ -17,7 +25,11 @@
                 </tr>
                 <tr>
                     <td>District</td>
-                    <td>{{legislator.district}}</td>
+                    <td>{%if legislator.district == -1%}
+                            N/A
+                          {%else%}
+                            {{legislator.district}}
+                          {%endif%}</td>
                 </tr>
                 <tr>
                     <td>Party</td>
@@ -39,33 +51,32 @@
                 </tr>
             </table>
             <h2>Contributions</h2>
-            <table id="contributionsTable" class="table table-responsive" style="">
-                <thead>
-                    <tr>
-                        <th>Amount</th>
-                        <th>Filer ID</th>
-                        <th>Date Submitted</th>
-                        <th>Contributor</th>
-                    </tr>
-                </thead>
-                {% for contribution in contributions %}
-                <tr>
-                    <td>${{contribution.amount}}</td>
-                    <td>{{contribution.filer_id}}</td>
-                    <td>{{contribution.submitted_date}}</td>
-                    <td><a href="/contributions/{{contribution.id}}">{{contribution.contributor.name}}</a></td>
-                    <td></td>
-                </tr>
-                {% endfor %}
-            </table>
-            <div class="contribution-pagination">
-                <a href="{{prev_contribs}}">
-                    <button>Previous</button>
-                </a>
-                <a href="{{next_contribs}}">
-                    <button>Next</button>
-                </a>
-            </div>
+            <table id="" class="table table-responsive" style="">
+             <thead> 
+              <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Filer ID</th>
+                <th>Date Submitted</th>
+                <th>Contributor</th>
+                <th>Legislator</th>
+              </tr>
+            </thead>
+            {% for contribution in contributions %}
+            <tr>
+              <td><a href="/contributions/{{contribution.id}}">{{contribution.id}}</a></td>
+              <td>${{contribution.amount}}</td>
+              <td>{{contribution.filer_id}}</td>
+              <td>{{contribution.submitted_date}}</td>
+              <td><a href="/contributors/{{contribution.contributor.id}}">{{contribution.contributor.name}}</a></td>
+              {%if contribution.legislator%}
+                    <td><a href="/legislators/{{contribution.legislator.id}}">{{contribution.legislator.first_name + " " + contribution.legislator.last_name}}</a></td>
+              {%else%}
+                <td></td>
+              {%endif%}
+            </tr>
+            {% endfor %}
+          </table>
              <h2>Bills</h2>
             <table id="billsTable" class="table table-responsive" style="">
                 <thead>
@@ -93,8 +104,8 @@
                 {% endfor %}
             </table>
             <div class="bill pagination">
-                <a href="/bills?page={{page-1}}">Previous</a>
-                <a href="/bills?page={{page+1}}">Next</a>
+                <a href="{{prev_contribs}}">Previous</a>
+                <a href="{{next_contribs}}">Next</a>
             </div>
         </div>
     </div>

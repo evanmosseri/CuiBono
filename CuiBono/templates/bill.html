@@ -28,6 +28,10 @@
         <td>{{bill.session}}</td>
       </tr>
       <tr>
+        <td>Caption</td>
+        <td>{{bill.title}}</td>
+      </tr>
+      <tr>
         <td>Sponsors</td>
         <td>
           {%for legis in bill.sponsors%}  
@@ -36,6 +40,33 @@
         </td>
       </tr>
     </table>
+    <h2>Sponsors</h2>
+  <table id="legislatorsTable" class="table table-responsive" style="">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Filer ID</th>
+        <th>District</th>
+        <th>Party</th>
+      </tr>
+    </thead>
+    {% for legis in sponsors %}
+      {% if legis.first_name%}
+      <tr>
+        <td><a href="/legislators/{{legis.id}}">{{legis.first_name}} &nbsp {{legis.last_name}}</a></td>
+        <td>{{legis.id}}</td>
+        <td>{{legis.filer_id}}</td>
+        <td>{%if legis.district == -1%}
+                N/A
+              {%else%}
+                {{legis.district}}
+              {%endif%}</td>
+        <td>{{legis.party}}</td>
+      </tr>
+      {%endif%}
+      {% endfor %}
+  </table>
 </div>
 </div>
 </header>
