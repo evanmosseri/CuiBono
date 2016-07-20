@@ -27,7 +27,7 @@ class FlaskTest(TestCase):
     
     def test_get4(self):
         con = db.session.query(Contribution).get(1)
-        assert(con == None)
+            assert(con != None)
     
     def test_add(self):
         db.session.add(Bill(id = "TX1234567890", prefix = "House"))
