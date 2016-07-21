@@ -1,0 +1,267 @@
+{% extends "index.html" %}
+
+{%block morecss%}
+<style>
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+  background-color: #1E90FF;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  text-align:center;
+}
+
+path.slice{
+  stroke-width:2px;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.male {
+    background-color: blue; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.female {
+    background-color: pink; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.unknown {
+    background-color: purple; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+</style>
+{%endblock%}
+
+{% block outerContent %}
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<div class="container">
+
+<center><br><br><img src="http://orig00.deviantart.net/25f6/f/2012/043/8/d/harvey_dent_by_vdazzlehd-d4pj1t7.png" style="width:50%;height:50%;" >
+<br><br>
+<button class="male" style="font-color:blue;">Male</button>
+<button class="female">Female</button>
+<button class="unknown">Unknown</button>
+<br><br><hr>
+<h1 id="title"></h1>
+
+<table>
+<th>
+<td id = "tableGood">Good: </td>
+<td id = "tableBad">Bad: </td>
+<td id = "tableNeutral">Neutral: </td>
+</th>
+</table>
+
+</center>
+<script>
+
+
+var svg = d3.select("body")
+  .append("svg")
+  .append("g")
+
+svg.append("g")
+  .attr("class", "slices");
+svg.append("g")
+  .attr("class", "labels");
+svg.append("g")
+  .attr("class", "lines");
+
+var width = 960,
+    height = 400,
+  radius = Math.min(width, height) / 2;
+
+var pie = d3.layout.pie()
+  .sort(null)
+  .value(function(d) {
+    return d.value;
+  });
+
+var arc = d3.svg.arc()
+  .outerRadius(radius * 0.8)
+  .innerRadius(radius * 0.4);
+
+var outerArc = d3.svg.arc()
+  .innerRadius(radius * 0.9)
+  .outerRadius(radius * 0.9);
+
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var key = function(d){ return d.data.label; };
+
+document.getElementById("title").innerHTML="MALES";
+document.getElementById("tableGood").innerHTML="<font color='green'>Good</font>: {{male[0]}}&nbsp";
+document.getElementById("tableBad").innerHTML="<font color='red'>Bad</font>: {{male[1]}}&nbsp";
+document.getElementById("tableNeutral").innerHTML="<font color='yellow'>Neutral</font>: {{male[2]}}&nbsp";
+var male_data = ['{{male[0]}}','{{male[1]}}','{{male[2]}}']
+var female_data = ['{{female[0]}}','{{female[1]}}','{{female[2]}}']
+var unknown_data = ['{{unknown[0]}}','{{unknown[1]}}','{{unknown[2]}}']
+
+var color = d3.scale.ordinal()
+  .domain(["Good", "Bad", "Neutral"])
+  .range(["green", "red", "yellow"]);
+
+
+function randomData (data){
+  var labels = color.domain();
+  return labels.map(function(label, i=0){
+    return { label: label, value: data[i++] }
+  });
+}
+
+change(randomData(male_data));
+
+d3.select(".male")
+  .on("click", function(){
+    change(randomData(male_data));
+    document.getElementById("title").innerHTML="MALES";
+    document.getElementById("tableGood").innerHTML="<font color='green'>Good</font>: {{male[0]}}&nbsp";
+    document.getElementById("tableBad").innerHTML="<font color='red'>Bad</font>: {{male[1]}}&nbsp";
+    document.getElementById("tableNeutral").innerHTML="<font color='yellow'>Neutral</font>: {{male[2]}}&nbsp";
+      });
+
+d3.select(".female")
+  .on("click", function(){
+    change(randomData(female_data));
+    document.getElementById("title").innerHTML="FEMALES";
+    document.getElementById("tableGood").innerHTML="<font color='green'>Good</font>: {{female[0]}}&nbsp";
+    document.getElementById("tableBad").innerHTML="<font color='red'>Bad</font>: {{female[1]}}&nbsp";
+    document.getElementById("tableNeutral").innerHTML="<font color='yellow'>Neutral</font>: {{female[2]}}&nbsp";
+  });  
+
+d3.select(".unknown")
+  .on("click", function(){
+    change(randomData(unknown_data));
+    document.getElementById("title").innerHTML="UNKNOWNS";
+    document.getElementById("tableGood").innerHTML="<font color='green'>Good</font>: {{unknown[0]}}&nbsp";
+    document.getElementById("tableBad").innerHTML="<font color='red'>Bad</font>: {{unknown[1]}}&nbsp";
+    document.getElementById("tableNeutral").innerHTML="<font color='yellow'>Neutral</font>: {{unknown[2]}}&nbsp";
+  });
+
+function change(data) {
+
+  /* ------- PIE SLICES -------*/
+  var slice = svg.select(".slices").selectAll("path.slice")
+    .data(pie(data), key);
+
+  slice.enter()
+    .insert("path")
+    .style("fill", function(d) { return color(d.data.label); })
+    .attr("class", "slice");
+
+  slice   
+    .transition().duration(1000)
+    .attrTween("d", function(d) {
+      this._current = this._current || d;
+      var interpolate = d3.interpolate(this._current, d);
+      this._current = interpolate(0);
+      return function(t) {
+        return arc(interpolate(t));
+      };
+    })
+
+  slice.exit()
+    .remove();
+
+  /* ------- TEXT LABELS -------*/
+
+  var text = svg.select(".labels").selectAll("text")
+    .data(pie(data), key);
+
+  text.enter()
+    .append("text")
+    .attr("dy", ".35em")
+    .text(function(d) {
+      return d.data.label;
+    });
+  
+  function midAngle(d){
+    return d.startAngle + (d.endAngle - d.startAngle)/2;
+  }
+
+  text.transition().duration(1000)
+    .attrTween("transform", function(d) {
+      this._current = this._current || d;
+      var interpolate = d3.interpolate(this._current, d);
+      this._current = interpolate(0);
+      return function(t) {
+        var d2 = interpolate(t);
+        var pos = outerArc.centroid(d2);
+        pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+        return "translate("+ pos +")";
+      };
+    })
+    .styleTween("text-anchor", function(d){
+      this._current = this._current || d;
+      var interpolate = d3.interpolate(this._current, d);
+      this._current = interpolate(0);
+      return function(t) {
+        var d2 = interpolate(t);
+        return midAngle(d2) < Math.PI ? "start":"end";
+      };
+    });
+
+  text.exit()
+    .remove();
+
+  /* ------- SLICE TO TEXT POLYLINES -------*/
+
+  var polyline = svg.select(".lines").selectAll("polyline")
+    .data(pie(data), key);
+  
+  polyline.enter()
+    .append("polyline");
+
+  polyline.transition().duration(1000)
+    .attrTween("points", function(d){
+      this._current = this._current || d;
+      var interpolate = d3.interpolate(this._current, d);
+      this._current = interpolate(0);
+      return function(t) {
+        var d2 = interpolate(t);
+        var pos = outerArc.centroid(d2);
+        pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+        return [arc.centroid(d2), outerArc.centroid(d2), pos];
+      };      
+    });
+  
+  polyline.exit()
+    .remove();
+};
+
+</script>
+</div>
+{% endblock %}

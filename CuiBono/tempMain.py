@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from pprint import pprint
 from urllib.parse import urlparse, urlencode, urlunparse, parse_qsl
 import json
+import requests
 
 app = Flask(__name__)
 app.config[
@@ -258,6 +259,40 @@ def get_all_contributor():
 def get_all_legislator():
 	contributions = db.session.query(Contribution).limit(1000).all()
 	return jsonify([contribution_to_dict(x) for x in contributions])
+
+@app.route("/visual")
+def get_visual():
+	data = requests.get("http://dcdatabase.me/characters.json")
+	dict_data = json.loads(data.text)
+	male = [0,0,0,0]
+	female = [0,0,0,0]
+	unknown = [0,0,0,0]
+	for d in dict_data:
+		if d["gender"] == "Male":
+			if d["alignment"] == "Good":
+				male[0] += 1
+			elif d["alignment"] == "Bad":
+				male[1] += 1
+			else:
+				male[2] += 1
+		elif d["gender"] == "Female":
+			if d["alignment"] == "Good":
+				female[0] += 1
+			elif d["alignment"] == "Bad":
+				female[1] += 1
+			else:
+				female[2] += 1
+		else :
+			if d["alignment"] == "Good":
+				unknown[0] += 1
+			elif d["alignment"] == "Bad":
+				unknown[1] += 1
+			else:
+				unknown[2] += 1	
+	male[3] = male[2] + male[1] + male[0]
+	female[3] = female[2] + female[1] + female[0]	
+	unknown[3] = unknown[2] + unknown[1] + unknown[0]
+	return render_template("visual.html", male = male, female = female, unknown = unknown)
 
 def bill_to_dict(bill):
     if bill is None:
