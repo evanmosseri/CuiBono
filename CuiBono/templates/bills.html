@@ -18,22 +18,24 @@
                     <th><a href="/bills?sort=prefix">Prefix</a></th>
                     <th><a href="/bills?sort=number">Number</a></th>
                     <th><a href="/bills?sort=session">Session</a></th>
-                    <th>Sponsors</th>
+                    <!-- <th>Sponsors</th> -->
+                    <th>Title</th>
                 </thead>
                 {% for bill in bills %}
                 <tr>
-                    <th><a href="/bills/{{bill.id}}">{{bill.id}}</a></th>
-                    <th>{{bill.prefix}}</th>
-                    <th>{{bill.number}}</th>
-                    <th>{{bill.session}}</th>
-                    <th>
-                        {%set index =0%} {%if not bill.sponsors%} {{"None"}} {%endif%} {%for legis in bill.sponsors%} {% if not legis.first_name %} {{"None"}} {%else%} {%if index == 0%}
-                        <a href="/legislators/{{legis.id}}">{{legis.first_name + " " + legis.last_name}}
-                        {%set index = 1%}
+                    <td><a href="/bills/{{bill.id}}">{{bill.id}}</a></td>
+                    <td>{{bill.prefix}}</td>
+                    <td>{{bill.number}}</td>
+                    <td>{{bill.session}}</td>
+                    {%if bill.title|length > 100%}
+                    <td>
+                        {{bill.title[:100]}}...
+                    </td>
+                    {%else%}
+                    <td>
+                        {{bill.title[:100]}}
+                    </td>
                     {%endif%}
-                {%endif%}
-                </a> {%endfor%}
-                    </th>
                 </tr>
                 {% endfor %}
             </table>

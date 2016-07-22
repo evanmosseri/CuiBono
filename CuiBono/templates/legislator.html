@@ -35,20 +35,30 @@
                     <td>Party</td>
                     <td>{{legislator.party}}</td>
                 </tr>
-                <td>Type</td>
-                <td>{{legislator.type}}</td>
-                </tr>
-                <tr>
-                    <td>Offices</td>
-                    <td>{{legislator.offices}}</td>
-                </tr>
-                <td>Sources</td>
-                <td>{{legislator.sources}}</td>
-                </tr>
-                <tr>
-                    <td>Photo</td>
-                    <td>{{legislator.photo_u}}</td>
-                </tr>
+
+                {%for source in legislator.sources%}
+                    {%if source["url"]%}
+                    <tr>
+                          {% if "://" in source["url"] %}
+                            <td>URL</td>
+                            <td><a href="{{source["url"]}}">{{source["url"]}}</a></td>
+                          {% endif %}
+                    </tr>    
+                    {%endif%}
+                {%endfor%}
+                {%for i,office in legislator.offices|enumerate%}
+                    <tr>
+                        <td>Office {{i}}:</td>
+                        {# <td>{{office}}</td> #}
+                        <td>
+                            <ul style="list-style: none; text-align: left;">
+                                {%for col in office%}
+                                    <li>{{col}} : {{office[col]}}</li>
+                                {%endfor%}
+                            </ul>
+                        </td>
+                    </tr>
+                {%endfor%}
             </table>
             <h2>Contributions</h2>
             <table id="" class="table table-responsive" style="">
@@ -84,22 +94,17 @@
                     <th>Prefix</th>
                     <th>Number</th>
                     <th>Session</th>
-                    <th>Sponsors</th>
+                    <th>Title</th>
                 </thead>
                 {% for bill in bills %}
                 <tr>
-                    <th>{{bill.id}}</a></th>
-                    <th>{{bill.prefix}}</th>
-                    <th>{{bill.number}}</th>
-                    <th>{{bill.session}}</th>
-                    <th>
-                        {%set index =0%} {%if not bill.sponsors%} {{"None"}} {%endif%} {%for legis in bill.sponsors%} {% if not legis.first_name %} {{"None"}} {%else%} {%if index == 0%}
-                        <a href="/legislators/{{legis.id}}">{{legis.first_name + " " + legis.last_name}}
-                        {%set index = 1%}
-                    {%endif%}
-                {%endif%}
-                </a> {%endfor%}
-                    </th>
+                    <td><a href="/bills/{{bill.id}}">{{bill.id}}</a></td>
+                    <td>{{bill.prefix}}</td>
+                    <td>{{bill.number}}</td>
+                    <td>{{bill.session}}</td>
+                    <td>
+                        {{bill.title[:100]}}
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

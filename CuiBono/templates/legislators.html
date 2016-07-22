@@ -38,8 +38,42 @@
                 {{legis.district}}
               {%endif%}</td>
         <td>{{legis.party}}</td>
-        <td>{{legis.offices}}</td>
-        <td>{{legis.sources}}</td>
+        <td>
+            <table>
+                {%for row in legis.offices%}
+                    {% for col in row %}
+                      {%if row[col] != None %}
+                        <tr>
+                          <td class="col-sm-4" style="text-align: left;">{{col}}:</td>
+                          <td class="col-sm-8">{{row[col]}}</td>
+                        </tr>
+                      {%endif%}
+                    {% endfor %}
+                {%endfor%}
+            </table>
+        </td>
+        <td>
+        <div class="row">
+            <table>
+                {%for row in legis.sources%}
+                    {% for col in row %}
+                          {%if col == "url"%}
+                            <tr>
+                              <td class="col-sm-6" style="text-align: left;">{{col}}:</td>
+                              <td class="col-sm-6"><a href="{{row[col]}}">{{row[col]}}</a></td>
+                            </tr>
+                          {%else%}
+                            <tr>
+                              <td class="col-sm-6" style="text-align: left;">{{col}}:</td>
+                              <td class="col-sm-6">{{row[col]}}</td>
+                            </tr>
+                          {%endif%}
+                    {% endfor %}
+                {%endfor%}
+            </table>
+        </div>
+
+        </td>
 
       </tr>
       {%endif%}

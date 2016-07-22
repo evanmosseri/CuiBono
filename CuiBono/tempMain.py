@@ -8,11 +8,20 @@ from pprint import pprint
 from urllib.parse import urlparse, urlencode, urlunparse, parse_qsl
 import json
 import requests
+from sqlalchemy import desc
 
 app = Flask(__name__)
 app.config[
     "SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:database@cuibono.io/cuibono"
 db = SQLAlchemy(app)
+
+@app.template_filter('ctime')
+def timectime(s):
+    return time.ctime(s)
+
+@app.template_filter('enumerate')
+def enumerate_filer(s):
+    return enumerate(s)
 
 
 def add_args(url, **params):
@@ -27,7 +36,10 @@ def add_args(url, **params):
 def index():
     return render_template("index.html")
 
-
+def fix_sources(legislator):
+    legislator.sources = json.loads(legislator.sources)
+    legislator.offices = json.loads(legislator.offices)
+    return legislator
 @app.route("/legislators/<id>")
 @app.route("/legislators/")
 def legislators(id=None):
@@ -50,10 +62,9 @@ def legislators(id=None):
             page=page + 1,
             sort=sort
         )
-
         return render_template("legislators.html",
-                               legislators=db.session.query(Legislator).order_by(
-                                   sort if sort else id).offset(num_per_page * page).limit(num_per_page),
+                               legislators=map(fix_sources,db.session.query(Legislator).order_by(
+                           sort if sort else id).offset(num_per_page * page).limit(num_per_page)),
                                page=page,
                                prev_page=prev_page,
                                next_page=next_page
@@ -61,7 +72,7 @@ def legislators(id=None):
     else:
         leg = db.session.query(Legislator).get(id)
         contrib_page = int(request.args.get("contrib_page")
-                           ) if request.args.get("contrib_page") else 1
+                           ) if request.args.get("contrib_page") else 0
         num_contribs_per_page = min(int(request.args.get(
             "num_contribs_per_page")), 250) if request.args.get("num_contribs_per_page") else 10
         prev_contribs = add_args(
@@ -78,14 +89,17 @@ def legislators(id=None):
         return render_template("legislator.html",
                                prev_contribs=prev_contribs,
                                next_contribs=next_contribs,
-                               legislator=leg,
+                               legislator=fix_sources(leg),
                                contrib_page=contrib_page,
                                contributions=leg.contributions[
                                    contrib_page * num_contribs_per_page:((contrib_page + 1) * (num_contribs_per_page))],
                                bills=leg.bills[contrib_page * num_contribs_per_page:((contrib_page + 1) * (num_contribs_per_page))]
                                )
 
-
+def parse_bill(bill):
+    bill.sources = json.loads(bill.sources)
+    bill.subjects = json.loads(bill.subjects)
+    return bill
 @app.route("/bills/<id>")
 @app.route("/bills/")
 def bills(id=None, methods=["GET"]):
@@ -108,10 +122,11 @@ def bills(id=None, methods=["GET"]):
         sort=sort
     )
     if not(id):
-        return render_template("bills.html", bills=db.session.query(Bill).order_by(sort if sort else id).offset(num_per_page * page).limit(num_per_page), page=page,prev_page=prev_page,next_page=next_page)
+        nbills = db.session.query(Bill).order_by(sort if sort else id).offset(num_per_page * page).limit(num_per_page)
+        return render_template("bills.html", bills=nbills, page=page,prev_page=prev_page,next_page=next_page)
     else:
         bill = db.session.query(Bill).get(id)
-        return render_template("bill.html", bill=bill,page=page,prev_page=prev_page,next_page=next_page,sponsors = bill.sponsors[page*num_per_page:num_per_page*(page+1)])
+        return render_template("bill.html", bill=parse_bill(bill),page=page,prev_page=prev_page,next_page=next_page,sponsors = bill.sponsors[page*num_per_page:num_per_page*(page+1)])
 
 
 @app.route("/contributors/<int:id>")
